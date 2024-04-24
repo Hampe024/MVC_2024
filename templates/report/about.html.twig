@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Om mig{% endblock %}
+
+{% block body %}
+    <div class="about-grid">
+        <div>
+            <h1>Här kommer en liten snabb presentation av kursen!</h1>
+            <a href="{{ asset('img/symfony.png') }}">
+                <img src="{{ asset('img/symfony.png') }}" alt="Symfonys logga">
+            </a>
+        </div>
+        <div>
+            <p>I denna kursen skall vi lära oss programmera webbapplikationer på ett objektorienterat sätt med fokus på det arkitekturella designmönstret MVC. För att komma igång behöver vi en bas och där har vi valt ramverket Symfony som är ett av de mer kända ramverken inom PHP.</p>
+            <p><a href="https://github.com/dbwebb-se/mvc/tree/main">Kursens Github repo</a></p>
+            <p><a href="https://github.com/Hampe024/MVC_2024">Mitt Github repo</a></p>
+        </div>
+    </div>
+{% endblock %}

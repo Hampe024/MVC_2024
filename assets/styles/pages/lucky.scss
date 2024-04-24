@@ -1,0 +1,13 @@
+.lucky {
+    display: flex;
+    width: 1000px;
+    margin: auto;
+
+    :first-child {
+        padding-top: 80px;
+    }
+
+    img {
+        width: 500px;
+    }
+}

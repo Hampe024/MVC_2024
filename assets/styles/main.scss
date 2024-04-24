@@ -1,0 +1,28 @@
+@import 'variables';
+
+@import 'layout/footer.scss';
+@import 'layout/nav.scss';
+
+@import 'pages/me.scss';
+@import 'pages/about.scss';
+@import 'pages/report.scss';
+@import 'pages/lucky.scss';
+
+html {
+    height: 100%;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-rows: 0.5fr 7.5fr 2fr 0;
+    height: 100%;
+    width: 100%;
+
+    main {
+        padding: 0.3rem;
+        flex-grow: 8.6;
+    }
+}
+

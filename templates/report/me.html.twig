@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Om mig{% endblock %}
+
+{% block body %}
+    <div class="me">
+        <a href="{{ asset('img/me.png') }}">
+            <img class="me-img" src="{{ asset('img/me.png') }}" alt="Bild på mig">
+        </a>
+        <h1>Här kommer en liten snabb presentation av mig!</h1>
+        <p>Mitt namn är Hampus Gottlieb. Jag är uppvuxen i Täby strax norr om Stockholm, där gick jag i Tibble gymnasium på linjen Teknik inrikting information och media. Jag har alltid varit tekniskt intresserad. Länge ville jag jobba inom infrastruktur och stadsbyggnad. Men i gymnasiet märkte jag att jag inte var vidare bra på fysik, men däremot mycket bättre på programering. Förutom den begränsade programeringen i gymnasiet är jag självlärd och tror därför att det kommer vara mycket lärorikt på BTH.</p>
+    </div>
+{% endblock %}

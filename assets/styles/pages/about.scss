@@ -1,0 +1,13 @@
+.about-grid {
+    display: flex;
+    width: 1000px;
+    margin: auto;
+
+    div {
+        width: 500px;
+
+        img {
+            width: 300px;
+        }
+    }
+}
