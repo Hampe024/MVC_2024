@@ -84,8 +84,6 @@ class CardGameController extends AbstractController
         
         [$deck, $hand] = $this->getDeckAndHand($session);
 
-        $drawnCards = array();
-
         for ($i = 0; $i < $num; $i++) {
             $hand->addCard($deck->drawCard());
         }
