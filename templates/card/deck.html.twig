@@ -3,27 +3,34 @@
 {% block title %}Card Game{% endblock %}
 
 {% block body %}
+    <div class="card">
+        <div class="card-nav">
+            <ul>
+                <li><a href="{{ path('cardDeckDrawOne') }}">Ta ett kort</a></li>
+                <li><a href="{{ path('cardDeckDraw', {num: 2}) }}">Ta två kort</a></li>
+                <li><a href="{{ path('cardDeckShuffle') }}">Blanda</a></li>
+                <li><a href="{{ path('cardDeckReset') }}">Starta om</a></li>
+            </ul>
+        </div>
 
-    <div class="">
-        <ul>
-            <li><a href="{{ path('cardDeckDrawOne') }}">Ta ett kort</a></li>
-            <li><a href="{{ path('cardDeckDraw', {num: 2}) }}">Ta två kort</a></li>
-            <li><a href="{{ path('cardDeckShuffle') }}">Blanda</a></li>
-            <li><a href="{{ path('cardDeckReset') }}">Starta om</a></li>
-        </ul>
+        <div>
+            {% if hand is defined %}
+                <h1>Dina kort({{ handAmount }}):</h1>
+                <div class="card-hand">
+                    {% for key, value in hand %}
+                        <span> {{ value }} </span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            {% if deck is defined %}
+                <h1>Kortleken({{ deckAmount }}):</h1>
+                <div class="card-deck">
+                    {% for key, value in deck %}
+                        <span> {{ value }} </span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
     </div>
-
-        {% if hand is defined %}
-            <h1>Dina kort({{ handAmount }}):</h1>
-            {% for key, value in hand %}
-                <span> {{ value }} </span>
-            {% endfor %}
-        {% endif %}
-
-        {% if deck is defined %}
-            <h1>Kortleken({{ deckAmount }}):</h1>
-            {% for key, value in deck %}
-                <span> {{ value }} </span>
-            {% endfor %}
-        {% endif %}
 {% endblock %}

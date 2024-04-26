@@ -1,0 +1,39 @@
+.card {
+    display: grid;
+    grid-template-columns: 22rem auto;
+
+    h1 {
+        text-align: center;
+    }
+    .card-nav {
+        li {
+            list-style-type: none;
+            font-size: 4rem;
+
+            a {
+                color: black;
+                text-decoration: none;
+            }
+            :hover {
+                font-weight: bold;
+            }
+        }
+    }
+    .card-hand,
+    .card-deck {
+        width: 50rem;
+        margin: auto;
+    }
+    .card-hand {
+        
+        span {
+            font-size: 10rem;
+        }
+    }
+    .card-deck {
+
+        span {
+            font-size: 5rem;
+        }
+    }
+}

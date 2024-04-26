@@ -8,6 +8,7 @@
 @import 'pages/about.scss';
 @import 'pages/report.scss';
 @import 'pages/lucky.scss';
+@import 'pages/card.scss';
 
 html {
     height: 100%;
@@ -22,8 +23,8 @@ body {
     width: 100%;
 
     main {
+        padding-bottom: 5rem;
         padding: 0.3rem;
-        flex-grow: 8.6;
     }
 }
 
