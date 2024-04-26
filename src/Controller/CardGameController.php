@@ -15,8 +15,7 @@ class CardGameController extends AbstractController
 {
     private function getDeckAndHand(
         SessionInterface $session
-        ): array
-    {
+    ): array {
         $deck = $session->has('deck') ? $session->get('deck') : new DeckOfCards();
         $hand = $session->has('hand') ? $session->get('hand') : new CardHand();
 
@@ -35,9 +34,8 @@ class CardGameController extends AbstractController
     #[Route("/card/deck", name: "cardDeck")]
     public function cardDeck(
         SessionInterface $session
-    ): Response
-    {
-        
+    ): Response {
+
         [$deck, $hand] = $this->getDeckAndHand($session);
 
         $data = [
@@ -52,9 +50,8 @@ class CardGameController extends AbstractController
     #[Route("/card/deck/shuffle", name: "cardDeckShuffle")]
     public function cardDeckShuffle(
         SessionInterface $session
-    ): Response
-    {
-        
+    ): Response {
+
         [$deck, $hand] = $this->getDeckAndHand($session);
 
         $deck->shuffle();
@@ -70,8 +67,7 @@ class CardGameController extends AbstractController
 
     #[Route("/card/deck/draw", name: "cardDeckDrawOne")]
     public function cardDeckDrawOne(
-    ): Response
-    {
+    ): Response {
         return $this->redirectToRoute('cardDeckDraw', ['num' => 1]);
     }
 
@@ -79,9 +75,8 @@ class CardGameController extends AbstractController
     public function cardDeckDraw(
         int $num,
         SessionInterface $session
-    ): Response
-    {
-        
+    ): Response {
+
         [$deck, $hand] = $this->getDeckAndHand($session);
 
         for ($i = 0; $i < $num; $i++) {
@@ -100,8 +95,7 @@ class CardGameController extends AbstractController
     #[Route("/card/deck/reset", name: "cardDeckReset")]
     public function cardDeckReset(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $session->remove('deck');
         $session->remove('hand');
 

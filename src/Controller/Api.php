@@ -10,7 +10,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
-
 class Api extends AbstractController
 {
     #[Route("/api", name: "api")]
@@ -49,8 +48,7 @@ class Api extends AbstractController
 
     private function getDeck(
         SessionInterface $session
-        ): DeckOfCards
-    {
+    ): DeckOfCards {
         $deck = $session->has('deck') ? $session->get('deck') : new DeckOfCards();
 
         $session->set('deck', $deck);
@@ -61,8 +59,7 @@ class Api extends AbstractController
     #[Route("/api/deck", name: "apiDeck")]
     public function apiDeck(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $deck = $this->getDeck($session);
         $data = [
             'deck' => $deck->getDeckAsString(),
@@ -74,8 +71,7 @@ class Api extends AbstractController
     #[Route("/api/deck/shuffle", name: "apiDeckShuffle")]
     public function apiDeckShuffle(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $deck = $this->getDeck($session);
 
         $deck->shuffle();
@@ -91,8 +87,7 @@ class Api extends AbstractController
 
     #[Route("/api/deck/draw", name: "apiDeckDrawOne")]
     public function apiDeckDrawOne(
-    ): Response
-    {
+    ): Response {
         return $this->redirectToRoute('apiDeckDraw', ['num' => 1]);
     }
 
@@ -100,9 +95,8 @@ class Api extends AbstractController
     public function apiDeckDraw(
         int $num,
         SessionInterface $session
-    ): Response
-    {
-        
+    ): Response {
+
         $deck = $this->getDeck($session);
 
         $drawnCards = array();

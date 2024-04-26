@@ -15,12 +15,11 @@ class SessionHandeler extends AbstractController
     #[Route("/session", name: "session")]
     public function session(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $data = [
             "sessionData" => $session->all()
         ];
-        
+
         if (isset($data['sessionData']['deck'])) {
             $data["deck"] = $data['sessionData']['deck']->getDeckAsString();
             unset($data['sessionData']['deck']);
@@ -36,17 +35,14 @@ class SessionHandeler extends AbstractController
     #[Route("/session/delete", name: "sessionDelete")]
     public function sessionDelete(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $session->clear();
 
         $this->addFlash(
             'notice',
             'Your session was deleted!'
         );
-        
+
         return $this->redirectToRoute('session');
     }
 }
-
-

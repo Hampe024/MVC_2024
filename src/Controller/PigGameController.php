@@ -90,8 +90,7 @@ class PigGameController extends AbstractController
     public function initCallback(
         Request $request,
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         // Deal with the submitted form
 
         return $this->redirectToRoute('pig_play');
