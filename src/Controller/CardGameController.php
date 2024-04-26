@@ -65,6 +65,15 @@ class CardGameController extends AbstractController
 
         $hand->roll();
 
+        $this->addFlash(
+            'warning',
+            'You got a 1 and you lost the round points!'
+        );
+        $this->addFlash(
+            'notice',
+            'Your round was saved to the total!'
+        );
+
         $data = [
             "num_dices" => $hand->getNumberDices(),
             "diceRoll" => $hand->getString(),
