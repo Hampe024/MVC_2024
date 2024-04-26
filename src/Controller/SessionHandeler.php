@@ -25,6 +25,10 @@ class SessionHandeler extends AbstractController
             $data["deck"] = $data['sessionData']['deck']->getDeckAsString();
             unset($data['sessionData']['deck']);
         }
+        if (isset($data['sessionData']['hand'])) {
+            $data["hand"] = $data['sessionData']['hand']->getHandAsString();
+            unset($data['sessionData']['hand']);
+        }
 
         $session->set("test", $session->get("test") + 1);
         return $this->render('misc/session.html.twig', $data);
