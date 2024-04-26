@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Dice;
+namespace App\Card;
 
 use App\Card\DeckOfCards;
 use App\Card\Card;

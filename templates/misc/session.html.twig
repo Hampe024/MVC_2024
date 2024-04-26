@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Session{% endblock %}
+
+{% block body %}
+    <h1>Session Data:</h1>
+    <ul>
+        {% for key, value in sessionData %}
+            <li>{{ key }}: {{ value }}</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ path('sessionDelete') }}">Delete session</a>
+{% endblock %}
