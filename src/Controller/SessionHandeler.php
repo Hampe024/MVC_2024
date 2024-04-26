@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Card\DeckOfCards;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,7 +20,11 @@ class SessionHandeler extends AbstractController
         $data = [
             "sessionData" => $session->all()
         ];
-
+        
+        if (isset($data['sessionData']['deck'])) {
+            $data["deck"] = $data['sessionData']['deck']->getDeckAsString();
+            unset($data['sessionData']['deck']);
+        }
 
         $session->set("test", $session->get("test") + 1);
         return $this->render('misc/session.html.twig', $data);

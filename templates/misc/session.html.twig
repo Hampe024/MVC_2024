@@ -10,5 +10,12 @@
         {% endfor %}
     </ul>
 
+    {% if deck is defined %}
+        <h1>The Card deck:</h1>
+        {% for key, value in deck %}
+            <span> {{ value }} </span>
+        {% endfor %}
+    {% endif %}
+
     <a href="{{ path('sessionDelete') }}">Delete session</a>
 {% endblock %}

@@ -4,15 +4,29 @@ namespace App\Card;
 
 class CardHand
 {
-    protected $cards;
+    protected $cards = array();
 
     public function __construct()
     {
-        $this->cards = null;
     }
 
-    public function getCards(): int
+    public function addCard($card)
     {
-        return $this->cards;
+        $this->cards[] = $card;
+    }
+
+    public function getHandAsString()
+    {
+        $cards = array();
+
+        foreach ($this->cards as $card) {
+            $cards[] = $card->getAsString();
+        }
+        return $cards;
+    }
+
+    public function getAmountOfCards(): int
+    {
+        return count($this->cards);
     }
 }
