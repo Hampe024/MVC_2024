@@ -6,6 +6,7 @@
     <div class="card">
         <div class="card-nav">
             <ul>
+                <li><a href="{{ path('card') }}">Tillbaka</a></li>
                 <li><a href="{{ path('cardDeckDrawOne') }}">Ta ett kort</a></li>
                 <li><a href="{{ path('cardDeckDraw', {num: 2}) }}">Ta två kort</a></li>
                 <li><a href="{{ path('cardDeckShuffle') }}">Blanda</a></li>
@@ -13,7 +14,7 @@
             </ul>
         </div>
 
-        <div>
+        <div class="card-game">
             {% if hand is defined %}
                 <h1>Dina kort({{ handAmount }}):</h1>
                 <div class="card-hand">

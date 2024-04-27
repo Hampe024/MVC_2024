@@ -1,6 +1,6 @@
 .card {
     display: grid;
-    grid-template-columns: 22rem auto;
+    grid-template-columns: 25rem auto;
 
     h1 {
         text-align: center;
@@ -34,6 +34,17 @@
 
         span {
             font-size: 5rem;
+        }
+    }
+
+    .card-desc {
+        display: flex;
+        padding: 2rem;
+
+        p {
+            width: 80%;
+            max-width: 800px;
+            padding-left: 2rem;
         }
     }
 }

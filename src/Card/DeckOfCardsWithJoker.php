@@ -5,9 +5,6 @@ namespace App\Card;
 use App\Card\DeckOfCards;
 use App\Card\Card;
 
-$joker_cards = [
-    "🃟", "🂿"
-];
 
 class DeckOfCardsWithJoker extends DeckOfCards
 {
@@ -15,6 +12,9 @@ class DeckOfCardsWithJoker extends DeckOfCards
     {
         parent::__construct();
 
+        $joker_cards = [
+            "🃟", "🂿"
+        ];
         $this->deck[] = new Card(-1, "black", $joker_cards[0]);
         $this->deck[] = new Card(-1, "white", $joker_cards[1]);
     }

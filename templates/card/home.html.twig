@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card Game{% endblock %}
+
+{% block body %}
+    <div class="card">
+        <div class="card-nav">
+            <ul>
+                <li><a href="{{ path('cardDeck') }}">Starta</a></li>
+                <li><a href="{{ path('cardDeckDrawOne') }}">Ta ett kort</a></li>
+                <li><a href="{{ path('cardDeckDraw', {num: 2}) }}">Ta två kort</a></li>
+                <li><a href="{{ path('cardDeckShuffle') }}">Blanda</a></li>
+                <li><a href="{{ path('cardDeckReset') }}">Starta om</a></li>
+            </ul>
+        </div>
+
+        <div class="card-desc">
+            <img class="me-img" src="{{ asset('img/UML.png') }}" alt="UML">
+
+            <p>
+                Jag har gjort min klasstruktur enligt figuren. Card symboliserar ett kort och den måste "ägas" (komposition) av antingen en CardHand, DeckOfCards eller DeckOfCardsWithJoker. DeckOfCards kan ha 52 Cards, DeckOfCardsWithJoker 54, och CardHand kan ha oändligt men den är i praktiken begränsad till 52 eller 54 då korten tas från leken.
+                <br><br>
+                Card har 3 protected attributer, $value och $suite bestämmer tillsammand vilket kort det är medans $icon är den grafiska bilden. Just nu (kmom02) används endast $icon men, de andra kommer dock att behövas när ett faktiskt kortspel implementeras, då kommer också metoder för att hämta ut dessa attributer att implementeras (alternativt att attributerna görs publika).
+            </p>
+        </div>
+    </div>
+{% endblock %}
