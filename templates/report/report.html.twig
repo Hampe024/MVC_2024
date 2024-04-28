@@ -4,10 +4,10 @@
 
 {% block body %}
     <div class="report">
-        <h2>Mina redovisningstexter</h2>
+        <h1>Mina redovisningstexter</h1>
         <ul>
             <li>
-                <h3 id="kmom01">Kmom01</h3>
+                <h2 id="kmom01">Kmom01</h2>
                 <p>
                     <ul>
                         <li>
@@ -29,27 +29,42 @@
                 </p>
             </li>
             <li>
-                <h3 id="kmom02">Kmom02</h3>
+                <h2 id="kmom02">Kmom02</h2>
+                <p>
+                    <ul>
+                        <li>
+                            <p><strong>F&ouml;rklara kort de objektorienterade konstruktionerna arv, komposition, interface och trait och hur de anv&auml;nds i PHP.</strong><br /><strong>Arv </strong>&auml;r n&auml;r en klass bygger p&aring; en "parent" klass, exempel p&aring; detta &auml;r Volvo som &auml;rver fr&aring;n Car. Detta g&ouml;rs i PHP genom att skriva "class Volvo extends Car"<br /><strong>Komposition </strong>&auml;r n&auml;r en klass inneh&aring;ller en annan klass (tex som attribut), exempel p&aring; detta &auml;r en CarEngine i Car.<br /><strong>Interface </strong>&auml;r n&auml;r man g&ouml;r en klass vars enda syfte &auml;r att typ agera som en mall, du definierar i den vilka metoder dens child beh&ouml;ver ha. Detta g&ouml;rs i PHP genom att skriva "class Car implements CarInterface"<br /><strong>Trait </strong>&auml;r ett s&auml;tt att implementera flertal metoder in i en klass f&ouml;r att DRY:a ner koden, traits anv&auml;nds i princip som arv men kr&auml;ver inte att den andra klassen(i detta fall trait) finns i klass hirarkin som parent. Detta g&ouml;rs i PHP genom att l&auml;gga till detta klassdefinitionen: "use CarTrait;"</p>
+                        </li>
+                        <li>
+                            <p><strong>Ber&auml;tta om din implementation fr&aring;n uppgiften. Hur l&ouml;ste du uppgiften, &auml;r du n&ouml;jd/missn&ouml;jd, vilken f&ouml;rb&auml;ttringspotential ser du i din koden och dina klasser?</strong><br />Jag b&ouml;rjade uppgiften med att g&ouml;ra klasser med attributer och metoder som jag gissade att de skulle beh&ouml;va, sedan b&ouml;rjade jag med kontrollern och la till fler metoder vid behov. Det var lite sv&aring;rt att beh&ouml;va designa klasser utan att veta helt vad de ska anv&auml;ndas till (vilket kortspel som ska implementeras) s&aring; jag har generellt l&auml;mnat allt som jag inte beh&ouml;vde nu ute, f&ouml;rutom v&auml;rde och f&auml;rg p&aring; korten d&aring; jag i praktiken redan hade dom gjorde i forloopen i DeckOfCards konstruktorn. Jag &auml;r inte super n&ouml;jd med hur jag l&ouml;ste den grafiska delen, jag tog lite den enklaste v&auml;gen d&auml;r och anv&auml;nde mig endast av utf-8 ikoner av kort, detta k&auml;ndes mycket l&auml;ttare att komma ig&aring;ng med men detta leder till v&auml;ldigt begr&auml;nsad design och ingen f&auml;rg p&aring; korten, s&aring; m&ouml;jligt att jag &auml;ndrar detta senare i kursen.</p>
+                        </li>
+                        <li>
+                            <p><strong>Vilka &auml;r dina reflektioner s&aring; h&auml;r l&aring;ngt med att jobb i Symfony med applikationskod enligt MVC?</strong><br />Det &auml;r v&auml;ldigt smidigt, tyckte tex det gick v&auml;ldigt bra att jobba till samma twig-fil med alla olika card-routes, ist&auml;llet f&ouml;r att beh&ouml;va en ny fil f&ouml;r varje route som det l&auml;tt hade kunnat beh&ouml;vas.&nbsp; </p>
+                        </li>
+                        <li>
+                            <p><strong>Vilken &auml;r din TIL f&ouml;r detta kmom?</strong><br />Djupare i PHP OOP samt hur man arbetar med session i symfony.</p>
+                        </li>
+                    </ul>
+                </p>
+            </li>
+            <li>
+                <h2 id="kmom03">Kmom03</h2>
                 <p>Redovisningstext...</p>
             </li>
             <li>
-                <h3 id="kmom03">Kmom03</h3>
+                <h2 id="kmom04">Kmom04</h2>
                 <p>Redovisningstext...</p>
             </li>
             <li>
-                <h3 id="kmom04">Kmom04</h3>
+                <h2 id="kmom05">Kmom05</h2>
                 <p>Redovisningstext...</p>
             </li>
             <li>
-                <h3 id="kmom05">Kmom05</h3>
+                <h2 id="kmom06">Kmom06</h2>
                 <p>Redovisningstext...</p>
             </li>
             <li>
-                <h3 id="kmom06">Kmom06</h3>
-                <p>Redovisningstext...</p>
-            </li>
-            <li>
-                <h3 id="kmom07">Kmom07</h3>
+                <h2 id="kmom07">Kmom07</h2>
                 <p>Redovisningstext...</p>
             </li>
         <ul>
