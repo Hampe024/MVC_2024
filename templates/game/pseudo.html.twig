@@ -1,0 +1,23 @@
+<div class="pseudo">
+    Jag tänker göra 3 till klasser, Game och Player och Dealer. Game hanterar spelet och dess logik. Player är spelaren och hanterar spelarens actions. Dealer hanterar logiken för när dealern ska ta kort.
+    <br>
+    Game kan ha 1 (i nuläget) Player, 1 Dealer och 1 DeckOfCards. Player och Dealer har en CardHand var.
+
+    <div class="code">
+        <div>game init with new DeckOfCards</div>
+        <div>Game->DeckOfCards->shuffle</div>
+        <div>Game->Player->CardHand->addCard</div> *2
+        <div>if any Card->value == -1 in Game->Player->CardHand</div> (Ace are by default value -1)
+        <div>Game->Player->CardHand->Card->setValue</div> to value (1 or 14) from form
+        <div>if Game->Player->CardHand->totValue > 21 ? <b>DEALER WINS</b> : keep playing</div>
+        <div>player choses to end ? stop playing : keep playing, give new card and repeat</div>
+        <br>
+        <div>Game->Dealer->CardHand->addCard</div>
+        <div>if any Card->value == -1 in Game->Dealer->CardHand</div> (Ace are by default value -1)
+        <div>Game->Player->CardHand->Card->setValue</div> for now dealer always sets it to 1
+        <div>if Game->Dealer->CardHand->totValue > 21 ? <b>PLAYER WINS</b> : keep playing</div>
+        <div>Game->Dealer->CardHand->totValue >= 17 ? stop playing : keep playing, give new card and repeat</div>
+        <br>
+        <div>Game->Dealer->CardHand->totValue >= Game->Player->CardHand->totValue ? <b>DEALER WINS</b> : <b>PLAYER WINS</b></div>
+    </div>
+</div>

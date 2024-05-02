@@ -1,0 +1,20 @@
+.game-doc {
+    display: flex;
+
+    .pseudo {
+        padding: 1rem;
+        .code {
+            font-family: Arial, sans-serif;
+            div {
+                background-color: #616161;
+                border: 1px solid #959595;
+                color: azure;
+                margin: 0.5rem;
+                padding: 0.5rem;
+                border-radius: 5px;
+                width: fit-content;
+                height: 1rem;
+            }
+        }
+    }
+}
