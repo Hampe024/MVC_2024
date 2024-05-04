@@ -20,6 +20,12 @@ class Card
         return $this->value;
     }
 
+    public function setValue($value): void
+    {
+        $this->value = $value;
+        return;
+    }
+
     public function getAsString(): string
     {
         return "{$this->icon}";

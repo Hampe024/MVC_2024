@@ -32,8 +32,12 @@ class DeckOfCards
 
         for ($i = 0; $i < 13; $i++) {
             for ($j = 0; $j < 4; $j++) {
+                $value = $i + 1;
+                if ($value == 1) {
+                    $value = -1; // change value of ace to -1
+                }
                 $this->deck[] = new Card(
-                    $i + 1,
+                    $value,
                     $suits[$j],
                     $icons[$i][$j]
                 );

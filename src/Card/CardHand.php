@@ -29,4 +29,13 @@ class CardHand
     {
         return count($this->cards);
     }
+
+    public function getTotValue(): int
+    {
+        $value = 0;
+        foreach ($this->cards as $card) {
+            $value += $card->getValue();
+        }
+        return $value;
+    }
 }

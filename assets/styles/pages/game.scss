@@ -18,3 +18,18 @@
         }
     }
 }
+
+
+.dealer-card {
+    opacity: 0;
+    animation: appear 0s ease forwards;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

@@ -14,7 +14,7 @@ class DeckOfCardsWithJoker extends DeckOfCards
         $joker_cards = [
             "🃟", "🂿"
         ];
-        $this->deck[] = new Card(-1, "black", $joker_cards[0]);
-        $this->deck[] = new Card(-1, "white", $joker_cards[1]);
+        $this->deck[] = new Card(-2, "black", $joker_cards[0]);
+        $this->deck[] = new Card(-2, "white", $joker_cards[1]);
     }
 }
