@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Card\DeckOfCards;
+use App\Card\Game;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -118,10 +119,10 @@ class Api extends AbstractController
 
         $game = $session->has('game') ? $session->get('game') : new Game();
 
-        $player_playing = $session->has('player_playing') ? $session->get('player_playing') : True;
+        $playerPlaying = $session->has('playerPlaying') ? $session->get('playerPlaying') : true;
 
         $data = [
-            "player_playing" => $player_playing,
+            "playerPlaying" => $playerPlaying,
             "player_hand" => $game->player->getHandAsString(),
             "player_hand_amount" => $game->player->getAmountOfCards(),
             "player_hand_value" => $game->player->getValueAsArr(),

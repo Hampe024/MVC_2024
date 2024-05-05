@@ -7,9 +7,9 @@ use App\Card\DeckOfCards;
 
 class Game
 {
-    public $deck;
-    public $player;
-    public $dealer;
+    public object $deck;
+    public object $player;
+    public object $dealer;
 
     public function __construct()
     {
@@ -25,11 +25,9 @@ class Game
         // return 1 if dealer win, 2 if player
         if ($this->player->getTotValue() > 21) {
             return 1;
-        }
-        else if ($this->dealer->getTotValue() > 21) {
+        } elseif ($this->dealer->getTotValue() > 21) {
             return 2;
-        }
-        else if ($this->dealer->getTotValue() >= $this->player->getTotValue()) {
+        } elseif ($this->dealer->getTotValue() >= $this->player->getTotValue()) {
             return 1;
         }
         return 2;

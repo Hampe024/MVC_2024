@@ -6,7 +6,7 @@ use App\Card\Card;
 
 class DeckOfCards
 {
-    protected $deck = array();
+    protected array $deck = array();
 
     public function __construct()
     {
@@ -28,7 +28,7 @@ class DeckOfCards
             ["🂭", "🂽", "🃍", "🃜"], // Queen of Spades, Queen of Hearts, Queen of Diamonds, Queen of Clubs
             ["🂮", "🂾", "🃎", "🃞"], // King of Spades, King of Hearts, King of Diamonds, King of Clubs
         ];
-        $icon_backside = "🂠";
+        // $iconBackside = "🂠";
 
         for ($i = 0; $i < 13; $i++) {
             for ($j = 0; $j < 4; $j++) {
@@ -45,7 +45,7 @@ class DeckOfCards
         }
     }
 
-    public function shuffle()
+    public function shuffle(): void
     {
         shuffle($this->deck);
     }
@@ -55,12 +55,12 @@ class DeckOfCards
         return count($this->deck);
     }
 
-    public function drawCard()
+    public function drawCard(): object
     {
         return array_shift($this->deck);
     }
 
-    public function getDeckAsString()
+    public function getDeckAsString(): array
     {
         $cards = array();
 

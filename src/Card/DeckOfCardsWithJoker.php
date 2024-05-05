@@ -11,10 +11,10 @@ class DeckOfCardsWithJoker extends DeckOfCards
     {
         parent::__construct();
 
-        $joker_cards = [
+        $jokerCards = [
             "🃟", "🂿"
         ];
-        $this->deck[] = new Card(-2, "black", $joker_cards[0]);
-        $this->deck[] = new Card(-2, "white", $joker_cards[1]);
+        $this->deck[] = new Card(-2, "black", $jokerCards[0]);
+        $this->deck[] = new Card(-2, "white", $jokerCards[1]);
     }
 }

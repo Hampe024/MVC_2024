@@ -21,16 +21,16 @@ class GameController extends AbstractController
 
         return $game;
     }
-    private function Data(
+    private function data(
         SessionInterface $session
     ): array {
 
         $game = $this->getGame($session);
 
-        $player_playing = $session->has('player_playing') ? $session->get('player_playing') : True;
+        $playerPlaying = $session->has('playerPlaying') ? $session->get('playerPlaying') : true;
 
         $data = [
-            "player_playing" => $player_playing,
+            "playerPlaying" => $playerPlaying,
             "player_hand" => $game->player->getHandAsString(),
             "player_hand_amount" => $game->player->getAmountOfCards(),
             "player_hand_value" => $game->player->getTotValue(),
@@ -50,9 +50,7 @@ class GameController extends AbstractController
     }
 
     #[Route("/game", name: "game")]
-    public function game(
-        SessionInterface $session
-    ): Response
+    public function game(): Response
     {
         return $this->render('game/intro.html.twig');
     }
@@ -60,26 +58,20 @@ class GameController extends AbstractController
     #[Route("/game/play", name: "gamePlay")]
     public function gamePlay(
         SessionInterface $session
-    ): Response
-    {
-
-        $game = $this->getGame($session);
-
+    ): Response {
         return $this->render('game/home.html.twig', $this->data($session));
     }
 
     #[Route("/game/drawCard", name: "gameDrawCard")]
     public function gameDrawCard(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $game = $this->getGame($session);
         $newCard = $game->deck->drawCard();
         if ($newCard->getValue() == -1) {
-            // if is ace, 
+            // if is ace,
             $session->set("ace", $newCard);
-        } 
-        else {
+        } else {
             $game->player->addCard($newCard);
         }
 
@@ -92,8 +84,7 @@ class GameController extends AbstractController
     public function gameSetAce(
         int $value,
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $game = $this->getGame($session);
         $ace = $session->get("ace");
         $session->remove("ace");
@@ -107,12 +98,11 @@ class GameController extends AbstractController
     #[Route("/game/dealerDraw", name: "gameDealerDraw")]
     public function gameDealerDraw(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $game = $this->getGame($session);
-        $session->set("player_playing", false);
+        $session->set("playerPlaying", false);
         $game->dealer->addCard($game->deck->drawCard());
-        
+
         while ($game->dealer->getTotValue() < 17) {
             // keep playing until value of over 17
             $newCard = $game->deck->drawCard();
@@ -132,10 +122,9 @@ class GameController extends AbstractController
     #[Route("/game/restart", name: "gameRestart")]
     public function gameRestart(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $session->remove("game");
-        $session->remove('player_playing');
+        $session->remove('playerPlaying');
         $session->remove("winner");
         return $this->redirectToRoute('game');
     }

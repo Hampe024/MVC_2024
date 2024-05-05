@@ -4,18 +4,18 @@ namespace App\Card;
 
 class CardHand
 {
-    protected $cards = array();
+    protected array $cards = array();
 
     public function __construct()
     {
     }
 
-    public function addCard($card)
+    public function addCard(Card $card): void
     {
         $this->cards[] = $card;
     }
 
-    public function getHandAsString()
+    public function getHandAsString(): array
     {
         $cards = array();
 
@@ -42,6 +42,7 @@ class CardHand
     public function getValueAsArr(): array
     {
         $value = array();
+
         foreach ($this->cards as $card) {
             $value[] = $card->getValue();
         }
