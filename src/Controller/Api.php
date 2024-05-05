@@ -110,4 +110,34 @@ class Api extends AbstractController
         ];
         return new JsonResponse($data);
     }
+
+    #[Route("/api/game", name: "apiGame")]
+    public function apiGame(
+        SessionInterface $session
+    ): Response {
+
+        $game = $session->has('game') ? $session->get('game') : new Game();
+
+        $player_playing = $session->has('player_playing') ? $session->get('player_playing') : True;
+
+        $data = [
+            "player_playing" => $player_playing,
+            "player_hand" => $game->player->getHandAsString(),
+            "player_hand_amount" => $game->player->getAmountOfCards(),
+            "player_hand_value" => $game->player->getValueAsArr(),
+            "dealer_hand" => $game->dealer->getHandAsString(),
+            "dealer_hand_amount" => $game->dealer->getAmountOfCards(),
+            "dealer_hand_value" => $game->dealer->getValueAsArr(),
+        ];
+
+        if ($session->has("ace")) {
+            $data["ace"] = $session->get("ace")->getAsString();
+        }
+
+        if ($session->has("winner")) {
+            $data["winner"] = $session->get("winner");
+        }
+
+        return new JsonResponse($data);
+    }
 }
