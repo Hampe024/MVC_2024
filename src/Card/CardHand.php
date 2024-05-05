@@ -38,4 +38,13 @@ class CardHand
         }
         return $value;
     }
+
+    public function getValueAsArr(): array
+    {
+        $value = array();
+        foreach ($this->cards as $card) {
+            $value[] = $card->getValue();
+        }
+        return $value;
+    }
 }

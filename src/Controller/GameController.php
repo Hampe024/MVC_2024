@@ -35,12 +35,16 @@ class GameController extends AbstractController
             "player_hand_amount" => $game->player->getAmountOfCards(),
             "player_hand_value" => $game->player->getTotValue(),
             "dealer_hand" => $game->dealer->getHandAsString(),
-            "dealer_hand_amount" => $game->dealer->getAmountOfCards(),
-            "dealer_hand_value" => $game->dealer->getTotValue(),
+            "dealer_hand_value" => $game->dealer->getValueAsArr(),
         ];
 
         if ($session->has("ace")) {
             $data["ace"] = $session->get("ace")->getAsString();
+        }
+
+        if ($session->has("winner")) {
+            $data["winner"] = $session->get("winner");
+            $session->remove("winner");
         }
 
         return $data;
@@ -112,8 +116,19 @@ class GameController extends AbstractController
             $game->dealer->addCard($newCard);
         }
 
+        $session->set("winner", $game->getWinner());
         $session->set("game", $game);
 
+        return $this->redirectToRoute('game');
+    }
+
+    #[Route("/game/restart", name: "gameRestart")]
+    public function gameRestart(
+        SessionInterface $session
+    ): Response
+    {
+        $session->remove("game");
+        $session->remove('player_playing');
         return $this->redirectToRoute('game');
     }
 

@@ -23,13 +23,13 @@ class Game
     public function getWinner(): int
     {
         // return 1 if dealer win, 2 if player
-        if ($this->player->getTotalValue() > 21) {
+        if ($this->player->getTotValue() > 21) {
             return 1;
         }
-        else if ($this->dealer->getTotalValue() > 21) {
+        else if ($this->dealer->getTotValue() > 21) {
             return 2;
         }
-        else if ($this->dealer->getTotalValue() >= $this->player->getTotalValue()) {
+        else if ($this->dealer->getTotValue() >= $this->player->getTotValue()) {
             return 1;
         }
         return 2;

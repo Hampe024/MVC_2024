@@ -5,30 +5,38 @@
 {% block javascripts %}
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            let dealerHand = {{ dealer_hand|json_encode|raw }};
-            let cardContainer = document.querySelector('.dealer-card-hand');
+            const dealerHand = {{ dealer_hand|json_encode|raw }};
+            const dealerHandValueArr = {{ dealer_hand_value|json_encode|raw }};
+            const cardContainer = document.querySelector('.dealer-card-hand');
             
             dealerHand.forEach(function(card, index) {
                 setTimeout(function() {
-                    let span = document.createElement('span');
+                    const span = document.createElement('span');
                     span.textContent = card;
                     span.classList.add('dealer-card');
                     cardContainer.appendChild(span);
 
+                    const dealerCardAmount = document.getElementById("dealer-card-amount");
+                    let dealerCardAmountOld = parseInt(dealerCardAmount.innerHTML);
+                    dealerCardAmount.innerHTML = dealerCardAmountOld += 1;
+
+                    const dealerHandValue = document.getElementById("dealer-hand-value");
+                    let dealerHandValueOld = parseInt(dealerHandValue.innerHTML);
+                    dealerHandValue.innerHTML = dealerHandValueOld += dealerHandValueArr[index];
+
                     if (index === dealerHand.length - 1) {
                         console.log("game over yo");
                         // do stuff when all dealer cards have been printed and game is effectively over
-                        let hidden = document.querySelectorAll('.hidden');
+                        const hidden = document.querySelectorAll('.hidden');
                         hidden.forEach(function(value, key) {
                             value.style.opacity = 1;
                         });
-                        let visable = document.querySelectorAll('.visable');
+                        const visable = document.querySelectorAll('.visable');
                         visable.forEach(function(value, key) {
                             value.style.opacity = 0;
                         });
                     }
                 }, index * 1000);
-                
             });
         });
     </script>
@@ -36,7 +44,7 @@
 
 
 {% block body %}
-    <div class="card">
+    <div class="">
         <div class="visable">
             {% if player_playing %}
                 <div class="card-nav">
@@ -64,15 +72,23 @@
         </div>
 
         <div class="dealer-card-game card-game">
-            <h1>Dealerns kort({{ dealer_hand_amount }}):</h1>
+            <h1>Dealerns kort(<span id="dealer-card-amount">0</span>):</h1>
             <div class="dealer-card-hand card-hand">
                 <!-- cards get added via javascript -->
             </div>
-            totalt värde: {{ dealer_hand_value }}
+            totalt värde: <span id="dealer-hand-value">0</span>
         </div>
 
         <div class="hidden">
-            de över yo
+            {% if winner is defined %}
+                {% if winner == 1 %}
+                    <h3>Dealern Vann!</h3>
+                {% else %}
+                    <h3>Du Vann!</h3>
+                {% endif %}
+            {% endif %}
+
+            <a href="{{ path('gameRestart') }}">Starta om</a>
         </div>
 
     </div>
