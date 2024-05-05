@@ -37,3 +37,47 @@
 .hidden {
     opacity: 0;
 }
+
+.blackjack-body {
+    display: grid;
+    grid-template-columns: 25rem 1fr;
+
+    .card {
+        font-size: 10rem;
+        display: inline;
+        letter-spacing: 0.5rem;
+    }
+
+    .ace {
+        font-size: 15rem;
+    }
+
+    .fake-btn {
+        padding: 0.2rem;
+        background-color: #b9b9b9;
+        border: 1px solid black;
+        border-radius: 5px;
+    }
+
+    .game-state {
+        grid-row: 1 / span 2;
+        font-size: 3rem;
+
+        li {
+            list-style-type: none;
+            margin-bottom: 0.5rem;
+
+            :hover {
+                font-weight: bold;
+            }
+        }
+        a {
+            color: black;
+            text-decoration: none;
+        }
+
+        .hover-effect:hover {
+            font-weight: bold;
+        }
+    }
+}

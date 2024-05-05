@@ -13,7 +13,7 @@
                 setTimeout(function() {
                     const span = document.createElement('span');
                     span.textContent = card;
-                    span.classList.add('dealer-card');
+                    span.classList.add('card');
                     cardContainer.appendChild(span);
 
                     const dealerCardAmount = document.getElementById("dealer-card-amount");
@@ -44,51 +44,65 @@
 
 
 {% block body %}
-    <div class="">
-        <div class="visable">
-            {% if player_playing %}
-                <div class="card-nav">
-                    <ul>
-                        <li><a href="{{ path('gameDrawCard') }}">Ta ett till kort</a></li>
-                        <li><a href="{{ path('gameDealerDraw') }}">Stanna</a></li>
-                    </ul>
+    <div class="blackjack-body">
+        <div class="game-state">
+            {% if ace is defined %}
+                Vilket värde vill du sätta på ässet?
+                <br>
+                <a class="fake-btn hover-effect" href="{{ path('gameSetAce', {value: 1}) }}">1</a>
+                eller
+                <a class="fake-btn hover-effect" href="{{ path('gameSetAce', {value: 14}) }}">14</a>
+                <div class="ace">
+                    {{ ace }}
                 </div>
             {% else %}
-                Dealern spelar...
+                <div class="visable">
+                    {% if player_playing %}
+                        <div class="">
+                            <ul>
+                                <li><a class="fake-btn" href="{{ path('gameDrawCard') }}">Ta ett till kort</a></li>
+                                <li><a class="fake-btn" href="{{ path('gameDealerDraw') }}">Stanna</a></li>
+                            </ul>
+                        </div>
+                    {% else %}
+                        Dealern spelar...
+                    {% endif %}
+                </div>
+
+                <div class="hidden">
+                    {% if winner is defined %}
+                        {% if winner == 1 %}
+                            Dealern Vann!
+                        {% else %}
+                            Du Vann!
+                        {% endif %}
+                    {% else %}
+                        Ingen vinnare definierad?
+                    {% endif %}
+                    <br>
+                    <div class="hover-effect">
+                        <a class="fake-btn" href="{{ path('gameRestart') }}">Starta om</a>
+                    </div>
+                </div>
             {% endif %}
         </div>
-        <div class="hidden">
-            Dealern är klar!
-        </div>
 
-        <div class="player-card-game card-game">
-            <h1>Dina kort({{ player_hand_amount }}):</h1>
-            <div class="player-card-hand card-hand">
-                {% for key, value in player_hand %}
-                    <span> {{ value }} </span>
-                {% endfor %}
-            </div>
-            totalt värde: {{ player_hand_value }}
-        </div>
-
-        <div class="dealer-card-game card-game">
+        <div class="dealer">
             <h1>Dealerns kort(<span id="dealer-card-amount">0</span>):</h1>
-            <div class="dealer-card-hand card-hand">
+            <div class="dealer-card-hand">
                 <!-- cards get added via javascript -->
             </div>
             totalt värde: <span id="dealer-hand-value">0</span>
         </div>
 
-        <div class="hidden">
-            {% if winner is defined %}
-                {% if winner == 1 %}
-                    <h3>Dealern Vann!</h3>
-                {% else %}
-                    <h3>Du Vann!</h3>
-                {% endif %}
-            {% endif %}
-
-            <a href="{{ path('gameRestart') }}">Starta om</a>
+        <div class="player">
+            <h1>Dina kort({{ player_hand_amount }}):</h1>
+            <div class="">
+                {% for key, value in player_hand %}
+                    <span class="card">{{ value }}</span>
+                {% endfor %}
+            </div>
+            totalt värde: {{ player_hand_value }}
         </div>
 
     </div>

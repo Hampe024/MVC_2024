@@ -71,7 +71,6 @@ class GameController extends AbstractController
         if ($newCard->getValue() == -1) {
             // if is ace, 
             $session->set("ace", $newCard);
-            return $this->render('game/decideAce.html.twig', $this->data($session));
         } 
         else {
             $game->player->addCard($newCard);
