@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block title %}21 Game{% endblock %}
+
+{% block body %}
+    <div class="game-intro">
+        <h2>Kortspelet 21</h2>
+        <p>
+            Detta spelet följer standardreglerna för 21 enligt <a href="https://sv.wikipedia.org/wiki/Tjugoett_(kortspel)">wikipedia</a>
+            <br><br>
+            Spelaren tar ett kort, är kortet ett äss kan användaren välja om det ska vara värt 1 eller 14, sedan kan användaren välja om den vill ta fler kort.
+            <br>
+            När spelaren är klar är det dealerns tur. Sedan ska vinnaren räknas ut. Banken vinner antingen om spelaren har över 21, eller banken har mer eller lika myckte som spelaren. Spelaren vinner om den har högre poäng än dealern eller om dealern har över 21. Har båda över 21 vinner banken.
+        </p>
+        <p>
+            Vågar du spela? Klicka <a href="{{ path('gamePlay') }}">här</a>
+            <br>
+            <a href="{{ path('gameDoc') }}">Läs dokumentationen</a>
+        </p>
+    </div>
+{% endblock %}

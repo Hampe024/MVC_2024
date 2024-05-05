@@ -44,7 +44,6 @@ class GameController extends AbstractController
 
         if ($session->has("winner")) {
             $data["winner"] = $session->get("winner");
-            $session->remove("winner");
         }
 
         return $data;
@@ -52,6 +51,14 @@ class GameController extends AbstractController
 
     #[Route("/game", name: "game")]
     public function game(
+        SessionInterface $session
+    ): Response
+    {
+        return $this->render('game/intro.html.twig');
+    }
+
+    #[Route("/game/play", name: "gamePlay")]
+    public function gamePlay(
         SessionInterface $session
     ): Response
     {
@@ -78,7 +85,7 @@ class GameController extends AbstractController
 
         $session->set("game", $game);
 
-        return $this->redirectToRoute('game');
+        return $this->redirectToRoute('gamePlay');
     }
 
     #[Route("/game/setAce//{value<\d+>}", name: "gameSetAce")]
@@ -106,9 +113,8 @@ class GameController extends AbstractController
         $session->set("player_playing", false);
         $game->dealer->addCard($game->deck->drawCard());
         
-        while ($game->dealer->getTotValue() < 21
-                && $game->dealer->getTotValue() < $game->player->getTotValue()
-            ) {
+        while ($game->dealer->getTotValue() < 17) {
+            // keep playing until value of over 17
             $newCard = $game->deck->drawCard();
             if ($newCard->getValue() == -1) {
                 // if is ace, for now dealer always sets ace value to 1
@@ -120,7 +126,7 @@ class GameController extends AbstractController
         $session->set("winner", $game->getWinner());
         $session->set("game", $game);
 
-        return $this->redirectToRoute('game');
+        return $this->redirectToRoute('gamePlay');
     }
 
     #[Route("/game/restart", name: "gameRestart")]
@@ -130,11 +136,9 @@ class GameController extends AbstractController
     {
         $session->remove("game");
         $session->remove('player_playing');
+        $session->remove("winner");
         return $this->redirectToRoute('game');
     }
-
-
-
 
     #[Route("/game/doc", name: "gameDoc")]
     public function gameDoc(): Response
