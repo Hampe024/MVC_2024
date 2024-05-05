@@ -106,7 +106,9 @@ class GameController extends AbstractController
         $session->set("player_playing", false);
         $game->dealer->addCard($game->deck->drawCard());
         
-        while ($game->dealer->getTotValue() < 17) {
+        while ($game->dealer->getTotValue() < 21
+                && $game->dealer->getTotValue() < $game->player->getTotValue()
+            ) {
             $newCard = $game->deck->drawCard();
             if ($newCard->getValue() == -1) {
                 // if is ace, for now dealer always sets ace value to 1
