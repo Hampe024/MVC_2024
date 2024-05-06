@@ -1,49 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1715000874">
-  <project timestamp="1715000874">
+<coverage generated="1715001926">
+  <project timestamp="1715001926">
     <file name="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
       <class name="App\Card\Card" namespace="global">
         <metrics complexity="4" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="11" coveredelements="11"/>
       </class>
-      <line num="11" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="3"/>
-      <line num="13" type="stmt" count="3"/>
-      <line num="14" type="stmt" count="3"/>
-      <line num="15" type="stmt" count="3"/>
-      <line num="18" type="method" name="getValue" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="20" type="stmt" count="2"/>
+      <line num="11" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="7"/>
+      <line num="13" type="stmt" count="7"/>
+      <line num="14" type="stmt" count="7"/>
+      <line num="15" type="stmt" count="7"/>
+      <line num="18" type="method" name="getValue" visibility="public" complexity="1" crap="1" count="4"/>
+      <line num="20" type="stmt" count="4"/>
       <line num="23" type="method" name="setValue" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="25" type="stmt" count="1"/>
       <line num="26" type="stmt" count="1"/>
-      <line num="29" type="method" name="getAsString" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="31" type="stmt" count="1"/>
+      <line num="29" type="method" name="getAsString" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="31" type="stmt" count="2"/>
       <metrics loc="34" ncloc="34" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="11" coveredelements="11"/>
     </file>
     <file name="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/src/Card/CardHand.php">
       <class name="App\Card\CardHand" namespace="global">
-        <metrics complexity="9" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="0" elements="21" coveredelements="0"/>
+        <metrics complexity="9" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="15" elements="21" coveredelements="21"/>
       </class>
-      <line num="9" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="11" type="stmt" count="0"/>
-      <line num="13" type="method" name="addCard" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="15" type="stmt" count="0"/>
-      <line num="18" type="method" name="getHandAsString" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="20" type="stmt" count="0"/>
-      <line num="22" type="stmt" count="0"/>
-      <line num="23" type="stmt" count="0"/>
-      <line num="25" type="stmt" count="0"/>
-      <line num="28" type="method" name="getAmountOfCards" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="30" type="stmt" count="0"/>
-      <line num="33" type="method" name="getTotValue" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="35" type="stmt" count="0"/>
-      <line num="36" type="stmt" count="0"/>
-      <line num="37" type="stmt" count="0"/>
-      <line num="39" type="stmt" count="0"/>
-      <line num="42" type="method" name="getValueAsArr" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="44" type="stmt" count="0"/>
-      <line num="46" type="stmt" count="0"/>
-      <line num="47" type="stmt" count="0"/>
-      <line num="49" type="stmt" count="0"/>
-      <metrics loc="52" ncloc="52" classes="1" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="0" elements="21" coveredelements="0"/>
+      <line num="9" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="5"/>
+      <line num="11" type="stmt" count="5"/>
+      <line num="13" type="method" name="addCard" visibility="public" complexity="1" crap="1" count="4"/>
+      <line num="15" type="stmt" count="4"/>
+      <line num="18" type="method" name="getHandAsString" visibility="public" complexity="2" crap="2" count="1"/>
+      <line num="20" type="stmt" count="1"/>
+      <line num="22" type="stmt" count="1"/>
+      <line num="23" type="stmt" count="1"/>
+      <line num="25" type="stmt" count="1"/>
+      <line num="28" type="method" name="getAmountOfCards" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="30" type="stmt" count="1"/>
+      <line num="33" type="method" name="getTotValue" visibility="public" complexity="2" crap="2" count="1"/>
+      <line num="35" type="stmt" count="1"/>
+      <line num="36" type="stmt" count="1"/>
+      <line num="37" type="stmt" count="1"/>
+      <line num="39" type="stmt" count="1"/>
+      <line num="42" type="method" name="getValueAsArr" visibility="public" complexity="2" crap="2" count="1"/>
+      <line num="44" type="stmt" count="1"/>
+      <line num="46" type="stmt" count="1"/>
+      <line num="47" type="stmt" count="1"/>
+      <line num="49" type="stmt" count="1"/>
+      <metrics loc="52" ncloc="52" classes="1" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="15" elements="21" coveredelements="21"/>
     </file>
     <file name="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/src/Card/DeckOfCards.php">
       <class name="App\Card\DeckOfCards" namespace="global">
@@ -381,6 +381,6 @@
       </class>
       <metrics loc="12" ncloc="12" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
-    <metrics files="13" loc="740" ncloc="722" classes="12" methods="51" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="251" coveredstatements="9" elements="302" coveredelements="15"/>
+    <metrics files="13" loc="740" ncloc="722" classes="12" methods="51" coveredmethods="12" conditionals="0" coveredconditionals="0" statements="251" coveredstatements="24" elements="302" coveredelements="36"/>
   </project>
 </coverage>
