@@ -46,7 +46,6 @@ class GameTest extends TestCase
         $this->assertEquals($game->getWinner(), 1);
         // both has too high
 
-
         $game->player->addCard(new Card(1, "s", ""));
         $this->assertEquals($game->getWinner(), 1);
         // both have too high and equal

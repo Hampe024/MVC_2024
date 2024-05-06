@@ -46,34 +46,29 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Card-CardHand.html"
         },                {
-            "fqsen": "\\App\\Card\\CardHand\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "",
-            "url": "classes/App-Card-CardHand.html#method___construct"
-        },                {
             "fqsen": "\\App\\Card\\CardHand\u003A\u003AaddCard\u0028\u0029",
             "name": "addCard",
-            "summary": "",
+            "summary": "Adds\u0020a\u0020card\u0020to\u0020the\u0020hand.",
             "url": "classes/App-Card-CardHand.html#method_addCard"
         },                {
             "fqsen": "\\App\\Card\\CardHand\u003A\u003AgetHandAsString\u0028\u0029",
             "name": "getHandAsString",
-            "summary": "",
+            "summary": "Returns\u0020the\u0020hand\u0020as\u0020an\u0020array\u0020of\u0020strings\u0020with\u0020the\u0020card\u0020icons.",
             "url": "classes/App-Card-CardHand.html#method_getHandAsString"
         },                {
             "fqsen": "\\App\\Card\\CardHand\u003A\u003AgetAmountOfCards\u0028\u0029",
             "name": "getAmountOfCards",
-            "summary": "",
+            "summary": "Returns\u0020the\u0020amount\u0020of\u0020cards\u0020in\u0020the\u0020hand.",
             "url": "classes/App-Card-CardHand.html#method_getAmountOfCards"
         },                {
             "fqsen": "\\App\\Card\\CardHand\u003A\u003AgetTotValue\u0028\u0029",
             "name": "getTotValue",
-            "summary": "",
+            "summary": "Calculates\u0020and\u0020returns\u0020the\u0020total\u0020value\u0020of\u0020all\u0020cards\u0020in\u0020the\u0020hand.",
             "url": "classes/App-Card-CardHand.html#method_getTotValue"
         },                {
             "fqsen": "\\App\\Card\\CardHand\u003A\u003AgetValueAsArr\u0028\u0029",
             "name": "getValueAsArr",
-            "summary": "",
+            "summary": "Return\u0020the\u0020values\u0020of\u0020all\u0020cards\u0020in\u0020the\u0020hand\u0020as\u0020an\u0020array.",
             "url": "classes/App-Card-CardHand.html#method_getValueAsArr"
         },                {
             "fqsen": "\\App\\Card\\CardHand\u003A\u003A\u0024cards",
@@ -336,6 +331,31 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-SessionHandeler.html#method_sessionDelete"
         },                {
+            "fqsen": "\\App\\Dice\\Dice",
+            "name": "Dice",
+            "summary": "",
+            "url": "classes/App-Dice-Dice.html"
+        },                {
+            "fqsen": "\\App\\Dice\\Dice\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Dice-Dice.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Dice\\Dice\u003A\u003Aroll\u0028\u0029",
+            "name": "roll",
+            "summary": "",
+            "url": "classes/App-Dice-Dice.html#method_roll"
+        },                {
+            "fqsen": "\\App\\Dice\\Dice\u003A\u003AgetAsString\u0028\u0029",
+            "name": "getAsString",
+            "summary": "",
+            "url": "classes/App-Dice-Dice.html#method_getAsString"
+        },                {
+            "fqsen": "\\App\\Dice\\Dice\u003A\u003A\u0024value",
+            "name": "value",
+            "summary": "",
+            "url": "classes/App-Dice-Dice.html#property_value"
+        },                {
             "fqsen": "\\App\\Kernel",
             "name": "Kernel",
             "summary": "",
@@ -355,6 +375,11 @@ Search.appendIndex(
             "name": "Controller",
             "summary": "",
             "url": "namespaces/app-controller.html"
+        },                {
+            "fqsen": "\\App\\Dice",
+            "name": "Dice",
+            "summary": "",
+            "url": "namespaces/app-dice.html"
         },                {
             "fqsen": "\\App",
             "name": "App",
