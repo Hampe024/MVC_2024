@@ -1,14 +1,14 @@
 <?php
 /*
  * This file contains the class CardHand
- * 
+ *
  */
 
 namespace App\Card;
 
 /*
  * This is the CardHand class
- * 
+ *
  * It is resposible for holding and handeling
  * a player or dealers cards
  */
