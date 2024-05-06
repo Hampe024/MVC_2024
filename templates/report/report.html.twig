@@ -68,7 +68,28 @@
             </li>
             <li>
                 <h2 id="kmom04">Kmom04</h2>
-                <p>Redovisningstext...</p>
+                <p>
+                    <ul>
+                        <li>
+                            <p><strong>Ber&auml;tta hur du upplevde att skriva kod som testar annan kod med PHPUnit och hur du upplever phpunit rent allm&auml;nt.</strong><br />Det gick bra, har tidigare anv&auml;nt liknande tekniker i andra spr&aring;k som python och javascript och d&auml;r har det fungerat ungef&auml;r likadant. Tyckte ocks&aring; att phpunits manual var v&auml;ldigt bra. Jag hittade vissa tillf&auml;llen d&auml;r jag hade velat l&auml;gga till fler metoder i mina klasser. Till exempel i Card hade jag velat ha en klass typ getSuite som returnerar "f&auml;rgen" p&aring; kortet s&aring; jag kunde testa att det gick r&auml;tt n&auml;r jag skapade kortet. Men eftersom jag inte beh&ouml;vt det under sj&auml;lva arbetet med klasserna s&aring; k&auml;ndes det dumt/konstigt att l&auml;gga till mer metoder bara f&ouml;r att testa dom. </p>
+                        </li>
+                        <li>
+                            <p><strong>Hur v&auml;l lyckades du med kodt&auml;ckningen av din kod, lyckades du n&aring; mer &auml;n 90% kodt&auml;ckning?</strong><br />Jag n&aring;dde 100%, hade lite problem med Game-&gt;getWinner() d&aring; det var sv&aring;rt att testa alla returns med samma player och dealer utan att typ ta bort ett kort fr&aring;n dom, men lyckades l&ouml;sa det till slut.</p>
+                        </li>
+                        <li>
+                            <p><strong>Upplever du din egen kod som &ldquo;testbar kod&rdquo; eller finns det delar i koden som &auml;r mer eller mindre testbar och finns det saker som kan g&ouml;ras f&ouml;r att f&ouml;rb&auml;ttra kodens testbarhet?</strong><br />Jag tycker den var r&auml;tt testbar. F&ouml;rutom d&aring; m&ouml;jligtvis Game-&gt;getWinner() bara f&ouml;r att dens conditions &auml;r lite f&ouml;rvirrande, det k&auml;nns ocks&aring; lite dumt att den beh&ouml;ver ha 4 return f&ouml;r att returnera v&auml;rdet 1 eller 2. Men jag kom inte p&aring; n&aring;got s&auml;tt att g&ouml;ra om det tydligare.</p>
+                        </li>
+                        <li>
+                            <p><strong>Valde du att skriva om delar av din kod f&ouml;r att f&ouml;rb&auml;ttra den eller g&ouml;ra den mer testbar, om s&aring; ber&auml;tta lite hur du t&auml;nkte.</strong><br />Nej det gjorde jag inte, eller ja, jag tog bort en tom konstruktor i CardHand d&aring; php tydligen g&ouml;r en automatiskt om den inte finns definierad. Jag hade g&auml;rna ocks&aring; som sagt velat g&ouml;ra om getWinner() s&aring; det f&aring;r nog bli en TODO p&aring; den.</p>
+                        </li>
+                        <li>
+                            <p><strong>Fundera &ouml;ver om du anser att testbar kod &auml;r n&aring;got som kan identifiera &ldquo;snygg och ren kod&rdquo;.</strong><br />Jag skulle s&auml;ga att "snygg och ren kod" &auml;r en bra start f&ouml;r att g&ouml;ra kod testbar. F&ouml;r mig &auml;r det viktigt att koden &auml;r tydlig i dess syfte och en viktig del i det &auml;r att man l&auml;tt kan f&ouml;rst&aring; vad som h&auml;nder genom att kolla p&aring; koden.</p>
+                        </li>
+                        <li>
+                            <p><strong>Vilken &auml;r din TIL f&ouml;r detta kmom?</strong><br />Att jobba med phpunit samt hur man g&ouml;r DocBlocks.</p>
+                        </li>
+                    </ul>
+                </p>
             </li>
             <li>
                 <h2 id="kmom05">Kmom05</h2>
