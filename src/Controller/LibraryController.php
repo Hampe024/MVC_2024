@@ -56,7 +56,6 @@ class LibraryController extends AbstractController
         $books = $libraryRepository->findAll();
 
         $hasValidEan13 = array();
-        $bookLinks = array();
 
         foreach ($books as $book) {
             try {
@@ -89,7 +88,21 @@ class LibraryController extends AbstractController
         LibraryRepository $libraryRepository,
         int $id
     ): Response {
-        return $this->render('library/showOne.html.twig', ["book" => $libraryRepository->find($id)]);
+        $book = $libraryRepository->find($id);
+        $hasValidEan13;
+
+        try {
+            Isbn::validateAsEAN13($book->getISBN());
+            $hasValidEan13 = true;
+        } catch (IsbnValidationException) {
+            $hasValidEan13 = false;
+        }
+        $data = [
+            "book" => $book,
+            "hasValidEan13" => $hasValidEan13
+        ];
+
+        return $this->render('library/showOne.html.twig', $data);
     }
 
     #[Route('/library/delete/{id}', name: 'libraryDeleteById', methods: ['POST'])]

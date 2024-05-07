@@ -19,8 +19,16 @@
                     </div>
                     <div class="book-info">
                         <h1>{{ book.title }}</h1>
-                        <p><strong>ISBN:</strong> {{ book.ISBN }}</p>
-                        <p><strong>Author:</strong> {{ book.author }}</p>
+                        <p><strong>ISBN:</strong><br>
+                            {% if hasValidEan13 %}
+                                <img
+                                    alt='Barcode Generator TEC-IT'
+                                    src='https://barcode.tec-it.com/barcode.ashx?data={{ book.ISBN }}&code=ISBN13'
+                                />
+                            {% else %}
+                                {{ book.ISBN }}
+                            {% endif %}
+                        <p><strong>Författare:</strong><br>{{ book.author }}</p>
                     </div>
                 </div>
             </div>
