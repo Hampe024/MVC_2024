@@ -13,13 +13,13 @@
         <div class="update">
             <form method="POST" action="{{ path('libraryDoCreate') }}">
                 <label for="title"><b>Titel</b></lable><br>
-                <input type="text" name="title"><br>
+                <input type="text" name="title" required><br>
                 <label for="isbn"><b>ISBN</b> - bör följa EAN13 standarden för att visas korrekt</lable><br>
-                <input type="text" name="isbn"><br>
+                <input type="text" name="isbn" required><br>
                 <label for="author"><b>Författare</b></lable><br>
-                <input type="text" name="author"><br>
+                <input type="text" name="author" required><br>
                 <label for="imgURL"><b>Bildlänk</b> - bör finnas i '/public/img/books/' för att visas korrekt</lable><br>
-                <input type="text" name="imgURL"><br>
+                <input type="text" name="imgURL" required><br>
                 <input type="submit" value="Spara ändringar">
             </form>
         </div>
