@@ -41,7 +41,7 @@
                                 <td>{{ book.author }}</td>
                                 <td>
                                     <img src="{{ asset('img/books/' ~ book.imgURL ) }}"
-                                        onerror="this.onerror=null; this.src='theHobbit.png'">
+                                        onerror="this.onerror=null; this.src='{{ asset('img/books/default.png') }}'">
                                 </td>
                                 <td>
                                     <input

@@ -15,7 +15,7 @@
                 <div class="book-details">
                     <div class="book-image">
                         <img src="{{ asset('img/books/' ~ book.imgURL ) }}" 
-                        onerror="this.onerror=null; this.src='theHobbit.png'">
+                        onerror="this.onerror=null; this.src='{{ asset('img/books/default.png') }}'">
                     </div>
                     <div class="book-info">
                         <h1>{{ book.title }}</h1>
