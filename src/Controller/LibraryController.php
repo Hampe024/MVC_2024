@@ -9,6 +9,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use App\Repository\LibraryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
 
 class LibraryController extends AbstractController
@@ -26,8 +27,8 @@ class LibraryController extends AbstractController
         $entityManager = $doctrine->getManager();
 
         $book = new Library();
-        $book->setTitle("This is a third book");
-        $book->setISBN("978054792822");
+        $book->setTitle("The Hobbit");
+        $book->setISBN("978054792827");
         $book->setAuthor("J. R. R. Tolkien");
         $book->setImgURL("theHobbit.png");
 
@@ -57,29 +58,83 @@ class LibraryController extends AbstractController
             } catch (IsbnValidationException) {
                 $hasValidEan13[] = false;
             }
-            $bookLinks[] = [
-                "see" => "",
-                "delete" => "",
-                "update" => ""
-            ];
         }
         $data = [
             'books' => $books,
             'hasValidEan13' => $hasValidEan13
         ];
         return $this->render('library/showAll.html.twig', $data);
-        // $response = $this->json($libraryRepository->findAll());
-        // $response->setEncodingOptions(
-        //     $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        // );
-        // return $response;
     }
 
-    #[Route('/library/show/{id}', name: 'library_by_id')]
+    #[Route('/library/show/json', name: 'libraryShowAllJSON')]
+    public function showAllLibraryJSON(
+        LibraryRepository $libraryRepository
+    ): Response {
+        $response = $this->json($libraryRepository->findAll());
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
+    }
+
+    #[Route('/library/show/{id}', name: 'libraryById')]
     public function showLibraryById(
         LibraryRepository $libraryRepository,
         int $id
     ): Response {
         return $this->render('library/showOne.html.twig', ["book" => $libraryRepository->find($id)]);
+    }
+
+    #[Route('/library/delete/{id}', name: 'libraryDeleteById', methods: ['POST'])]
+    public function deleteLibraryById(
+        ManagerRegistry $doctrine,
+        int $id
+    ): Response {
+        $entityManager = $doctrine->getManager();
+        $book = $entityManager->getRepository(Library::class)->find($id);
+
+        if (!$book) {
+            throw $this->createNotFoundException(
+                'No book found for id '.$id
+            );
+        }
+
+        $entityManager->remove($book);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('libraryShowAll');
+    }
+
+    #[Route('/library/prepUpdate/{id}', name: 'libraryPrepUpdateById', methods: ['POST'])]
+    public function libraryPrepUpdateById(
+        LibraryRepository $libraryRepository,
+        int $id
+    ): Response {
+        return $this->render('library/prepUpdate.html.twig', ["book" => $libraryRepository->find($id)]);
+    }
+
+    #[Route('/library/update/{id}', name: 'libraryDoUpdateById', methods: ['POST'])]
+    public function libraryDoUpdateById(
+        Request $request,
+        ManagerRegistry $doctrine,
+        int $id,
+    ): Response {
+        $entityManager = $doctrine->getManager();
+        $book = $entityManager->getRepository(Library::class)->find($id);
+
+        if (!$book) {
+            throw $this->createNotFoundException(
+                'No book found for id '.$id
+            );
+        }
+
+        $book->setTitle($request->request->get("title"));
+        $book->setISBN($request->request->get("isbn"));
+        $book->setAuthor($request->request->get("author"));
+        $book->setImgURL($request->request->get("imgURL"));
+
+        $entityManager->flush();
+
+        return $this->redirectToRoute('libraryShowAll');
     }
 }

@@ -4,6 +4,12 @@
 
 {% block body %}
     <div class="library">
+        <div class="back-btn">
+            <a href="{{ path('library') }}">
+                <img class="icon" src='{{ asset('img/arrow.png') }}' alt="<-" />
+                Gå tillbaka
+            </a>
+        </div>
         <div class="show-all">
             <table>
                 <thead>
@@ -20,28 +26,36 @@
                 <tbody>
                     {% for i, book in books %}
                         <tr>
-                            <td>{{ book.title }}</td>
-                            <td>
-                                {% if hasValidEan13[i] %}
-                                    <img
-                                        alt='Barcode Generator TEC-IT'
-                                        src='https://barcode.tec-it.com/barcode.ashx?data={{ book.isbn }}&code=ISBN13'
-                                    />
-                                {% else %}
-                                    {{ book.isbn }}
-                                {% endif %}
-                            </td>
-                            <td>{{ book.author }}</td>
-                            <td><img src="{{ asset('img/books/' ~ book.imgURL ) }}"></td>
-                            <td><a href="{{ path('library_by_id', { id: book.id }) }}">
-                                <img class="icon" src="{{ asset('img/002-open-book.png') }}" alt="show">
-                            </a></td>
-                            <td><a href="{{ path('library_by_id', { id: book.id }) }}">
-                                <img class="icon" src="{{ asset('img/001-edit.png') }}" alt="edit">
-                            </a></td>
-                            <td><a href="{{ path('library_by_id', { id: book.id }) }}">
-                                <img class="icon" src="{{ asset('img/003-delete.png') }}" alt="remove">
-                            </a></td>
+                            <form method="post" action="">
+                                <td>{{ book.title }}</td>
+                                <td>
+                                    {% if hasValidEan13[i] %}
+                                        <img
+                                            alt='Barcode Generator TEC-IT'
+                                            src='https://barcode.tec-it.com/barcode.ashx?data={{ book.isbn }}&code=ISBN13'
+                                        />
+                                    {% else %}
+                                        {{ book.isbn }}
+                                    {% endif %}
+                                </td>
+                                <td>{{ book.author }}</td>
+                                <td><img src="{{ asset('img/books/' ~ book.imgURL ) }}"></td>
+                                <td>
+                                    <input
+                                        type="image" name="show" class="icon" src="{{ asset('img/002-open-book.png') }}"
+                                        onClick="this.form.action='{{ path('libraryById', { id: book.id }) }}';">
+                                </td>
+                                <td>
+                                    <input 
+                                        type="image" name="update" class="icon" src="{{ asset('img/001-edit.png') }}"
+                                        onClick="this.form.action='{{ path('libraryPrepUpdateById', { id: book.id }) }}';">
+                                </td>
+                                <td>
+                                    <input 
+                                        type="image" name="delete" class="icon" src="{{ asset('img/003-delete.png') }}"
+                                        onClick="this.form.action='{{ path('libraryDeleteById', { id: book.id }) }}';">
+                                </td>
+                            </form>
                         </tr>
                     {% endfor %}
                 </tbody>

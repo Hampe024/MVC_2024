@@ -1,4 +1,14 @@
 .library {
+    .back-btn {
+        a {
+            text-decoration: none;
+            color: black;
+
+            .icon {
+                height: 0.5rem;
+            }
+        }
+    }
     .show-one {
         .container {
             max-width: 800px;
@@ -31,6 +41,7 @@
     .show-all {
         width: fit-content;
         margin: auto;
+
         table {
             width: fit-content;
             border-collapse: collapse;
@@ -87,6 +98,39 @@
     
             .icon {
                 width: 20px;
+            }
+        }
+    }
+
+    
+    .update {
+        min-width: 500px;
+        width: fit-content;
+        margin: 0 auto;
+        padding: 1rem;
+        background-color: #f1f1f1;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+
+        input[type="text"] {
+            min-width: 480px;
+            width: fit-content;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            background-color: $primary-color-superlight;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: $primary-color-lighter;
+                color: #ffffff;
             }
         }
     }

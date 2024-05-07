@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mitt virituella bibliotek{% endblock %}
+
+{% block body %}
+    <div class="library">
+        <div class="back-btn">
+            <a href="{{ path('libraryShowAll') }}">
+                <img class="icon" src='{{ asset('img/arrow.png') }}' alt="<-" />
+                Gå tillbaka
+            </a>
+        </div>
+        <div class="update">
+            <form method="POST" action="{{ path('libraryDoUpdateById', { id: book.id }) }}">
+                <label for="title"><b>Titel</b></lable><br>
+                <input type="text" name="title" value="{{ book.title }}"><br>
+                <label for="isbn"><b>ISBN</b> - bör följa EAN13 standarden för att visas korrekt</lable><br>
+                <input type="text" name="isbn" value="{{ book.ISBN }}"><br>
+                <label for="author"><b>Författare</b></lable><br>
+                <input type="text" name="author" value="{{ book.author }}"><br>
+                <label for="imgURL"><b>Bildlänk</b> - behöver finnas i '/public/img/books/'</lable><br>
+                <input type="text" name="imgURL" value="{{ book.imgURL }}"><br>
+                <input type="submit" value="Spara ändringar">
+            </form>
+        </div>
+    </div>
+{% endblock %}
