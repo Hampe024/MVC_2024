@@ -14,10 +14,10 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Title</th>
+                        <th>Titel</th>
                         <th>ISBN</th>
-                        <th>Author</th>
-                        <th>Image</th>
+                        <th>Författare</th>
+                        <th>Framsida</th>
                         <th></th>
                         <th></th>
                         <th></th>
@@ -39,7 +39,10 @@
                                     {% endif %}
                                 </td>
                                 <td>{{ book.author }}</td>
-                                <td><img src="{{ asset('img/books/' ~ book.imgURL ) }}"></td>
+                                <td>
+                                    <img src="{{ asset('img/books/' ~ book.imgURL ) }}"
+                                        onerror="this.onerror=null; this.src='theHobbit.png'">
+                                </td>
                                 <td>
                                     <input
                                         type="image" name="show" class="icon" src="{{ asset('img/002-open-book.png') }}"

@@ -20,17 +20,24 @@ class LibraryController extends AbstractController
         return $this->render('library/home.html.twig');
     }
 
-    #[Route('/library/create', name: 'library_create')]
-    public function createProduct(
+    #[Route('/library/prepCreate', name: 'libraryPrepCreate')]
+    public function libraryPrepCreate(
+    ): Response {
+        return $this->render('library/prepCreate.html.twig');
+    }
+
+    #[Route('/library/create', name: 'libraryDoCreate', methods: ['POST'])]
+    public function libraryDoCreate(
+        Request $request,
         ManagerRegistry $doctrine
     ): Response {
         $entityManager = $doctrine->getManager();
 
         $book = new Library();
-        $book->setTitle("The Hobbit");
-        $book->setISBN("978054792827");
-        $book->setAuthor("J. R. R. Tolkien");
-        $book->setImgURL("theHobbit.png");
+        $book->setTitle($request->request->get("title"));
+        $book->setISBN($request->request->get("isbn"));
+        $book->setAuthor($request->request->get("author"));
+        $book->setImgURL($request->request->get("imgURL"));
 
         // tell Doctrine you want to (eventually) save the Product
         // (no queries yet)
@@ -39,7 +46,7 @@ class LibraryController extends AbstractController
         // actually executes the queries (i.e. the INSERT query)
         $entityManager->flush();
 
-        return new Response('Saved new book with id '.$book->getId());
+        return $this->redirectToRoute('libraryShowAll');
     }
 
     #[Route('/library/show', name: 'libraryShowAll')]
