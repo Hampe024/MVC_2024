@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mitt virituella bibliotek{% endblock %}
+
+{% block body %}
+    <div class="library">
+        <div class="show-one">
+            <div class="container">
+                <div class="book-details">
+                    <div class="book-image">
+                        <img src="{{ asset('img/books/theHobbit.png' ) }}" alt="{{ book.title }}">
+                        {# <img src="{{ asset('img/books/' ~ book.imgURL ) }}" alt="{{ book.title }}"> #}
+                    </div>
+                    <div class="book-info">
+                        <h1>{{ book.title }}</h1>
+                        <p><strong>ISBN:</strong> {{ book.ISBN }}</p>
+                        <p><strong>Author:</strong> {{ book.author }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
