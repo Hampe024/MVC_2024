@@ -4,7 +4,7 @@
 Download the repository locally
 
 ```bash
-git pull git@github.com:Hampe024/MVC_2024.git
+git clone git@github.com:Hampe024/MVC_2024.git
 ```
 
 ## Start the server
