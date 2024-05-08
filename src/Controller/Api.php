@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Card\DeckOfCards;
 use App\Card\Game;
 
+use App\Repository\LibraryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -140,5 +141,33 @@ class Api extends AbstractController
         }
 
         return new JsonResponse($data);
+    }
+
+    #[Route('/api/library/books', name: 'apiLibraryBooks')]
+    public function apiLibraryBooks(
+        LibraryRepository $libraryRepository
+    ): Response {
+        $response = $this->json($libraryRepository->findAll());
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
+    }
+
+    #[Route('/api/library/book/{isbn}', name: 'apiLibraryBookByISBN')]
+    public function apiLibraryBookByISBN(
+        LibraryRepository $libraryRepository,
+        string $isbn
+    ): Response {
+        $book = $libraryRepository->findOneByISBN($isbn);
+
+        if (!$book) {
+            return new JsonResponse(['error' => 'Book not found'], Response::HTTP_NOT_FOUND);
+        }
+
+        $jsonResponse = new JsonResponse($book);
+        $jsonResponse->setEncodingOptions(JSON_PRETTY_PRINT);
+
+        return $jsonResponse;
     }
 }
