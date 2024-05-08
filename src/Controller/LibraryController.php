@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Library;
 use Biblys\Isbn\Isbn;
 use Biblys\Isbn\IsbnValidationException;
+use Biblys\Isbn\IsbnParsingException;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Repository\LibraryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -46,6 +47,11 @@ class LibraryController extends AbstractController
         // actually executes the queries (i.e. the INSERT query)
         $entityManager->flush();
 
+        $this->addFlash(
+            'notice',
+            'Book with id ' . $book->getId() . ' was added!'
+        );
+
         return $this->redirectToRoute('libraryShowAll');
     }
 
@@ -63,6 +69,8 @@ class LibraryController extends AbstractController
                 $isbnTester->validateAsEAN13($book->getISBN());
                 $hasValidEan13[] = true;
             } catch (IsbnValidationException) {
+                $hasValidEan13[] = false;
+            } catch (IsbnParsingException) {
                 $hasValidEan13[] = false;
             }
         }
@@ -124,6 +132,11 @@ class LibraryController extends AbstractController
         $entityManager->remove($book);
         $entityManager->flush();
 
+        $this->addFlash(
+            'notice',
+            'Book with id ' . $id . ' was deleted!'
+        );
+
         return $this->redirectToRoute('libraryShowAll');
     }
 
@@ -156,6 +169,11 @@ class LibraryController extends AbstractController
         $book->setImgURL($request->request->get("imgURL"));
 
         $entityManager->flush();
+
+        $this->addFlash(
+            'notice',
+            'Book with id ' . $id . ' was updated!'
+        );
 
         return $this->redirectToRoute('libraryShowAll');
     }
