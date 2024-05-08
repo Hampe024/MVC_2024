@@ -29,17 +29,25 @@ class GameController extends AbstractController
 
         $playerPlaying = $session->has('playerPlaying') ? $session->get('playerPlaying') : true;
 
+        $dealerHandArray = [];
+        foreach ($game->dealer->getCards() as $card) {
+            $dealerHandArray[] = [
+                'icon' => $card->getAsString(),
+                'suite' => $card->getSuite()
+            ];
+        }
+
         $data = [
             "playerPlaying" => $playerPlaying,
-            "player_hand" => $game->player->getHandAsString(),
+            "player_hand" => $game->player,
             "player_hand_amount" => $game->player->getAmountOfCards(),
             "player_hand_value" => $game->player->getTotValue(),
-            "dealer_hand" => $game->dealer->getHandAsString(),
+            "dealer_hand" => $dealerHandArray,
             "dealer_hand_value" => $game->dealer->getValueAsArr(),
         ];
 
         if ($session->has("ace")) {
-            $data["ace"] = $session->get("ace")->getAsString();
+            $data["ace"] = $session->get("ace");
         }
 
         if ($session->has("winner")) {

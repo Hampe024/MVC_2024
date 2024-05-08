@@ -8,12 +8,15 @@
             const dealerHand = {{ dealer_hand|json_encode|raw }};
             const dealerHandValueArr = {{ dealer_hand_value|json_encode|raw }};
             const cardContainer = document.querySelector('.dealer-card-hand');
-            
+
             dealerHand.forEach(function(card, index) {
                 setTimeout(function() {
                     const span = document.createElement('span');
-                    span.textContent = card;
+                    span.textContent = card.icon;
                     span.classList.add('card');
+                    if (card.suite === 'h' || card.suite === 'd') {
+                        span.classList.add('red');
+                    }
                     cardContainer.appendChild(span);
 
                     const dealerCardAmount = document.getElementById("dealer-card-amount");
@@ -52,8 +55,13 @@
                 <a class="fake-btn hover-effect" href="{{ path('gameSetAce', {value: 1}) }}">1</a>
                 eller
                 <a class="fake-btn hover-effect" href="{{ path('gameSetAce', {value: 14}) }}">14</a>
-                <div class="ace">
-                    {{ ace }}
+                <div class="
+                    {% if ace.getSuite() == 'h' or ace.getSuite() == 'd' %}
+                        red
+                    {% endif %}
+                    ace
+                ">
+                    {{ ace.getAsString() }}
                 </div>
             {% else %}
                 <div class="visable">
@@ -96,9 +104,16 @@
         <div class="player">
             <h1>Dina kort({{ player_hand_amount }}):</h1>
             <div class="">
-                {% for key, value in player_hand %}
-                    <span class="card">{{ value }}</span>
-                {% endfor %}
+                {% for key, card in player_hand.getCards() %}
+                        <span class="
+                            {% if card.getSuite() == 'h' or card.getSuite() == 'd' %}
+                                red
+                            {% endif %}
+                            card
+                        ">
+                            {{ card.getAsString() }}
+                        </span>
+                    {% endfor %}
             </div>
             totalt värde: {{ player_hand_value }}
         </div>
