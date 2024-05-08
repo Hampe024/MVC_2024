@@ -19,6 +19,10 @@
         .book-details {
             display: flex;
             align-items: center;
+
+            input[type="image"].icon {
+                width: 20px;
+            }
         }
         
         .book-image img {
