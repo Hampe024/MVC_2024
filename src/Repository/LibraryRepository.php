@@ -16,7 +16,7 @@ class LibraryRepository extends ServiceEntityRepository
         parent::__construct($registry, Library::class);
     }
 
-    public function findOneByISBN($ISBN): array
+    public function findOneByISBN($isbn): array
     {
         $conn = $this->getEntityManager()->getConnection();
 
@@ -25,7 +25,7 @@ class LibraryRepository extends ServiceEntityRepository
             WHERE l.ISBN = :isbn
         ';
 
-        $resultSet = $conn->executeQuery($sql, ['isbn' => $ISBN]);
+        $resultSet = $conn->executeQuery($sql, ['isbn' => $isbn]);
 
         return $resultSet->fetchAssociative();
     }

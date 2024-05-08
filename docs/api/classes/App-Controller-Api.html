@@ -72,6 +72,14 @@
                 <a href="namespaces/app-dice.html" class="">Dice</a>
                 
             </li>
+                    <li>
+                <a href="namespaces/app-entity.html" class="">Entity</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/app-repository.html" class="">Repository</a>
+                
+            </li>
             </ul>
 
                         </section>
@@ -129,7 +137,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/Api.php"><a href="files/src-controller-api.html"><abbr title="src/Controller/Api.php">Api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">14</span>
+    <span class="phpdocumentor-element-found-in__line">15</span>
 
     </aside>
 
@@ -197,6 +205,18 @@
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/App-Controller-Api.html#method_apiLibraryBookByISBN">apiLibraryBookByISBN()</a>
+    <span>
+                                &nbsp;: <abbr title="\Symfony\Component\HttpFoundation\Response">Response</abbr>    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/App-Controller-Api.html#method_apiLibraryBooks">apiLibraryBooks()</a>
+    <span>
+                                &nbsp;: <abbr title="\Symfony\Component\HttpFoundation\Response">Response</abbr>    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/App-Controller-Api.html#method_quote">quote()</a>
     <span>
                                 &nbsp;: <abbr title="\Symfony\Component\HttpFoundation\Response">Response</abbr>    </span>
@@ -237,7 +257,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/Api.php"><a href="files/src-controller-api.html"><abbr title="src/Controller/Api.php">Api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">16</span>
+    <span class="phpdocumentor-element-found-in__line">17</span>
 
     </aside>
 
@@ -272,7 +292,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/Api.php"><a href="files/src-controller-api.html"><abbr title="src/Controller/Api.php">Api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">60</span>
+    <span class="phpdocumentor-element-found-in__line">61</span>
 
     </aside>
 
@@ -317,7 +337,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/Api.php"><a href="files/src-controller-api.html"><abbr title="src/Controller/Api.php">Api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">95</span>
+    <span class="phpdocumentor-element-found-in__line">96</span>
 
     </aside>
 
@@ -369,7 +389,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/Api.php"><a href="files/src-controller-api.html"><abbr title="src/Controller/Api.php">Api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">89</span>
+    <span class="phpdocumentor-element-found-in__line">90</span>
 
     </aside>
 
@@ -404,7 +424,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/Api.php"><a href="files/src-controller-api.html"><abbr title="src/Controller/Api.php">Api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">72</span>
+    <span class="phpdocumentor-element-found-in__line">73</span>
 
     </aside>
 
@@ -449,7 +469,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/Api.php"><a href="files/src-controller-api.html"><abbr title="src/Controller/Api.php">Api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">115</span>
+    <span class="phpdocumentor-element-found-in__line">116</span>
 
     </aside>
 
@@ -486,6 +506,103 @@
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_apiLibraryBookByISBN">
+        apiLibraryBookByISBN()
+        <a href="classes/App-Controller-Api.html#method_apiLibraryBookByISBN" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/Api.php"><a href="files/src-controller-api.html"><abbr title="src/Controller/Api.php">Api.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">157</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">apiLibraryBookByISBN</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Repository-LibraryRepository.html"><abbr title="\App\Repository\LibraryRepository">LibraryRepository</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$libraryRepository</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$isbn</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Symfony\Component\HttpFoundation\Response">Response</abbr></span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$libraryRepository</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Repository-LibraryRepository.html"><abbr title="\App\Repository\LibraryRepository">LibraryRepository</abbr></a></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$isbn</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><abbr title="\Symfony\Component\HttpFoundation\Response">Response</abbr></span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_apiLibraryBooks">
+        apiLibraryBooks()
+        <a href="classes/App-Controller-Api.html#method_apiLibraryBooks" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/Api.php"><a href="files/src-controller-api.html"><abbr title="src/Controller/Api.php">Api.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">146</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">apiLibraryBooks</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Repository-LibraryRepository.html"><abbr title="\App\Repository\LibraryRepository">LibraryRepository</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$libraryRepository</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Symfony\Component\HttpFoundation\Response">Response</abbr></span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$libraryRepository</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Repository-LibraryRepository.html"><abbr title="\App\Repository\LibraryRepository">LibraryRepository</abbr></a></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><abbr title="\Symfony\Component\HttpFoundation\Response">Response</abbr></span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_quote">
         quote()
         <a href="classes/App-Controller-Api.html#method_quote" class="headerlink"><i class="fas fa-link"></i></a>
@@ -494,7 +611,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/Api.php"><a href="files/src-controller-api.html"><abbr title="src/Controller/Api.php">Api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">22</span>
+    <span class="phpdocumentor-element-found-in__line">23</span>
 
     </aside>
 
@@ -529,7 +646,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/Api.php"><a href="files/src-controller-api.html"><abbr title="src/Controller/Api.php">Api.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">50</span>
+    <span class="phpdocumentor-element-found-in__line">51</span>
 
     </aside>
 
@@ -679,6 +796,8 @@
                                             <li><a href="classes/App-Controller-Api.html#method_apiDeckDrawOne">apiDeckDrawOne()</a></li>
                                             <li><a href="classes/App-Controller-Api.html#method_apiDeckShuffle">apiDeckShuffle()</a></li>
                                             <li><a href="classes/App-Controller-Api.html#method_apiGame">apiGame()</a></li>
+                                            <li><a href="classes/App-Controller-Api.html#method_apiLibraryBookByISBN">apiLibraryBookByISBN()</a></li>
+                                            <li><a href="classes/App-Controller-Api.html#method_apiLibraryBooks">apiLibraryBooks()</a></li>
                                             <li><a href="classes/App-Controller-Api.html#method_quote">quote()</a></li>
                                             <li><a href="classes/App-Controller-Api.html#method_getDeck">getDeck()</a></li>
                                     </ul>

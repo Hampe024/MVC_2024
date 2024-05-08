@@ -51,7 +51,8 @@ class LibraryController extends AbstractController
 
     #[Route('/library/show', name: 'libraryShowAll')]
     public function showAllLibrary(
-        LibraryRepository $libraryRepository
+        LibraryRepository $libraryRepository,
+        Isbn $isbnTester
     ): Response {
         $books = $libraryRepository->findAll();
 
@@ -59,7 +60,7 @@ class LibraryController extends AbstractController
 
         foreach ($books as $book) {
             try {
-                Isbn::validateAsEAN13($book->getISBN());
+                $isbnTester->validateAsEAN13($book->getISBN());
                 $hasValidEan13[] = true;
             } catch (IsbnValidationException) {
                 $hasValidEan13[] = false;
@@ -86,13 +87,14 @@ class LibraryController extends AbstractController
     #[Route('/library/show/{id}', name: 'libraryById')]
     public function showLibraryById(
         LibraryRepository $libraryRepository,
+        Isbn $isbnTester,
         int $id
     ): Response {
         $book = $libraryRepository->find($id);
-        $hasValidEan13;
+        $hasValidEan13 = false;
 
         try {
-            Isbn::validateAsEAN13($book->getISBN());
+            $isbnTester->validateAsEAN13($book->getISBN());
             $hasValidEan13 = true;
         } catch (IsbnValidationException) {
             $hasValidEan13 = false;
