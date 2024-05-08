@@ -18,8 +18,14 @@
             {% if hand is defined %}
                 <h1>Dina kort({{ handAmount }}):</h1>
                 <div class="card-hand">
-                    {% for key, value in hand %}
-                        <span> {{ value }} </span>
+                    {% for key, card in hand.getCards() %}
+                        <span class="
+                            {% if card.getSuite() == 'h' or card.getSuite() == 'd' %}
+                                red
+                            {% endif %}
+                        ">
+                            {{ card.getAsString() }}
+                        </span>
                     {% endfor %}
                 </div>
             {% endif %}
@@ -27,8 +33,14 @@
             {% if deck is defined %}
                 <h1>Kortleken({{ deckAmount }}):</h1>
                 <div class="card-deck">
-                    {% for key, value in deck %}
-                        <span> {{ value }} </span>
+                    {% for key, card in deck.getDeck() %}
+                        <span class="
+                            {% if card.getSuite() == 'h' or card.getSuite() == 'd' %}
+                                red
+                            {% endif %}
+                        ">
+                            {{ card.getAsString() }}
+                        </span>
                     {% endfor %}
                 </div>
             {% endif %}

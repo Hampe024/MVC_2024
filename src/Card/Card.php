@@ -4,9 +4,9 @@ namespace App\Card;
 
 class Card
 {
-    protected int $value;
-    protected string $suite;
-    protected string $icon;
+    private int $value;
+    private string $suite;
+    private string $icon;
 
     public function __construct(int $value, string $suite, string $icon)
     {
@@ -23,7 +23,12 @@ class Card
     public function setValue(int $value): void
     {
         $this->value = $value;
-        return;
+    }
+
+    public function getSuite(): string
+    {
+        return $this->suite;
+        
     }
 
     public function getAsString(): string

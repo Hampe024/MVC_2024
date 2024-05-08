@@ -6,12 +6,12 @@ use App\Card\Card;
 
 class DeckOfCards
 {
-    protected array $deck = array();
+    private array $deck = array();
 
     public function __construct()
     {
         $suits = [
-            "s", "h", "c", "d"
+            "s", "h", "d", "c"
         ];
         $icons = [
             ["🂡", "🂱", "🃁", "🃑"], // Ace of Spades, Ace of Hearts, Ace of Diamonds, Ace of Clubs
@@ -59,6 +59,12 @@ class DeckOfCards
     {
         return array_shift($this->deck);
     }
+
+    public function getDeck(): array
+    {
+        return $this->deck;
+    }
+
 
     public function getDeckAsString(): array
     {

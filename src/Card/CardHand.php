@@ -17,7 +17,7 @@ class CardHand
     /**
      * @var array Array to store cards in the hand.
      */
-    protected array $cards = array();
+    private array $cards = array();
 
     /**
      * Adds a card to the hand.
@@ -52,6 +52,16 @@ class CardHand
     public function getAmountOfCards(): int
     {
         return count($this->cards);
+    }
+
+    /**
+     * Returns the cards in the hand.
+     *
+     * @return array The number cards in the hand.
+     */
+    public function getCards(): array
+    {
+        return $this->cards;
     }
 
     /**
