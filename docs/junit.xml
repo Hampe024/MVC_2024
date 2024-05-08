@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="" tests="18" assertions="45" errors="0" warnings="0" failures="0" skipped="0" time="0.269166">
+    <testsuite name="Project Test Suite" tests="18" assertions="45" errors="0" warnings="0" failures="0" skipped="0" time="0.269166">
+      <testsuite name="App\Card\CardHandTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" tests="5" assertions="14" errors="0" warnings="0" failures="0" skipped="0" time="0.167456">
+        <testcase name="testCreateHand" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="16" assertions="1" time="0.133777"/>
+        <testcase name="testAddCards" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="23" assertions="3" time="0.022988"/>
+        <testcase name="testGetHandAsString" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="38" assertions="2" time="0.010026"/>
+        <testcase name="testGetTotalValue" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="49" assertions="3" time="0.000333"/>
+        <testcase name="testGetValueAsArr" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="64" assertions="5" time="0.000333"/>
+      </testsuite>
+      <testsuite name="App\Card\CardTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" tests="3" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.000893">
+        <testcase name="testCreateCard" class="App\Card\CardTest" classname="App.Card.CardTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="16" assertions="1" time="0.000303"/>
+        <testcase name="testCardAttributes" class="App\Card\CardTest" classname="App.Card.CardTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="23" assertions="2" time="0.000295"/>
+        <testcase name="testChangeCardAttribute" class="App\Card\CardTest" classname="App.Card.CardTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="31" assertions="2" time="0.000296"/>
+      </testsuite>
+      <testsuite name="App\Card\DeckOfCardsTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" tests="5" assertions="10" errors="0" warnings="0" failures="0" skipped="0" time="0.053681">
+        <testcase name="testCreateDeck" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="16" assertions="2" time="0.007448"/>
+        <testcase name="testGetAmountOfCards" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="24" assertions="2" time="0.000481"/>
+        <testcase name="testDrawCard" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="35" assertions="2" time="0.000641"/>
+        <testcase name="testShuffle" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="45" assertions="1" time="0.044476"/>
+        <testcase name="testGetDeckAsString" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="56" assertions="3" time="0.000635"/>
+      </testsuite>
+      <testsuite name="App\Card\DeckOfCardsWithJokerTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsWithJokerTest.php" tests="2" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.011323">
+        <testcase name="testCreateDeck" class="App\Card\DeckOfCardsWithJokerTest" classname="App.Card.DeckOfCardsWithJokerTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsWithJokerTest.php" line="16" assertions="2" time="0.010731"/>
+        <testcase name="testHasJokers" class="App\Card\DeckOfCardsWithJokerTest" classname="App.Card.DeckOfCardsWithJokerTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsWithJokerTest.php" line="24" assertions="2" time="0.000592"/>
+      </testsuite>
+      <testsuite name="App\Card\GameTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/GameTest.php" tests="2" assertions="10" errors="0" warnings="0" failures="0" skipped="0" time="0.010906">
+        <testcase name="testCreateGame" class="App\Card\GameTest" classname="App.Card.GameTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/GameTest.php" line="16" assertions="4" time="0.010316"/>
+        <testcase name="testgetWinner" class="App\Card\GameTest" classname="App.Card.GameTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/GameTest.php" line="26" assertions="6" time="0.000590"/>
+      </testsuite>
+      <testsuite name="App\Dice\DiceTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Dice/DiceTest.php" tests="1" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.024906">
+        <testcase name="testCreateDice" class="App\Dice\DiceTest" classname="App.Dice.DiceTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Dice/DiceTest.php" line="16" assertions="2" time="0.024906"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>

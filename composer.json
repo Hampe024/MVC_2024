@@ -98,7 +98,8 @@
             ],
         "phpdoc": "tools/phpdoc/phpdoc --config=tools/phpdoc/phpdoc.xml",
         "phpunit": "XDEBUG_MODE=coverage vendor/bin/phpunit",
-        "db": "php bin/console doctrine:migrations:migrate"
+        "db": "php bin/console doctrine:migrations:migrate",
+        "phpmetrics": "tools/phpmetrics/vendor/bin/phpmetrics --config=tools/phpmetrics/phpmetrics.json"
     },
     "conflict": {
         "symfony/symfony": "*"

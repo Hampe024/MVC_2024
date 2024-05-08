@@ -6,7 +6,7 @@ use App\Card\Card;
 
 class DeckOfCards
 {
-    private array $deck = array();
+    protected array $deck = array();
 
     public function __construct()
     {
