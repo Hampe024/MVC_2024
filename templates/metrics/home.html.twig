@@ -3,9 +3,228 @@
 {% block title %}Metrics{% endblock %}
 
 {% block body %}
-    <h2>Introduktion</h2>
-    <h2>Phpmetrics</h2>
-    <h2>Scrutinizer</h2>
-    <h2>Förbättringar</h2>
-    <h2>Diskussion</h2>
+    <div class="metrics">
+        <h2>Introduktion</h2>
+            <p>
+                <h5>Codestyle</h5>
+                    Codestyle handlar om att hålla samma stil genom hela koden, det kan vara allt från kommentarer till variabel och funktionsnamn. Att hålla detta konsekvent gör koden mycket mer förstålig och därmed underhållbar. Ett exempel på detta kan vara hur du väljer att namnge variabler, säg att du har en variabel du vill använda. Oavsätt om du namnger den <code class="snippet">$myVar</code>, <code class="snippet">$MyVar</code>, <code class="snippet">$myvar</code>, <code class="snippet">$myvariable</code> eller något annat så hjälper det om du är konsekvent så du inte stöter på problem för att du försöker använda en odefinierad variabel. Från egen experience kan jag säga att detta kan vara bland de värsta sorters buggar att försöka fixa, det kan ta lång tid och när du väl hittar felet känner du dig väldigt dum...
+                <h5>Coverage</h5>
+                    Coverage handlar om hur mycket av koden som blir testad. Detta definieras av hur mycket av koden som "används" när tester körs. Du vill såklart ha en så hög procent som möjligt men det är viktigt att notera att bra coverage behöver inte betyda bra kod. Detta för att coverage inte tar hänsyn till hur många eller hur bra testerna är. Du kan därför egentligen bara använda coverage för att se om en kod är "dålig" och inte om den är "bra".
+                <h5>Complexity</h5>
+                    Kodens komplexitet är också en ledande faktor i att göra koden svårläslig och icke underhållbar. Såklart kommer komplexiteten ökas desto större projektet är, men man kan sänka den genom att dela upp koden i separata delar som tex klasser eller funktioner generellt.
+                <h5>Cohesion</h5>
+                    Cohesion går lite ihop med komplexitet. Cohesion handlar om hur fokuserade olika delar av koden är på att utföra eller göra en uppgift. Generellt säger man att en funktion eller liknande bara ska ha en syfte. En bra tumregel för att veta om detta stämmer är att om man kan förklara vad en funktion gör i en simpel mening utan att använda typ "och". Detta för att ge en funktion flera syften både gör den mindre läsbar men också minskar den funktionens återanvändbarhet. Ett exmepel på detta skulle kunna vara min <code class="snippet">data()</code> metod i min <code class="snippet">GameController.php</code> 
+                    <code class="block">
+private function data(
+    SessionInterface $session
+): array {
+
+    $game = $this->getGame($session);
+
+    $playerPlaying = $session->has('playerPlaying') ? $session->get('playerPlaying') : true;
+
+    $dealerHandArray = [];
+    foreach ($game->dealer->getCards() as $card) {
+        $dealerHandArray[] = [
+            'icon' => $card->getAsString(),
+            'suite' => $card->getSuite()
+        ];
+    }
+
+    $data = [
+        "playerPlaying" => $playerPlaying,
+        "player_hand" => $game->player,
+        "player_hand_amount" => $game->player->getAmountOfCards(),
+        "player_hand_value" => $game->player->getTotValue(),
+        "dealer_hand" => $dealerHandArray,
+        "dealer_hand_value" => $game->dealer->getValueAsArr(),
+    ];
+
+    if ($session->has("ace")) {
+        $data["ace"] = $session->get("ace");
+    }
+
+    if ($session->has("winner")) {
+        $data["winner"] = $session->get("winner");
+    }
+
+    return $data;
+}
+                    </code>
+                    Dess syfte är att hämta relevant data från $session och returnera <code class="snippet">$data</code> variabeln som jag vill skicka in i twig templatsen. Även om detta kan låta rätt simpelt blir koden lite "messy" då vissa saker endast ska skickas me beroende på olika conditions och jag har även en loop som också komplicerar det lite. Syftet när jag gjorde denna metoden var att jag inte ville definiera en lång <code class="snippet">$data</code> array i slutet av varje route som egentligen innehåller typ exakt samma sak i varje route. Men jag borde kanske delat upp denna lite mer, tex som <code class="snippet">getGame()</code> metoden som jag också använde i samma controller.
+                    <code class="block">
+private function getGame(
+    SessionInterface $session
+): Game {
+    $game = $session->has('game') ? $session->get('game') : new Game();
+
+    $session->set('game', $game);
+
+    return $game;
+}
+                    </code>
+                    Denna har ett mycket tydligare syfte, och den är också väldigt återanvändbar och lätläslig.
+                <h5>Coupling</h5>
+                    Handlar om hur du kopplar ihop (oftast) klasser med varandra. Om en klass använder en annan (på samma sätt som min <code class="snippet">Game</code> klass har en <code class="snippet">Deck</code> och två <code class="snippet">CardHand</code> instanser) bör man minska eller helt eliminera dess "dependancy" av varandra. På det sättet att, man så lätt som möjligt ska kunna byta ut en av klasserna utan att behöva ändra något i den andra. Ett bra exempel på detta kan vara hur man skapar dessa klass instanserna i en annan klass. Såhär ser min <code class="snippet">Game::__construct()</code> ut:
+                    <code class="block">
+public function __construct()
+{
+    $this->deck = new DeckOfCards();
+    $this->deck->shuffle();
+
+    $this->player = new Cardhand();
+    $this->dealer = new Cardhand();
+}
+                    </code>
+                    En "loose coupling" här skulle vara att skicka in instanserna till konstruktorn istället för att skapa dom i den, såhär:
+                    <code class="block">
+public function __construct(DeckOfCards $deck, Cardhand $player, Cardhand $dealer) 
+{
+    $this->deck = $deck;
+    $this->deck->shuffle();
+
+    $this->player = $player;
+    $this->dealer = $dealer;
+}
+                    </code>
+                <h5>CRAP</h5>
+                    Är en förkortning av "Change Risk Anti Patterns" och är en formel för att räkna ut hur svårt eller jobbigt det är att maintaina eller ändra en kod. Formeln är (typ varje sida jag kollar på verkar ha en liten annurlunda formel men här är iallafall enligt <a href="http://www.crap4j.org/faq.html">crap4j</a>):
+                    <br><br>
+                    CRAP(m) = comp(m)^2 * (1 - cov(m)/100)^3 + comp(m)
+                    <br><br>
+                    då:
+                    <br>
+                    * comp(m) står för "Cyclomatic complexity" och ett sätt att mäta hur komplext en kod är genom att kolla hur många linjärt separata vägar genom en kod. Ett enkelt exempel på detta är en if-sats.
+                    <br>
+                    * cov(m) är kodens coverage, altså procenten av koden som är täckt av tester.
+                    <br><br>
+                    En hög CRAP (ofta anges under 30 som den accepterbara gränsen) tyder på att det är en stor sannolikhet att buggar eller fel kommer dyka upp i koden och ändringar görs. Här är en tabell för att visa hur variablerna påverkar CRAPigheten
+                    <img class="" src="{{ asset('img/CRAP.png') }}" alt="tabell">
+                    <br>
+                    CRAPigheten för min app just nu (tag 6.0.0) är:
+                    <br><br>
+                    CRAP(m) = 3.25^2 * (1 - 21/100)^3 + 3.25 ≈ 8.45
+                    <br><br>
+                    Vilket är rätt bra, men det är viktigt att notera att detta är med min average cyclomatic complexity och att jag endast har tester för vissa klasser, så specifika klasser eller funktioner kan variera rätt mycket.
+            </p>
+        <h2>Phpmetrics</h2>
+            <p>
+                Min <a href="http://www.student.bth.se/~hagt21/dbwebb-kurser/mvc/me/report/docs/metrics/">Phpmetrics rapport</a> ser ut såhär:
+                <img class="" src="{{ asset('img/phpmetrics.png') }}" alt="phpmetrics" style="width: 800px;">
+                Mina två "erros" i "violations" kommer från två av mina controllers (<code class="snippet">LibraryController</code> och <code class="snippet">Api</code>). De kallas "Blob / God objects". Phpmetrics ger 3 anledningar till detta:
+                <br><br>
+                * object has lot of public methods (excluding getters and setters)<br>
+                * object has a high Lack of cohesion of methods (LCOM)<br>
+                * object knows everything (and use lot of external classes) <br>
+                <br>
+                Jag kan dock inte göra super mycket för att fixa dessa. 
+                <br>
+                * Den första punkten stämmer då alla metoder i klasserna är Symfony routes, som behöver vara publika. 
+                <br>
+                * Den andra punkten kan jag, iallafall i <code class="snippet">Api</code>s fall inte göra mycket åt. Dens LCOM blir förståerligt väldigt hög då den controllern visar upp saker från alla kmom. Jag skulle dock kunna försöka sänka den i min <code class="snippet">LibraryController</code>, där har jag en LCOM på 3. Ett rimligt sätt att försöka sänka den är genom att göra separata funktioner för att interagera med <code class="snippet">ManagerRegistry</code>, så säg en funktion för update, en för selectById, en för delete osv. Detta skulle inte bara förhoppningsvis sänka min LCOM, men också både göra min kod mer läsbar och återanvändbar.
+                <br>
+                * Den tredje punkten Kan jag inte göra mycket åt häller. Båda har rätt mycket dependancies som de behöver vara för att vara med för att ha en fungerade Symfony controllers, <code class="snippet">Api</code> har även klasserna <code class="snippet">DeckOfCards</code> och <code class="snippet">Game</code> som behövs för separata routrar.
+                <br>
+                Jag skulle teoretiskt sätt kunna bli av med dessa varningar lätt genom att splitta upp controllerna i flera mindre controllers (eller i I <code class="snippet">API</code>s fall sätta de olika routrarna i samma controller vars kmom de tillhör), men jag tycker egentligen inte att detta skulle göra min kod bättre, och den skulle möjligtvis bli mindre läsbar. Så förutom det jag nämnde om <code class="snippet">LibraryController</code> vid andra punkten kommer jag ignorera dethär.
+            </p>
+
+            <p>
+                Jag har också 4 "warrnings", 2 av dom är <code class="snippet">LibraryController</code> och <code class="snippet">Api</code> igen, den säger "Probably bugged". Den ger som anledning att de har mycket operatorer, operander och hög cyclomatic complexity, samtidigt som de inte har några tester, de båda har enligt phpmetrics i teorin 0.38 buggar. I <code class="snippet">LibraryController</code> Skulle detta antagligen fixas eller iallfall bli bättre om jag gör separata funktioner som jag nämnde ovan. I <code class="snippet">Api</code> finns det inte super mycket jag kan göra lätt. Det finns dock en specifik route som är lite messy:
+                <code class="block">
+#[Route("/api/game", name: "apiGame")]
+public function apiGame(
+    SessionInterface $session
+): Response {
+
+    $game = $session->has('game') ? $session->get('game') : new Game();
+
+    $playerPlaying = $session->has('playerPlaying') ? $session->get('playerPlaying') : true;
+
+    $data = [
+        "playerPlaying" => $playerPlaying,
+        "player_hand" => $game->player->getHandAsString(),
+        "player_hand_amount" => $game->player->getAmountOfCards(),
+        "player_hand_value" => $game->player->getValueAsArr(),
+        "dealer_hand" => $game->dealer->getHandAsString(),
+        "dealer_hand_amount" => $game->dealer->getAmountOfCards(),
+        "dealer_hand_value" => $game->dealer->getValueAsArr(),
+    ];
+
+    if ($session->has("ace")) {
+        $data["ace"] = $session->get("ace")->getAsString();
+    }
+
+    if ($session->has("winner")) {
+        $data["winner"] = $session->get("winner");
+    }
+
+    return new JsonResponse($data);
+}
+                </code>
+                Denna är väldigt lik min <code class="snippet">GameController::data()</code> som jag nämnde ovan, detta för att dens syfte är att visa upp allt i <code class="snippet">$session</code> från det kmom:et. Så den är lika messy av samma anledning. Jag tror därför att om jag skulle refaktorera min <code class="snippet">GameController</code> och dess routes lite skulle denna också bli mycket snyggare. Så det är definitvt något jag skulle kunna göra.
+            </p>
+
+            <p>
+                De andra två "warrnings" jag har är "Stable Abstractions Principle". Detta syftar på att högre upp upp i ett "dependacy-träd" (som därför anses mer stabilt) bör vara mer abstrakt (kan återanvändas).
+                <br>
+                Men dessa är dock för Packages, och här definieras dessa två packages som <code class="snippet">App\Card</code> och <code class="snippet">App\Entity</code>. Detta är vad i min kod är definierat som en <code class="snippet">namespace</code>
+                <br>
+                I mitt <code class="snippet">App\Card</code> <code class="snippet">namespace</code> har jag alla min klasser för kort, från <code class="snippet">Card</code> till <code class="snippet">Game</code>. Jag borde därför definiera speparata <code class="snippet">namespace</code>s för de olika klasserna.
+            </p>
+        <h2>Scrutinizer</h2>
+            <p>
+                Min <a href="https://scrutinizer-ci.com/g/Hampe024/MVC_2024/issues/main">Scrutinizer rapport</a> ser ut såhär:
+                <br><br>
+                <a href="https://scrutinizer-ci.com/g/Hampe024/MVC_2024/?branch=main"><img class="" src="https://scrutinizer-ci.com/g/Hampe024/MVC_2024/badges/quality-score.png?b=main" alt="phpmetrics" style="height: 1.2rem;" alt="Scrutinizer score"></a>
+                <a href="https://scrutinizer-ci.com/g/Hampe024/MVC_2024/?branch=main"><img class="" src="https://scrutinizer-ci.com/g/Hampe024/MVC_2024/badges/coverage.png?b=main" alt="phpmetrics" style="height: 1.2rem;" alt="Coverage"></a>
+                <a href="https://scrutinizer-ci.com/g/Hampe024/MVC_2024/build-status/main"><img class="" src="https://scrutinizer-ci.com/g/Hampe024/MVC_2024/badges/build.png?b=main" alt="phpmetrics" style="height: 1.2rem;" alt="Build"></a>
+                <a href="https://scrutinizer-ci.com/code-intelligence"><img src="https://scrutinizer-ci.com/g/Hampe024/MVC_2024/badges/code-intelligence.svg?b=main" alt="Code Intelligence"></a>
+                <br><br>
+                Och detta är de issues jag har:
+                <img class="" src="{{ asset('img/scrutinizer.png') }}" alt="phpmetrics" style="width: 800px;">
+                Där 3 av dessa "inte är mina" då 2 kommer ifrån <code class="snippet">phpcs</code> och 1 ifrån <code class="snippet">Kernel.php</code> vilket är en del av Symfony.
+                <br>
+                Jag kommer därför bara prata om de 2 som är kvar, först det från <code class="snippet">src/Controller/Api.php</code> (denhär controllern får verkligen mycket skit idag... 😅). Problemet kommer från denhär ifsatsen:
+                <code class="block">
+if (!$book) {
+    return new JsonResponse(['error' => 'Book not found'], Response::HTTP_NOT_FOUND);
+}
+                </code>
+                Där <code class="snippet">$book</code> är en bok från databasen.
+                <br>
+                Felmeddelandet jag får säger att <code class="snippet">if (!$book)</code> för att veta om <code class="snippet">$book</code> är tom eller innehåller en bok bör bytas ut mot <code class="snippet">if (empty($book))</code> då den förstnämnda kan returnera <code class="snippet">True</code> ifall <code class="snippet">$book</code> skulle vara satt till <code class="snippet">False</code>. Vilket är en rimlig ändring, jag visste faktiskt inte att <code class="snippet">empty()</code> fanns. Även om chansen att detta leder till en bugg är i princip 0 så bör jag definitivt göra något åt det.
+                <br><br>
+                Den andra issuen jag har är i <code class="snippet">src/Repository/LibraryRepository.php</code> vid
+                <code class="block"> 
+$resultSet = $conn->executeQuery($sql, ['isbn' => $isbn]);
+
+return $resultSet->fetchAssociative();
+                </code>
+                Felmeddelandet jag får säger att <code class="snippet">fetchAssociative()</code> kan komma att returnera <code class="snippet">False</code> om den valda raden inte finns i databasen, vilket stämmer enligt <a href="https://www.doctrine-project.org/projects/doctrine-dbal/en/4.0/reference/data-retrieval-and-manipulation.html#using-prepared-statements">Doctrine manuallen</a>. Om en boolean skulle retuneras skulle jag inte följa min type hinting i den funktionen som säger att en array skareturneras. Jag borde därför lägga till en "type-check" för att veta att vad som hänt, typ såhär:
+                <code class="block"> 
+$resultSet = $conn->executeQuery($sql, ['isbn' => $isbn]);
+
+if (gettype($resultSet->fetchAssociative()) == "array") {
+    return $resultSet->fetchAssociative();
+};
+return [];
+                </code>
+                Och sedan i koden som får tillbaka denna arrayen (vilket råkar vara koden från första felet) kolla om den är tom eller inte.
+            </p>
+
+            <p>
+                Scrutinizer låter mig också se hur bra mina metoder/funktioner är enligt vissa aspekter enligt
+                <img class="" src="{{ asset('img/scrutinizer2.png') }}" alt="phpmetrics" style="width: 800px;">
+                Här är de sorterade enligt hur CRAPiga de är, och här ser vi också hur <code class="snippet">apiGame()</code> och <code class="snippet">data()</code> är rätt CRAPy som jag tidigare nämnt. Annars har vi <code class="snippet">showAllLibrary()</code> vilken är en Symfony route som visar alla böcker i biblioteket. Min gissning till varför den är så CRAPy är för att jag ville få in ett system för att böckernas ISBN skulle visas upp som sträckkoder enligt EAN13 standarden, och det blev lite messy att få det att fungera.
+            </p>
+        <h2>Förbättringar</h2>
+            <p>
+                Jag kommer att fixa mina två issues i Scrutinizer. Detta kommer nog inte påverka några mätvärden något då de är så små ändringar, men det kommer att få dom försvinner från issues vilket gör mig glad. Jag kommer även att 
+                <br>
+                Jag kommer även att göra separata funktioner för att interagera med <code class="snippet">ManagerRegistry</code> i <code class="snippet">src/Controller/LibraryController.php</code>. Detta kommer förhoppningsvis att ta bort "Blob / God objects" varningen från <code class="snippet">LibraryController</code>n.
+                <br>
+                Sen tänker jag också göra tester för <code class="snippet">src/Controller/Api.php</code>. Detta för att jag märker att koden i den controllern är generellt messy och CRAPy. Och jag tror att för att försöka göra koden bättre behöver jag ändra alla andra separata kontrollers (från alla olika kmom) då <code class="snippet">Api</code> grundas på dom. Så det är lättare att göra tester. Detta kommer förhoppningsvis ta bort "probably bugged" samt möjligt även "Blob / God objects" varningarna från phpmetrics. Det kommer också att sänka dens CRAP poäng i scrutinizer.
+            </p>
+        <h2>Diskussion</h2>
+    </div>
 {% endblock %}

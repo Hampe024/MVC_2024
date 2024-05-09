@@ -1,0 +1,26 @@
+.metrics {
+    width: 800px;
+    margin: auto;
+
+    code {
+
+        &.snippet {
+            background-color: #f4f4f4;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+
+        &.block {
+            background-color: #f4f4f4;
+            padding: 0 0.2rem;
+            margin: 0.5rem 0;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            display: block;
+            white-space: pre;
+            overflow-x: auto;
+        }
+    }
+}
