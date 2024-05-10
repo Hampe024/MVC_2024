@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Library;
 use Biblys\Isbn\Isbn;
 use Biblys\Isbn\IsbnValidationException;
 use Biblys\Isbn\IsbnParsingException;
@@ -30,26 +29,19 @@ class LibraryController extends AbstractController
     #[Route('/library/create', name: 'libraryDoCreate', methods: ['POST'])]
     public function libraryDoCreate(
         Request $request,
-        ManagerRegistry $doctrine
+        LibraryRepository $libraryRepository
     ): Response {
-        $entityManager = $doctrine->getManager();
 
-        $book = new Library();
-        $book->setTitle($request->request->get("title"));
-        $book->setISBN($request->request->get("isbn"));
-        $book->setAuthor($request->request->get("author"));
-        $book->setImgURL($request->request->get("imgURL"));
-
-        // tell Doctrine you want to (eventually) save the Product
-        // (no queries yet)
-        $entityManager->persist($book);
-
-        // actually executes the queries (i.e. the INSERT query)
-        $entityManager->flush();
+        $id = $libraryRepository->doCreate(
+            $request->request->get("title"),
+            $request->request->get("isbn"),
+            $request->request->get("author"),
+            $request->request->get("imgURL")
+        );
 
         $this->addFlash(
             'notice',
-            'Book with id ' . $book->getId() . ' was added!'
+            'Book with id ' . $id . ' was added!'
         );
 
         return $this->redirectToRoute('libraryShowAll');
@@ -117,20 +109,11 @@ class LibraryController extends AbstractController
 
     #[Route('/library/delete/{id}', name: 'libraryDeleteById', methods: ['POST'])]
     public function deleteLibraryById(
-        ManagerRegistry $doctrine,
+        LibraryRepository $libraryRepository,
         int $id
     ): Response {
-        $entityManager = $doctrine->getManager();
-        $book = $entityManager->getRepository(Library::class)->find($id);
-
-        if (!$book) {
-            throw $this->createNotFoundException(
-                'No book found for id '.$id
-            );
-        }
-
-        $entityManager->remove($book);
-        $entityManager->flush();
+        
+        $libraryRepository->doDelete($id);
 
         $this->addFlash(
             'notice',
@@ -151,24 +134,17 @@ class LibraryController extends AbstractController
     #[Route('/library/update/{id}', name: 'libraryDoUpdateById', methods: ['POST'])]
     public function libraryDoUpdateById(
         Request $request,
-        ManagerRegistry $doctrine,
+        LibraryRepository $libraryRepository,
         int $id,
     ): Response {
-        $entityManager = $doctrine->getManager();
-        $book = $entityManager->getRepository(Library::class)->find($id);
 
-        if (!$book) {
-            throw $this->createNotFoundException(
-                'No book found for id '.$id
-            );
-        }
-
-        $book->setTitle($request->request->get("title"));
-        $book->setISBN($request->request->get("isbn"));
-        $book->setAuthor($request->request->get("author"));
-        $book->setImgURL($request->request->get("imgURL"));
-
-        $entityManager->flush();
+        $libraryRepository->doUpdate(
+            $id,
+            $request->request->get("title"),
+            $request->request->get("isbn"),
+            $request->request->get("author"),
+            $request->request->get("imgURL")
+        );
 
         $this->addFlash(
             'notice',

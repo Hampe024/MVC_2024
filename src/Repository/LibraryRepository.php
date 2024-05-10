@@ -27,7 +27,63 @@ class LibraryRepository extends ServiceEntityRepository
 
         $resultSet = $conn->executeQuery($sql, ['isbn' => $isbn]);
 
-        return $resultSet->fetchAssociative();
+        $res = $resultSet->fetchAssociative();
+
+        if (gettype($res) === "array") {
+            return $res;
+        };
+        return [];
+    }
+
+    public function doCreate(
+        string $title,
+        string $isbn,
+        string $author,
+        string $imgURL
+    ): int {
+        $entityManager = $this->getEntityManager();
+    
+        $book = new Library();
+        $book->setTitle($title);
+        $book->setISBN($isbn);
+        $book->setAuthor($author);
+        $book->setImgURL($imgURL);
+    
+        $entityManager->persist($book);
+        $entityManager->flush();
+    
+        return $book->getId();
+    }
+
+    public function doDelete(int $id): void {
+        $entityManager = $this->getEntityManager();
+        $book = $entityManager->getRepository(Library::class)->find($id);
+    
+        if ($book !== null) {
+            $entityManager->remove($book);
+            $entityManager->flush();
+        }
+    }
+
+    public function doUpdate(
+        int $id,
+        string $title,
+        string $isbn,
+        string $author,
+        string $imgURL
+    ): int {
+        $entityManager = $this->getEntityManager();
+        $book = $entityManager->getRepository(Library::class)->find($id);
+    
+        $book->setTitle($title);
+        $book->setISBN($isbn);
+        $book->setAuthor($author);
+        $book->setImgURL($imgURL);
+
+        $entityManager->flush();
+
+        return $book->getId();
+
     }
 
     //    /**

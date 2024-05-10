@@ -161,7 +161,7 @@ class Api extends AbstractController
     ): Response {
         $book = $libraryRepository->findOneByISBN($isbn);
 
-        if (!$book) {
+        if (count($book) === 0) {
             return new JsonResponse(['error' => 'Book not found'], Response::HTTP_NOT_FOUND);
         }
 
