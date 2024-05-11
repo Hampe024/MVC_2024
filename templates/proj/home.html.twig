@@ -3,15 +3,17 @@
 {% block title %}Poker Squares{% endblock %}
 
 {% block body %}
-    {% if pokerSquares is defined %}
-    <table>
-        {% for row in pokerSquares.getBoard().print() %}
-            <tr>
-                {% for cell in row %}
-                    <td>{{ cell is null ? "🂠" : cell }}</td>
+    <div class="poker-squares">
+        {% if pokerSquares is defined %}
+            <div class="poker-grid">
+                {% for row in pokerSquares.getBoard().print() %}
+                    {% for cell in row %}
+                        <div class="poker-card">
+                            {{ cell is null ? "🂠" : cell }}
+                        </div>
+                    {% endfor %}
                 {% endfor %}
-            </tr>
-        {% endfor %}
-    </table>
-{% endif %}
+            </div>
+        {% endif %}
+    </div>
 {% endblock %}

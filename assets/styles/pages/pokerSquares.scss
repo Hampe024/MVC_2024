@@ -1,0 +1,27 @@
+.poker-squares {
+    .poker-grid {
+        width: fit-content;
+        height: fit-content;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+
+
+        .poker-card {
+            font-size: 6rem;
+            padding: 0 15px;
+
+            &:not(:nth-of-type(5n)) {
+                border-right: 1px solid black;
+            }
+
+            border-bottom: 1px solid black;
+
+            @for $i from 21 through 25 {
+                &:nth-of-type(#{$i}) {
+                  border-bottom: 0px solid black;
+                }
+            }
+        }
+    }
+}
