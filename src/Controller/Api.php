@@ -2,8 +2,9 @@
 
 namespace App\Controller;
 
-use App\Card\DeckOfCards;
 use App\Card\Game;
+use App\Card\DeckOfCards;
+use App\Card\CardHand;
 
 use App\Repository\LibraryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -118,18 +119,18 @@ class Api extends AbstractController
         SessionInterface $session
     ): Response {
 
-        $game = $session->has('game') ? $session->get('game') : new Game();
+        $game = $session->has('game') ? $session->get('game') : new Game(new DeckOfCards(), new CardHand(), new CardHand());
 
         $playerPlaying = $session->has('playerPlaying') ? $session->get('playerPlaying') : true;
 
         $data = [
             "playerPlaying" => $playerPlaying,
-            "player_hand" => $game->player->getHandAsString(),
-            "player_hand_amount" => $game->player->getAmountOfCards(),
-            "player_hand_value" => $game->player->getValueAsArr(),
-            "dealer_hand" => $game->dealer->getHandAsString(),
-            "dealer_hand_amount" => $game->dealer->getAmountOfCards(),
-            "dealer_hand_value" => $game->dealer->getValueAsArr(),
+            "player_hand" => $game->getPlayer()->getHandAsString(),
+            "player_hand_amount" => $game->getPlayer()->getAmountOfCards(),
+            "player_hand_value" => $game->getPlayer()->getValueAsArr(),
+            "dealer_hand" => $game->getDealer()->getHandAsString(),
+            "dealer_hand_amount" => $game->getDealer()->getAmountOfCards(),
+            "dealer_hand_value" => $game->getDealer()->getValueAsArr(),
         ];
 
         if ($session->has("ace")) {

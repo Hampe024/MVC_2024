@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Card\Game;
+use App\Card\DeckOfCards;
+use App\Card\CardHand;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,7 +17,7 @@ class GameController extends AbstractController
     private function getGame(
         SessionInterface $session
     ): Game {
-        $game = $session->has('game') ? $session->get('game') : new Game();
+        $game = $session->has('game') ? $session->get('game') : new Game(new DeckOfCards(), new CardHand(), new CardHand());
 
         $session->set('game', $game);
 
@@ -30,7 +32,7 @@ class GameController extends AbstractController
         $playerPlaying = $session->has('playerPlaying') ? $session->get('playerPlaying') : true;
 
         $dealerHandArray = [];
-        foreach ($game->dealer->getCards() as $card) {
+        foreach ($game->getDealer()->getCards() as $card) {
             $dealerHandArray[] = [
                 'icon' => $card->getAsString(),
                 'suite' => $card->getSuite()
@@ -39,11 +41,11 @@ class GameController extends AbstractController
 
         $data = [
             "playerPlaying" => $playerPlaying,
-            "player_hand" => $game->player,
-            "player_hand_amount" => $game->player->getAmountOfCards(),
-            "player_hand_value" => $game->player->getTotValue(),
+            "player_hand" => $game->getPlayer(),
+            "player_hand_amount" => $game->getPlayer()->getAmountOfCards(),
+            "player_hand_value" => $game->getPlayer()->getTotValue(),
             "dealer_hand" => $dealerHandArray,
-            "dealer_hand_value" => $game->dealer->getValueAsArr(),
+            "dealer_hand_value" => $game->getDealer()->getValueAsArr(),
         ];
 
         if ($session->has("ace")) {
@@ -75,12 +77,12 @@ class GameController extends AbstractController
         SessionInterface $session
     ): Response {
         $game = $this->getGame($session);
-        $newCard = $game->deck->drawCard();
+        $newCard = $game->getDeck()->drawCard();
         if ($newCard->getValue() == -1) {
             // if is ace,
             $session->set("ace", $newCard);
         } else {
-            $game->player->addCard($newCard);
+            $game->getPlayer()->addCard($newCard);
         }
 
         $session->set("game", $game);
@@ -98,7 +100,7 @@ class GameController extends AbstractController
         $session->remove("ace");
 
         $ace->setValue($value);
-        $game->player->addCard($ace);
+        $game->getPlayer()->addCard($ace);
 
         return $this->render('game/home.html.twig', $this->data($session));
     }
@@ -109,16 +111,16 @@ class GameController extends AbstractController
     ): Response {
         $game = $this->getGame($session);
         $session->set("playerPlaying", false);
-        $game->dealer->addCard($game->deck->drawCard());
+        $game->getDealer()->addCard($game->getDeck()->drawCard());
 
-        while ($game->dealer->getTotValue() < 17) {
+        while ($game->getDealer()->getTotValue() < 17) {
             // keep playing until value of over 17
-            $newCard = $game->deck->drawCard();
+            $newCard = $game->getDeck()->drawCard();
             if ($newCard->getValue() == -1) {
                 // if is ace, for now dealer always sets ace value to 1
                 $newCard->setValue(1);
             }
-            $game->dealer->addCard($newCard);
+            $game->getDealer()->addCard($newCard);
         }
 
         $session->set("winner", $game->getWinner());

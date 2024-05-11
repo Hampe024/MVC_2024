@@ -138,17 +138,32 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\Game",
             "name": "Game",
-            "summary": "",
+            "summary": "Class\u0020Game",
             "url": "classes/App-Card-Game.html"
         },                {
             "fqsen": "\\App\\Card\\Game\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Constructs\u0020a\u0020new\u0020Game\u0020instance,\u0020initializing\u0020the\u0020deck,\u0020player\u0027s\u0020hand,\u0020and\u0020dealer\u0027s\u0020hand.",
             "url": "classes/App-Card-Game.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Card\\Game\u003A\u003AgetDeck\u0028\u0029",
+            "name": "getDeck",
+            "summary": "Retrieves\u0020the\u0020deck\u0020of\u0020cards\u0020used\u0020in\u0020the\u0020game.",
+            "url": "classes/App-Card-Game.html#method_getDeck"
+        },                {
+            "fqsen": "\\App\\Card\\Game\u003A\u003AgetPlayer\u0028\u0029",
+            "name": "getPlayer",
+            "summary": "Retrieves\u0020the\u0020player\u0027s\u0020hand.",
+            "url": "classes/App-Card-Game.html#method_getPlayer"
+        },                {
+            "fqsen": "\\App\\Card\\Game\u003A\u003AgetDealer\u0028\u0029",
+            "name": "getDealer",
+            "summary": "Retrieves\u0020the\u0020dealer\u0027s\u0020hand.",
+            "url": "classes/App-Card-Game.html#method_getDealer"
         },                {
             "fqsen": "\\App\\Card\\Game\u003A\u003AgetWinner\u0028\u0029",
             "name": "getWinner",
-            "summary": "",
+            "summary": "Determines\u0020the\u0020winner\u0020of\u0020the\u0020game.",
             "url": "classes/App-Card-Game.html#method_getWinner"
         },                {
             "fqsen": "\\App\\Card\\Game\u003A\u003A\u0024deck",

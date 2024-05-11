@@ -3,8 +3,9 @@
 namespace App\Controller;
 
 use App\Card\Card;
-use App\Card\DeckOfCards;
 use App\Card\Game;
+use App\Card\DeckOfCards;
+use App\Card\CardHand;
 use App\Controller\Api;
 
 use App\Repository\LibraryRepository;
@@ -109,7 +110,7 @@ class ApiControllerTest extends WebTestCase
                 ->method('getAsString')
                 ->willReturn("worked!");
 
-        $game = new Game();
+        $game = new Game(new DeckOfCards(), new CardHand(), new CardHand());
 
         $session = $this->createMock(SessionInterface::class);
         $session->expects($this->exactly(4))
@@ -127,12 +128,12 @@ class ApiControllerTest extends WebTestCase
 
         $expectedData = [
             "playerPlaying" => false,
-            "player_hand" => $game->player->getHandAsString(),
-            "player_hand_amount" => $game->player->getAmountOfCards(),
-            "player_hand_value" => $game->player->getValueAsArr(),
-            "dealer_hand" => $game->dealer->getHandAsString(),
-            "dealer_hand_amount" => $game->dealer->getAmountOfCards(),
-            "dealer_hand_value" => $game->dealer->getValueAsArr(),
+            "player_hand" => $game->getPlayer()->getHandAsString(),
+            "player_hand_amount" => $game->getPlayer()->getAmountOfCards(),
+            "player_hand_value" => $game->getPlayer()->getValueAsArr(),
+            "dealer_hand" => $game->getDealer()->getHandAsString(),
+            "dealer_hand_amount" => $game->getDealer()->getAmountOfCards(),
+            "dealer_hand_value" => $game->getDealer()->getValueAsArr(),
             "ace" => "worked!",
             "winner" => "we are all winners :)"
         ];
