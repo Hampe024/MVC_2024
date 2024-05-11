@@ -112,7 +112,7 @@ class LibraryController extends AbstractController
         LibraryRepository $libraryRepository,
         int $id
     ): Response {
-        
+
         $libraryRepository->doDelete($id);
 
         $this->addFlash(

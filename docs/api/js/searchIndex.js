@@ -21,6 +21,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Card-Card.html#method_setValue"
         },                {
+            "fqsen": "\\App\\Card\\Card\u003A\u003AgetSuite\u0028\u0029",
+            "name": "getSuite",
+            "summary": "",
+            "url": "classes/App-Card-Card.html#method_getSuite"
+        },                {
             "fqsen": "\\App\\Card\\Card\u003A\u003AgetAsString\u0028\u0029",
             "name": "getAsString",
             "summary": "",
@@ -61,6 +66,11 @@ Search.appendIndex(
             "summary": "Returns\u0020the\u0020amount\u0020of\u0020cards\u0020in\u0020the\u0020hand.",
             "url": "classes/App-Card-CardHand.html#method_getAmountOfCards"
         },                {
+            "fqsen": "\\App\\Card\\CardHand\u003A\u003AgetCards\u0028\u0029",
+            "name": "getCards",
+            "summary": "Returns\u0020the\u0020cards\u0020in\u0020the\u0020hand.",
+            "url": "classes/App-Card-CardHand.html#method_getCards"
+        },                {
             "fqsen": "\\App\\Card\\CardHand\u003A\u003AgetTotValue\u0028\u0029",
             "name": "getTotValue",
             "summary": "Calculates\u0020and\u0020returns\u0020the\u0020total\u0020value\u0020of\u0020all\u0020cards\u0020in\u0020the\u0020hand.",
@@ -100,6 +110,11 @@ Search.appendIndex(
             "name": "drawCard",
             "summary": "",
             "url": "classes/App-Card-DeckOfCards.html#method_drawCard"
+        },                {
+            "fqsen": "\\App\\Card\\DeckOfCards\u003A\u003AgetDeck\u0028\u0029",
+            "name": "getDeck",
+            "summary": "",
+            "url": "classes/App-Card-DeckOfCards.html#method_getDeck"
         },                {
             "fqsen": "\\App\\Card\\DeckOfCards\u003A\u003AgetDeckAsString\u0028\u0029",
             "name": "getDeckAsString",
@@ -356,6 +371,16 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-Lucky.html#method_lucky"
         },                {
+            "fqsen": "\\App\\Controller\\MetricsController",
+            "name": "MetricsController",
+            "summary": "",
+            "url": "classes/App-Controller-MetricsController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\MetricsController\u003A\u003Ametrics\u0028\u0029",
+            "name": "metrics",
+            "summary": "",
+            "url": "classes/App-Controller-MetricsController.html#method_metrics"
+        },                {
             "fqsen": "\\App\\Controller\\Report",
             "name": "Report",
             "summary": "",
@@ -510,6 +535,21 @@ Search.appendIndex(
             "name": "findOneByISBN",
             "summary": "",
             "url": "classes/App-Repository-LibraryRepository.html#method_findOneByISBN"
+        },                {
+            "fqsen": "\\App\\Repository\\LibraryRepository\u003A\u003AdoCreate\u0028\u0029",
+            "name": "doCreate",
+            "summary": "",
+            "url": "classes/App-Repository-LibraryRepository.html#method_doCreate"
+        },                {
+            "fqsen": "\\App\\Repository\\LibraryRepository\u003A\u003AdoDelete\u0028\u0029",
+            "name": "doDelete",
+            "summary": "",
+            "url": "classes/App-Repository-LibraryRepository.html#method_doDelete"
+        },                {
+            "fqsen": "\\App\\Repository\\LibraryRepository\u003A\u003AdoUpdate\u0028\u0029",
+            "name": "doUpdate",
+            "summary": "",
+            "url": "classes/App-Repository-LibraryRepository.html#method_doUpdate"
         },                {
             "fqsen": "\\",
             "name": "\\",

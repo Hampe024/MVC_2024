@@ -181,7 +181,7 @@ public function apiGame(
                 <a href="https://scrutinizer-ci.com/code-intelligence"><img src="https://scrutinizer-ci.com/g/Hampe024/MVC_2024/badges/code-intelligence.svg?b=main" alt="Code Intelligence"></a>
                 <br><br>
                 Och detta är de issues jag har:
-                <img class="" src="{{ asset('img/scrutinizer.png') }}" alt="phpmetrics" style="width: 800px;">
+                <img class="" src="{{ asset('img/scrutinizer.png') }}" alt="scrutinizer" style="width: 800px;">
                 Där 3 av dessa "inte är mina" då 2 kommer ifrån <code class="snippet">phpcs</code> och 1 ifrån <code class="snippet">Kernel.php</code> vilket är en del av Symfony.
                 <br>
                 Jag kommer därför bara prata om de 2 som är kvar, först det från <code class="snippet">src/Controller/Api.php</code> (denhär controllern får verkligen mycket skit idag... 😅). Problemet kommer från denhär ifsatsen:
@@ -214,17 +214,35 @@ return [];
 
             <p>
                 Scrutinizer låter mig också se hur bra mina metoder/funktioner är enligt vissa aspekter enligt
-                <img class="" src="{{ asset('img/scrutinizer2.png') }}" alt="phpmetrics" style="width: 800px;">
+                <img class="" src="{{ asset('img/scrutinizer2.png') }}" alt="scrutinizer" style="width: 800px;">
                 Här är de sorterade enligt hur CRAPiga de är, och här ser vi också hur <code class="snippet">apiGame()</code> och <code class="snippet">data()</code> är rätt CRAPy som jag tidigare nämnt. Annars har vi <code class="snippet">showAllLibrary()</code> vilken är en Symfony route som visar alla böcker i biblioteket. Min gissning till varför den är så CRAPy är för att jag ville få in ett system för att böckernas ISBN skulle visas upp som sträckkoder enligt EAN13 standarden, och det blev lite messy att få det att fungera.
             </p>
         <h2>Förbättringar</h2>
             <p>
-                Jag kommer att fixa mina två issues i Scrutinizer. Detta kommer nog inte påverka några mätvärden något då de är så små ändringar, men det kommer att få dom försvinner från issues vilket gör mig glad. Jag kommer även att 
+                * Jag kommer att fixa mina två issues i Scrutinizer. Detta kommer nog inte påverka några mätvärden något då de är så små ändringar, men det kommer att få dom försvinner från issues vilket gör mig glad.
                 <br>
-                Jag kommer även att göra separata funktioner för att interagera med <code class="snippet">ManagerRegistry</code> i <code class="snippet">src/Controller/LibraryController.php</code>. Detta kommer förhoppningsvis att ta bort "Blob / God objects" varningen från <code class="snippet">LibraryController</code>n.
+                * Jag kommer även att göra separata funktioner för att interagera med <code class="snippet">ManagerRegistry</code> i <code class="snippet">src/Controller/LibraryController.php</code>. Detta kommer förhoppningsvis att ta bort "Blob / God objects" varningen från <code class="snippet">LibraryController</code>n.
                 <br>
-                Sen tänker jag också göra tester för <code class="snippet">src/Controller/Api.php</code>. Detta för att jag märker att koden i den controllern är generellt messy och CRAPy. Och jag tror att för att försöka göra koden bättre behöver jag ändra alla andra separata kontrollers (från alla olika kmom) då <code class="snippet">Api</code> grundas på dom. Så det är lättare att göra tester. Detta kommer förhoppningsvis ta bort "probably bugged" samt möjligt även "Blob / God objects" varningarna från phpmetrics. Det kommer också att sänka dens CRAP poäng i scrutinizer.
+                * Sen tänker jag också göra tester för <code class="snippet">src/Controller/Api.php</code>. Detta för att jag märker att koden i den controllern är generellt messy och CRAPy. Och jag tror att för att försöka göra koden bättre behöver jag ändra alla andra separata kontrollers (från alla olika kmom) då <code class="snippet">Api</code> grundas på dom. Så det är lättare att göra tester. Detta kommer förhoppningsvis ta bort "probably bugged" samt möjligt även "Blob / God objects" varningarna från phpmetrics. Det kommer också att sänka dens CRAP poäng i scrutinizer.
+            </p>
+            <p>
+                Jag har nu implementerat dessa ändringar. Det gick väldigt bra med de två första punkterna. Att göra testerna för <code class="snippet">Api</code> var dock lite svårare. Jag behövde använda mig utav mocking för att göra mocks av <code class="snippet">session</code> och <code class="snippet">LibraryRepository</code>. Men jag hittade inget sätt att göra detta samtidigt som man använder Symfonys <code class="snippet">WebTestCase</code> för att nå routes med <code class="snippet">$client</code>. Jag har därför behövt "kalla" varje metod som tillhör respektive route. Detta gick rätt bra men jag lyckades inte göra detta för routes som håller på med databasen, där fick jag felmeddelanden om att <code class="snippet">$client</code> inte inizialiserats, jag kunde därför inte testa dom. Med det sag så kunde jag göra tester för <code class="snippet">Api::apiGame()</code> vilket var bra då den var den route som fått högst CRAP poäng iallafall.
+                <br><br>
+                Så vad blev ändringarna då?
+                <br>
+                Om vi börjar med att kolla Phpmetrics, jag blev av med en warning, den på <code class="snippet">LibraryController</code> som sa "probably bugged", detta antagligen då jag flyttade mycket logik till <code class="snippet">LibraryRepository</code> istället. Annars är alla violations kvar. Min kods komplexitet har också sänkts, från en average på 89,5 till 79,2, detta pga samma anledning, då <code class="snippet">LibraryController</code> själv gick ner från 484 till 196. Sen i övrigt så trenderar alla värden nedåt enligt:
+                <img class="" src="{{ asset('img/phpmetrics2.png') }}" alt="phpmetrics" style="width: 800px;">
+                <br><br>
+                I Scrutinizer då? Angående mina issues, jag löste dom två jag hade, men jag lyckades introducera 3 nya... 2 av dom nya är att jag använder en depricated funktion i mina mocks, det tredje är i <code class="snippet">LibraryRepository</code> och är lik en jag hade innan, jag returnerar <code class="snippet">$book->getId()</code> utan att göra en type check på den först, den skulle kunna ge null vilket skulle gå emot type hintingen i den metoden.
+                <br> Annat värt att notera, min test coverage har såklart gått upp, från 22 till 35 %. Jag lyckades också sänka CRAPigheten på <code class="snippet">Api::apiGame()</code> från 30 till 5!
             </p>
         <h2>Diskussion</h2>
+            <p>
+                Jag tror definitivt "clean code" är något man behöver ha i åtanke. Det hjälper en att skriva renare, snyggare och mer lättläslig kod, och som Marting Fowler sa: <i>"Anybody can write code that a computer can understand. Good programmers write code that humans can understand"</i>.
+                <br><br>
+                Men jag tror också det kan vara lätt att fastna lite i dehär mätvärdena som program som Phpmetrics och Scrutinizer ger. Det är såklart att generellt "bättre" värden tyder på en "bättre" kod. Men det finns alltid möjlighet att dom har missat något fel i koden. Det går också att "lura systemet", tex genom att göra tester som täcker din kod och ger dig hög coverage, men som inte faktiskt "testar" din kod.
+                <br><br>
+                Jag tror därför det är mycket mer effektivt att jobba med clean code genom att ha det i baktake hela tiden, man kan använda sig av program som tex phpmd för att hålla en standard i koden, extra viktigt om man jobbar i ett team. Men tänk också på att koden behöver inte vara perfekt. Koden behöver fungera för användaren, och sålänge man inte jobbar på ett stort projekt, med väldigt många programmerare så behöver det inte vara "perfekt" sålänge den fungerar och är läsbar.
+            </p>
     </div>
 {% endblock %}

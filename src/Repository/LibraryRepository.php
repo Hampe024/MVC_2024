@@ -42,23 +42,24 @@ class LibraryRepository extends ServiceEntityRepository
         string $imgURL
     ): int {
         $entityManager = $this->getEntityManager();
-    
+
         $book = new Library();
         $book->setTitle($title);
         $book->setISBN($isbn);
         $book->setAuthor($author);
         $book->setImgURL($imgURL);
-    
+
         $entityManager->persist($book);
         $entityManager->flush();
-    
+
         return $book->getId();
     }
 
-    public function doDelete(int $id): void {
+    public function doDelete(int $id): void
+    {
         $entityManager = $this->getEntityManager();
         $book = $entityManager->getRepository(Library::class)->find($id);
-    
+
         if ($book !== null) {
             $entityManager->remove($book);
             $entityManager->flush();
@@ -74,7 +75,7 @@ class LibraryRepository extends ServiceEntityRepository
     ): int {
         $entityManager = $this->getEntityManager();
         $book = $entityManager->getRepository(Library::class)->find($id);
-    
+
         $book->setTitle($title);
         $book->setISBN($isbn);
         $book->setAuthor($author);

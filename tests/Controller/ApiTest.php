@@ -43,8 +43,8 @@ class ApiControllerTest extends WebTestCase
                 ->with('deck')
                 ->willReturn($deck);
 
-        $Api = new Api();
-        $result = json_decode($Api->apiDeck($session)->getContent(), true);
+        $api = new Api();
+        $result = json_decode($api->apiDeck($session)->getContent(), true);
 
         $cardsInDeck = $deck->getDeckAsString();
 
@@ -57,7 +57,7 @@ class ApiControllerTest extends WebTestCase
         $deckMock->expects($this->once())
                 ->method('getDeckAsString')
                 ->willReturn(["worked!"]);
-        
+
         $session = $this->createMock(SessionInterface::class);
         $session->expects($this->once())
                 ->method('has')
@@ -67,8 +67,8 @@ class ApiControllerTest extends WebTestCase
                 ->with('deck')
                 ->willReturn($deckMock);
 
-        $Api = new Api();
-        $result = json_decode($Api->apiDeckShuffle($session)->getContent(), true);
+        $api = new Api();
+        $result = json_decode($api->apiDeckShuffle($session)->getContent(), true);
 
 
         $this->assertSame($result["deck"], ["worked!"]);
@@ -85,7 +85,7 @@ class ApiControllerTest extends WebTestCase
         $deckMock->expects($this->once())
                 ->method('drawCard')
                 ->willReturn($cardMock);
-        
+
         $session = $this->createMock(SessionInterface::class);
         $session->expects($this->once())
                 ->method('has')
@@ -95,8 +95,8 @@ class ApiControllerTest extends WebTestCase
                 ->with('deck')
                 ->willReturn($deckMock);
 
-        $Api = new Api();
-        $result = json_decode($Api->apiDeckDraw(1, $session)->getContent(), true);
+        $api = new Api();
+        $result = json_decode($api->apiDeckDraw(1, $session)->getContent(), true);
 
 
         $this->assertSame($result["cards"][0], "worked!");
@@ -110,7 +110,7 @@ class ApiControllerTest extends WebTestCase
                 ->willReturn("worked!");
 
         $game = new Game();
-        
+
         $session = $this->createMock(SessionInterface::class);
         $session->expects($this->exactly(4))
                 ->method('has')
@@ -122,8 +122,8 @@ class ApiControllerTest extends WebTestCase
                 ->withConsecutive(['game'], ['playerPlaying'], ['ace'], ['winner'])
                 ->willReturnOnConsecutiveCalls($game, false, $cardMock, "we are all winners :)");
 
-        $Api = new Api();
-        $result = json_decode($Api->apiGame($session)->getContent(), true);
+        $api = new Api();
+        $result = json_decode($api->apiGame($session)->getContent(), true);
 
         $expectedData = [
             "playerPlaying" => false,
@@ -155,8 +155,8 @@ class ApiControllerTest extends WebTestCase
     //             ->method('findAll')
     //             ->willReturn([$book]);
 
-    //     $Api = new Api();
-    //     $result = json_decode($Api->apiLibraryBooks($libraryMock)->getContent(), true);
+    //     $api = new Api();
+    //     $result = json_decode($api->apiLibraryBooks($libraryMock)->getContent(), true);
 
     //     $this->assertSame($result, [$book]);
     // }

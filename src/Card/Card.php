@@ -28,7 +28,7 @@ class Card
     public function getSuite(): string
     {
         return $this->suite;
-        
+
     }
 
     public function getAsString(): string
