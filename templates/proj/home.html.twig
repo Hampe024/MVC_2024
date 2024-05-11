@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Poker Squares{% endblock %}
+
+{% block body %}
+    {% if pokerSquares is defined %}
+    <table>
+        {% for row in pokerSquares.getBoard().print() %}
+            <tr>
+                {% for cell in row %}
+                    <td>{{ cell is null ? "🂠" : cell }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+{% endblock %}
