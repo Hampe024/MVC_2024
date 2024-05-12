@@ -33,25 +33,16 @@ Class Board
         return $this->board;
     }
 
-    public function getCardsForTest(int $x, int $y): array {
+    private function getCardsForTest(int $x, int $y): array {
         $cards = array();
-        if ($x === 5) {
-            // get cards horizontally
-            foreach ($this->board as $key => $row) {
-                foreach ($row as $cell) {
-                    if ($key === $y) {
-                        $cards[] = $cell;
-                    }
+
+        foreach ($this->board as $keyY => $row) {
+            foreach ($row as $keyX => $cell) {
+                if ($keyY === $y && $x === 5) {
+                    $cards[] = $cell;
                 }
-            }
-        } 
-        else {
-            // get cards vertically
-            foreach ($this->board as $row) {
-                foreach ($row as $key => $cell) {
-                    if ($key === $x) {
-                        $cards[] = $cell;
-                    }
+                if ($keyX === $x && $y === 5) {
+                    $cards[] = $cell;
                 }
             }
         }
@@ -63,7 +54,7 @@ Class Board
         $cards = $this->getCardsForTest($x, $y);
 
         foreach ($cards as $card) {
-            if (!$card instanceof Card) {
+            if (is_null($card)) {
                 return 0;
             }
         }
@@ -72,15 +63,15 @@ Class Board
 
         $testScore = new TestScore();
 
-        $testScore->isOnePair($cards[0], $cards[1], $cards[2], $cards[3], $cards[4]) ? $score = 1 : "";
-        $testScore->isTwoPair($cards[0], $cards[1], $cards[2], $cards[3], $cards[4]) ? $score = 3 : "";
-        $testScore->isFlush($cards[0], $cards[1], $cards[2], $cards[3], $cards[4]) ? $score = 5 : "";
-        $testScore->isThreeOfAKind($cards[0], $cards[1], $cards[2], $cards[3], $cards[4]) ? $score = 6 : "";
-        $testScore->isFullHouse($cards[0], $cards[1], $cards[2], $cards[3], $cards[4]) ? $score = 10 : "";
-        $testScore->isStraight($cards[0], $cards[1], $cards[2], $cards[3], $cards[4]) ? $score = 12 : "";
-        $testScore->isFourOfAKind($cards[0], $cards[1], $cards[2], $cards[3], $cards[4]) ? $score = 16 : "";
-        $testScore->isStraightFlush($cards[0], $cards[1], $cards[2], $cards[3], $cards[4]) ? $score = 30 : "";
-        $testScore->isRoyalFlush($cards[0], $cards[1], $cards[2], $cards[3], $cards[4]) ? $score = 30 : "";
+        $testScore->isOnePair($cards) ? $score = 1 : "";
+        $testScore->isTwoPair($cards) ? $score = 3 : "";
+        $testScore->isFlush($cards) ? $score = 5 : "";
+        $testScore->isThreeOfAKind($cards) ? $score = 6 : "";
+        $testScore->isFullHouse($cards) ? $score = 10 : "";
+        $testScore->isStraight($cards) ? $score = 12 : "";
+        $testScore->isFourOfAKind($cards) ? $score = 16 : "";
+        $testScore->isStraightFlush($cards) ? $score = 30 : "";
+        $testScore->isRoyalFlush($cards) ? $score = 30 : "";
 
         return $score;
     }
