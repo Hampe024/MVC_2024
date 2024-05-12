@@ -30,17 +30,22 @@ class PokerSquaresController extends AbstractController
         SessionInterface $session
     ): Response
     {
-        return $this->render('proj/home.html.twig', ["pokerSquares" => $this->getPokerSquares($session)]);
+        $pokerSquares = $this->getPokerSquares($session);
+        $pokerSquares->setNextCard();
+
+        return $this->render('proj/home.html.twig', ["pokerSquares" => $pokerSquares]);
     }
 
-    #[Route("/proj/setCard", name: "projSetCard")]
+    #[Route("/proj/setCard/{x}/{y}", name: "projSetCard")]
     public function projSetCard(
-        SessionInterface $session
+        SessionInterface $session,
+        int $x,
+        int $y
     ): Response
     {
         $pokerSquares = $this->getPokerSquares($session);
 
-        $pokerSquares->getBoard()->setCard(new Card(2, "h", "🂶"), 0, 3);
+        $pokerSquares->getBoard()->setCard($pokerSquares->getNextCard(), $x, $y);
 
         return $this->redirectToRoute('proj');
     }

@@ -6,10 +6,19 @@
         grid-template-columns: repeat(5, 1fr);
         grid-template-rows: repeat(5, 1fr);
 
+        .card-btn {
+            text-decoration: none;
+            color: black;
+        }
+
 
         .poker-card {
             font-size: 6rem;
             padding: 0 15px;
+
+            .red {
+                color: red;
+            }
 
             &:not(:nth-of-type(5n)) {
                 border-right: 1px solid black;

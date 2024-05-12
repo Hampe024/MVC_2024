@@ -28,6 +28,10 @@ Class Board
         }
     }
 
+    public function getBoard(): array {
+        return $this->board;
+    }
+
     public function print(): array
     {
         $returnBoard = [];

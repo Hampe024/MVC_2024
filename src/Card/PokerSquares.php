@@ -10,6 +10,7 @@ class PokerSquares
 {
     private DeckOfCards $deck;
     private Board $board;
+    private Card $nextCard;
 
     public function __construct(DeckOfCards $deck, Board $board)
     {
@@ -22,5 +23,15 @@ class PokerSquares
     public function getBoard(): Board
     {
         return $this->board;
+    }
+
+    public function setNextCard(): void
+    {
+        $this->nextCard = $this->deck->drawCard();
+    }
+
+    public function getNextCard(): Card
+    {
+        return $this->nextCard;
     }
 }

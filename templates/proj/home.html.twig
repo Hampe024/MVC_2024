@@ -6,10 +6,20 @@
     <div class="poker-squares">
         {% if pokerSquares is defined %}
             <div class="poker-grid">
-                {% for row in pokerSquares.getBoard().print() %}
-                    {% for cell in row %}
+                {% for y, row in pokerSquares.getBoard().getBoard() %}
+                    {% for x, cell in row %}
                         <div class="poker-card">
-                            {{ cell is null ? "🂠" : cell }}
+                            {% if cell is null %}
+                                <a class="card-btn" href="{{ path('projSetCard', { x: x, y: y }) }}">🂠</a>
+                            {% else %}
+                                <div class="
+                                    {% if cell.getSuite() == 'h' or cell.getSuite() == 'd' %}
+                                        red
+                                    {% endif %}
+                                    ">
+                                {{ cell.getAsString() }} 
+                                </div>
+                            {% endif %}
                         </div>
                     {% endfor %}
                 {% endfor %}
