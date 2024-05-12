@@ -1,0 +1,15 @@
+{% for i in 0..5 %}
+    {% for j in 0..5 %}
+        {% if i == 5 and j == 5 %}
+            {# do nothing #}
+        {% elseif i == 5 %}
+            <div class="points points{{ i }}-{{ j }}">
+                {{ pokerSquares.getBoard().getPoints(i, j) }}
+            </div>
+        {% elseif j == 5 %}
+            <div class="points points{{ i }}-{{ j }}">
+                {{ pokerSquares.getBoard().getPoints(i, j) }}
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endfor %}

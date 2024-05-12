@@ -5,37 +5,8 @@
 {% block body %}
     <div class="poker-squares">
         <div class="poker-grid">
-            {% for y, row in pokerSquares.getBoard().getBoard() %}
-                {% for x, cell in row %}
-                    <div class="poker-card">
-                        {% if cell is null %}
-                            <a class="card-btn" href="{{ path('projSetCard', { x: x, y: y }) }}">🂠</a>
-                        {% else %}
-                            <div class="
-                                {% if cell.getSuite() == 'h' or cell.getSuite() == 'd' %}
-                                    red
-                                {% endif %}
-                            ">
-                                {{ cell.getAsString() }} 
-                            </div>
-                        {% endif %}
-                    </div>
-                {% endfor %}
-            {% endfor %}
-            {% for i in 0..5 %}
-                {% for j in 0..5 %}
-                    {% if i == 5 and j == 5 %}
-                    {% elseif i == 5 %}
-                        <div class="points points{{ i }}-{{ j }}">
-                            {{ pokerSquares.getBoard().getPoints(i, j) }}
-                        </div>
-                    {% elseif j == 5 %}
-                        <div class="points points{{ i }}-{{ j }}">
-                            {{ pokerSquares.getBoard().getPoints(i, j) }}
-                        </div>
-                    {% endif %}
-                {% endfor %}
-            {% endfor %}
+            {% include 'proj/board.html.twig' %}
+            {% include 'proj/points.html.twig' %}
         </div>
         
         <div class="next-card">

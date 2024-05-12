@@ -1,0 +1,17 @@
+{% for y, row in pokerSquares.getBoard().getBoard() %}
+    {% for x, cell in row %}
+        <div class="poker-card">
+            {% if cell is null %}
+                <a class="card-btn" href="{{ path('projSetCard', { x: x, y: y }) }}">🂠</a>
+            {% else %}
+                <div class="
+                    {% if cell.getSuite() == 'h' or cell.getSuite() == 'd' %}
+                        red
+                    {% endif %}
+                ">
+                    {{ cell.getAsString() }} 
+                </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+{% endfor %}
