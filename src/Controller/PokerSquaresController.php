@@ -25,15 +25,32 @@ class PokerSquaresController extends AbstractController
         return $pokerSquares;
     }
 
+    private function getHighscore(
+        SessionInterface $session
+    ): array {
+        $highscore = $session->has('highscore') ? $session->get('highscore') : [43];
+
+        $session->set('highscore', $highscore);
+
+        return $highscore;
+    }
+
     #[Route("/proj", name: "proj")]
     public function proj(
         SessionInterface $session
     ): Response
     {
+        $highscore = $this->getHighscore($session);
+        
         $pokerSquares = $this->getPokerSquares($session);
         $pokerSquares->setNextCard();
 
-        return $this->render('proj/home.html.twig', ["pokerSquares" => $pokerSquares]);
+        $data = [
+            "pokerSquares" => $pokerSquares,
+            "highscore" => $highscore
+        ];
+
+        return $this->render('proj/home.html.twig', $data);
     }
 
     #[Route("/proj/setCard/{x}/{y}", name: "projSetCard")]
@@ -50,6 +67,7 @@ class PokerSquaresController extends AbstractController
 
         return $this->redirectToRoute('proj');
     }
+
     #[Route("/proj/reset", name: "projReset")]
     public function projReset(
         SessionInterface $session,
@@ -57,5 +75,28 @@ class PokerSquaresController extends AbstractController
     {
         $session->remove("pokerSquares");
         return $this->redirectToRoute('proj');
+    }
+
+    #[Route("/proj/setHighscore/{score}", name: "projSetHighscore")]
+    public function projSetHighscore(
+        SessionInterface $session,
+        int $score
+    ): Response
+    {
+        $highscore = $this->getHighscore($session);
+
+        $highscore[] = $score;
+        rsort($highscore);
+
+        $session->set('highscore', $highscore);
+
+        return $this->redirectToRoute('proj');
+    }
+
+    #[Route("/proj/about", name: "projAbout")]
+    public function projAbout(
+    ): Response
+    {
+        return $this->render('proj/about.html.twig');
     }
 }

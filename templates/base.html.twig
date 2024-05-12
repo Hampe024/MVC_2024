@@ -14,7 +14,9 @@
         {% endblock %}
     </head>
     <body>
-        {% include 'layout/nav.html.twig' %}
+        {% block nav %}
+            {% include 'layout/nav.html.twig' %}
+        {% endblock %}
         <main>
             {% block body %}{% endblock %}
             {% include 'layout/flash.html.twig' %}

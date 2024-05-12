@@ -1,0 +1,14 @@
+{% set nextCard = pokerSquares.getNextCard() %}
+{% if not pokerSquares.getBoard.isFull() %}
+    <div class="next-card-card
+        {% if nextCard.getSuite() == 'h' or nextCard.getSuite() == 'd' %}
+            red
+        {% endif %}
+    ">
+        {{ nextCard.getAsString() }}
+    </div>
+{% else %}
+    <div class="next-card-card">
+        🂠
+    </div>
+{% endif %}

@@ -1,0 +1,1 @@
+import './styles/proj-main.scss';

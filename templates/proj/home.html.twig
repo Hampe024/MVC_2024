@@ -2,29 +2,48 @@
 
 {% block title %}Poker Squares{% endblock %}
 
+{% block stylesheets %}
+    {{ encore_entry_link_tags('proj') }}
+{% endblock %}
+
+{% block nav %}
+    {% include 'layout/proj-nav.html.twig' %}
+{% endblock %}
+
 {% block body %}
     <div class="poker-squares">
         <div class="poker-grid">
             {% include 'proj/board.html.twig' %}
-            {% include 'proj/points.html.twig' %}
+            {% set totpoints = 0 %}
+
+            {% for i in 0..5 %}
+                {% for j in 0..5 %}
+                    {% if i == 5 and j == 5 %}
+                        <div class="points tot-points">
+                            totala poäng: <br>
+                            {{ totpoints }}
+                        </div>
+                    {% elseif i == 5 %}
+                        <div class="points points{{ i }}-{{ j }}">
+                            {{ pokerSquares.getBoard().getPoints(i, j) }}
+                            {% set totpoints = totpoints + pokerSquares.getBoard().getPoints(i, j) %}
+                        </div>
+                    {% elseif j == 5 %}
+                        <div class="points points{{ i }}-{{ j }}">
+                            {{ pokerSquares.getBoard().getPoints(i, j) }}
+                            {% set totpoints = totpoints + pokerSquares.getBoard().getPoints(i, j) %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
         </div>
         
         <div class="next-card">
-            {% set nextCard = pokerSquares.getNextCard() %}
-            <div class="next-card-card
-                {% if nextCard.getSuite() == 'h' or nextCard.getSuite() == 'd' %}
-                    red
-                {% endif %}
-            ">
-                {{ nextCard.getAsString() }}
-            </div>
-            {# <div class="deck-1">
-                🂠
-            </div>
-            <div class="deck-2">
-                🂠
-            </div> #}
-            <a class="fake-btn"href="{{ path('projReset') }}">Starta om</a>
+            {% include 'proj/nextCard.html.twig' %}
+            <a class="fake-btn reset" href="{{ path('projReset') }}">Starta om</a>
+            {% if pokerSquares.getBoard.isFull() %}
+                <a class="fake-btn save" href="{{ path('projSetHighscore', { score: totpoints }) }}">Spara poäng</a>
+            {% endif %}
         </div>
         <div class="game-data">
             <div>

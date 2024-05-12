@@ -29,11 +29,25 @@ Class Board
         }
     }
 
-    public function getBoard(): array {
+    public function getBoard(): array
+    {
         return $this->board;
     }
 
-    private function getCardsForTest(int $x, int $y): array {
+    public function isFull(): bool
+    {
+        foreach ($this->board as $row) {
+            foreach ($row as $cell) {
+                if (is_null($cell)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    private function getCardsForTest(int $x, int $y): array
+    {
         $cards = array();
 
         foreach ($this->board as $keyY => $row) {
