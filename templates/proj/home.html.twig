@@ -11,17 +11,30 @@
         
         <div class="next-card">
             {% set nextCard = pokerSquares.getNextCard() %}
-            <div class="
+            <div class="next-card-card
                 {% if nextCard.getSuite() == 'h' or nextCard.getSuite() == 'd' %}
                     red
                 {% endif %}
             ">
                 {{ nextCard.getAsString() }}
             </div>
+            {# <div class="deck-1">
+                🂠
+            </div>
+            <div class="deck-2">
+                🂠
+            </div> #}
+            <a class="fake-btn"href="{{ path('projReset') }}">Starta om</a>
         </div>
         <div class="game-data">
-            <a class="fake-btn"href="{{ path('projReset') }}">Starta om</a>
-            {% include 'proj/pointsTable.html.twig' %}
+            <div>
+                <h3>Poäng förklaring</h3>
+                {% include 'proj/pointsTable.html.twig' %}
+            </div>
+            <div>
+                <h3>Highscore</h3>
+                {% include 'proj/scoreTable.html.twig' %}
+            </div>
         </div>
     </div>
 {% endblock %}

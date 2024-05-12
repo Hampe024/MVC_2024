@@ -1,14 +1,21 @@
+{% set totpoints = 0 %}
+
 {% for i in 0..5 %}
     {% for j in 0..5 %}
         {% if i == 5 and j == 5 %}
-            {# do nothing #}
+            <div class="points tot-points">
+                totala poäng: <br>
+                {{ totpoints }}
+            </div>
         {% elseif i == 5 %}
             <div class="points points{{ i }}-{{ j }}">
                 {{ pokerSquares.getBoard().getPoints(i, j) }}
+                {% set totpoints = totpoints + pokerSquares.getBoard().getPoints(i, j) %}
             </div>
         {% elseif j == 5 %}
             <div class="points points{{ i }}-{{ j }}">
                 {{ pokerSquares.getBoard().getPoints(i, j) }}
+                {% set totpoints = totpoints + pokerSquares.getBoard().getPoints(i, j) %}
             </div>
         {% endif %}
     {% endfor %}

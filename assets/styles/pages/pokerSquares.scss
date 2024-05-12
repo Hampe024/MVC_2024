@@ -4,9 +4,11 @@
     .poker-grid {
         width: fit-content;
         height: fit-content;
+        max-height: 700px;
         display: grid;
         grid-template-columns: repeat(6, 1fr);
         grid-template-rows: repeat(6, 1fr);
+        padding: 0.5rem;
 
         .card-btn {
             text-decoration: none;
@@ -53,51 +55,90 @@
     }
 
     .next-card {
+        width: 30rem;
         font-size: 20rem;
         cursor: default;
-    }
 
-    .game-data {
         .fake-btn {
-            padding: 0.2rem;
+            display: block;
+            padding: 0.4rem;
             background-color: #b9b9b9;
             border: 1px solid black;
             border-radius: 5px;
             text-decoration: none;
             font-size: 3rem;
             color: black;
+            height: fit-content;
+            margin-left: 8px;
+            width: fit-content;
 
             &:hover {
                 font-weight: bold;
+                padding-left: 0.2rem;
+                padding-right: 0.2rem;
+            }
+
+        // .next-card-card {
+        //     position: relative;
+        //     z-index: 2;
+        //     // background-color: white;
+        // }
+
+        // .deck-1 {
+        //     margin-top: -415px;
+        //     margin-left: 10px;
+        //     position: relative;
+        //     z-index: 1;
+        // }
+
+        // .deck-2 {
+        //     margin-top: -405px;
+        //     margin-left: 20px;
+        //     position: relative;
+        //     z-index: 1;
+        // }
+        }
+    }
+
+    .game-data {
+        display: flex;
+        font-size: 2rem;
+
+        > div {
+            margin-left: 100px;
+            width: fit-content;
+
+            table {
+                width: fit-content;
+                min-width: 200px;
+                border-collapse: collapse;
+                margin-top: -20px;
+                margin-bottom: 20px;
+              
+                th, td {
+                  padding: 8px;
+                  text-align: left;
+                  border-bottom: 1px solid #ddd;
+                }
+              
+                th {
+                  background-color: #f2f2f2;
+                }
+              
+                tr:nth-child(even) {
+                  background-color: #f2f2f2;
+                }
+              
+                tr:hover {
+                  background-color: #ddd;
+                }
+
+                td:nth-child(2),
+                th:nth-child(2) {
+                    text-align: right;
+                    width: fit-content;
+                }
             }
         }
-
-        table {
-            width: 200px;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-          
-            th, td {
-              padding: 8px;
-              text-align: left;
-              border-bottom: 1px solid #ddd;
-            }
-          
-            th {
-              background-color: #f2f2f2;
-            }
-          
-            tr:nth-child(even) {
-              background-color: #f2f2f2;
-            }
-          
-            tr:hover {
-              background-color: #ddd;
-            }
-          
-            td:first-child {
-              width: 70%; // Adjust width as needed
-            }
-          }
     }
 }
