@@ -27,11 +27,18 @@ class PokerSquares
 
     public function setNextCard(): void
     {
-        $this->nextCard = $this->deck->drawCard();
+        if (!isset($this->nextCard)) {
+            $this->nextCard = $this->deck->drawCard();
+        }
     }
 
     public function getNextCard(): Card
     {
         return $this->nextCard;
+    }
+
+    public function unsetNextCard(): void
+    {
+        unset($this->nextCard);
     }
 }
