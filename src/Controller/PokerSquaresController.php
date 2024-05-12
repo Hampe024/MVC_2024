@@ -50,4 +50,12 @@ class PokerSquaresController extends AbstractController
 
         return $this->redirectToRoute('proj');
     }
+    #[Route("/proj/reset", name: "projReset")]
+    public function projReset(
+        SessionInterface $session,
+    ): Response
+    {
+        $session->remove("pokerSquares");
+        return $this->redirectToRoute('proj');
+    }
 }

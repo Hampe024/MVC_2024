@@ -19,5 +19,9 @@
                 {{ nextCard.getAsString() }}
             </div>
         </div>
+        <div class="game-data">
+            <a class="fake-btn"href="{{ path('projReset') }}">Starta om</a>
+            {% include 'proj/pointsTable.html.twig' %}
+        </div>
     </div>
 {% endblock %}
