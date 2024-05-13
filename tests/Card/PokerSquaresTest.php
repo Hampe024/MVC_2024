@@ -45,7 +45,6 @@ class PokerSquaresTest extends TestCase
         $this->assertNotNull($nextCard);
         $this->assertInstanceOf("\App\Card\Card", $nextCard);
         $this->assertEquals($pokerSquares->getDeck()->getAmountOfCards(), 51);
-
     }
 
     public function testUnsetNextCard(): void
@@ -59,6 +58,5 @@ class PokerSquaresTest extends TestCase
         $pokerSquares->unsetNextCard();
 
         $this->assertNull($pokerSquares->getNextCard());
-
     }
 }
