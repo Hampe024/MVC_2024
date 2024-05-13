@@ -53,10 +53,10 @@ class TestScoreTest extends TestCase
             new Card(11, "test", "irrelevant"),
             new Card(12, "test", "irrelevant"),
             new Card(13, "test", "irrelevant"),
-            new Card(14, "test", "irrelevant"),
+            new Card(-1, "test", "irrelevant"),
         ];
         $testStraightFlush2 = [
-            new Card(1, "test", "irrelevant"),
+            new Card(-1, "test", "irrelevant"),
             new Card(2, "test", "irrelevant"),
             new Card(3, "test", "irrelevant"),
             new Card(4, "test", "irrelevant"),
@@ -66,7 +66,7 @@ class TestScoreTest extends TestCase
         $this->assertNotFalse($testScore->isStraightFlush($testStraightFlush2));
 
         $testStraightNotFlush = [
-            new Card(1, "test", "irrelevant"),
+            new Card(-1, "test", "irrelevant"),
             new Card(2, "test", "irrelevant"),
             new Card(3, "notTest", "irrelevant"),
             new Card(4, "test", "irrelevant"),
@@ -75,7 +75,7 @@ class TestScoreTest extends TestCase
         $this->assertFalse($testScore->isStraightFlush($testStraightNotFlush));
 
         $testNotStraightFlush = [
-            new Card(1, "test", "irrelevant"),
+            new Card(-1, "test", "irrelevant"),
             new Card(2, "test", "irrelevant"),
             new Card(4, "test", "irrelevant"),
             new Card(4, "test", "irrelevant"),
