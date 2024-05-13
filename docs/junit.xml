@@ -1,50 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="" tests="24" assertions="61" errors="1" warnings="0" failures="0" skipped="0" time="7.226376">
-    <testsuite name="Project Test Suite" tests="24" assertions="61" errors="1" warnings="0" failures="0" skipped="0" time="7.226376">
-      <testsuite name="App\Card\CardHandTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" tests="5" assertions="14" errors="0" warnings="0" failures="0" skipped="0" time="0.156636">
-        <testcase name="testCreateHand" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="16" assertions="1" time="0.121182"/>
-        <testcase name="testAddCards" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="23" assertions="3" time="0.023948"/>
-        <testcase name="testGetHandAsString" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="38" assertions="2" time="0.010856"/>
-        <testcase name="testGetTotalValue" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="49" assertions="3" time="0.000317"/>
-        <testcase name="testGetValueAsArr" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="64" assertions="5" time="0.000333"/>
+  <testsuite name="" tests="32" assertions="89" errors="0" warnings="0" failures="0" skipped="0" time="6.555590">
+    <testsuite name="Project Test Suite" tests="32" assertions="89" errors="0" warnings="0" failures="0" skipped="0" time="6.555590">
+      <testsuite name="App\Card\CardHandTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" tests="5" assertions="14" errors="0" warnings="0" failures="0" skipped="0" time="0.154234">
+        <testcase name="testCreateHand" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="16" assertions="1" time="0.120240"/>
+        <testcase name="testAddCards" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="23" assertions="3" time="0.022869"/>
+        <testcase name="testGetHandAsString" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="38" assertions="2" time="0.010505"/>
+        <testcase name="testGetTotalValue" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="49" assertions="3" time="0.000301"/>
+        <testcase name="testGetValueAsArr" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="64" assertions="5" time="0.000319"/>
       </testsuite>
-      <testsuite name="App\Card\CardTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" tests="3" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.000876">
-        <testcase name="testCreateCard" class="App\Card\CardTest" classname="App.Card.CardTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="16" assertions="1" time="0.000312"/>
-        <testcase name="testCardAttributes" class="App\Card\CardTest" classname="App.Card.CardTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="23" assertions="2" time="0.000279"/>
-        <testcase name="testChangeCardAttribute" class="App\Card\CardTest" classname="App.Card.CardTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="31" assertions="2" time="0.000285"/>
+      <testsuite name="App\Card\CardTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" tests="3" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.000839">
+        <testcase name="testCreateCard" class="App\Card\CardTest" classname="App.Card.CardTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="16" assertions="1" time="0.000275"/>
+        <testcase name="testCardAttributes" class="App\Card\CardTest" classname="App.Card.CardTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="23" assertions="2" time="0.000271"/>
+        <testcase name="testChangeCardAttribute" class="App\Card\CardTest" classname="App.Card.CardTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="31" assertions="2" time="0.000293"/>
       </testsuite>
-      <testsuite name="App\Card\DeckOfCardsTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" tests="5" assertions="10" errors="0" warnings="0" failures="0" skipped="0" time="0.050667">
-        <testcase name="testCreateDeck" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="16" assertions="2" time="0.010651"/>
-        <testcase name="testGetAmountOfCards" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="24" assertions="2" time="0.000502"/>
-        <testcase name="testDrawCard" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="35" assertions="2" time="0.000699"/>
-        <testcase name="testShuffle" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="45" assertions="1" time="0.038152"/>
+      <testsuite name="App\Card\DeckOfCardsTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" tests="5" assertions="10" errors="0" warnings="0" failures="0" skipped="0" time="0.056126">
+        <testcase name="testCreateDeck" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="16" assertions="2" time="0.008996"/>
+        <testcase name="testGetAmountOfCards" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="24" assertions="2" time="0.000484"/>
+        <testcase name="testDrawCard" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="35" assertions="2" time="0.000669"/>
+        <testcase name="testShuffle" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="45" assertions="1" time="0.045313"/>
         <testcase name="testGetDeckAsString" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="56" assertions="3" time="0.000664"/>
       </testsuite>
-      <testsuite name="App\Card\DeckOfCardsWithJokerTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsWithJokerTest.php" tests="2" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.009676">
-        <testcase name="testCreateDeck" class="App\Card\DeckOfCardsWithJokerTest" classname="App.Card.DeckOfCardsWithJokerTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsWithJokerTest.php" line="16" assertions="2" time="0.009036"/>
-        <testcase name="testHasJokers" class="App\Card\DeckOfCardsWithJokerTest" classname="App.Card.DeckOfCardsWithJokerTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsWithJokerTest.php" line="24" assertions="2" time="0.000640"/>
+      <testsuite name="App\Card\DeckOfCardsWithJokerTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsWithJokerTest.php" tests="2" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.010585">
+        <testcase name="testCreateDeck" class="App\Card\DeckOfCardsWithJokerTest" classname="App.Card.DeckOfCardsWithJokerTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsWithJokerTest.php" line="16" assertions="2" time="0.009988"/>
+        <testcase name="testHasJokers" class="App\Card\DeckOfCardsWithJokerTest" classname="App.Card.DeckOfCardsWithJokerTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsWithJokerTest.php" line="24" assertions="2" time="0.000597"/>
       </testsuite>
-      <testsuite name="App\Card\GameTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/GameTest.php" tests="2" assertions="10" errors="0" warnings="0" failures="0" skipped="0" time="0.006952">
-        <testcase name="testCreateGame" class="App\Card\GameTest" classname="App.Card.GameTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/GameTest.php" line="16" assertions="4" time="0.006330"/>
-        <testcase name="testgetWinner" class="App\Card\GameTest" classname="App.Card.GameTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/GameTest.php" line="26" assertions="6" time="0.000622"/>
+      <testsuite name="App\Card\GameTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/GameTest.php" tests="2" assertions="10" errors="0" warnings="0" failures="0" skipped="0" time="0.011428">
+        <testcase name="testCreateGame" class="App\Card\GameTest" classname="App.Card.GameTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/GameTest.php" line="21" assertions="4" time="0.010824"/>
+        <testcase name="testgetWinner" class="App\Card\GameTest" classname="App.Card.GameTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/GameTest.php" line="31" assertions="6" time="0.000604"/>
       </testsuite>
-      <testsuite name="App\Controller\ApiControllerTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Controller/ApiTest.php" tests="6" assertions="16" errors="1" warnings="0" failures="0" skipped="0" time="6.982006">
-        <testcase name="testApiQuote" class="App\Controller\ApiControllerTest" classname="App.Controller.ApiControllerTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Controller/ApiTest.php" line="16" assertions="4" time="6.398241"/>
-        <testcase name="testDeck" class="App\Controller\ApiControllerTest" classname="App.Controller.ApiControllerTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Controller/ApiTest.php" line="33" assertions="2" time="0.442660"/>
-        <testcase name="testDeckShuffle" class="App\Controller\ApiControllerTest" classname="App.Controller.ApiControllerTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Controller/ApiTest.php" line="54" assertions="3" time="0.009273"/>
-        <testcase name="testDeckDraw" class="App\Controller\ApiControllerTest" classname="App.Controller.ApiControllerTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Controller/ApiTest.php" line="77" assertions="4" time="0.001522"/>
-        <testcase name="testGame" class="App\Controller\ApiControllerTest" classname="App.Controller.ApiControllerTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Controller/ApiTest.php" line="105" assertions="3" time="0.024581"/>
-        <testcase name="testLibraryBooks" class="App\Controller\ApiControllerTest" classname="App.Controller.ApiControllerTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Controller/ApiTest.php" line="143" assertions="0" time="0.105730">
-          <error type="TypeError">App\Controller\ApiControllerTest::testLibraryBooks
-TypeError: App\Controller\Api::apiLibraryBooks(): Return value must be of type Symfony\Component\HttpFoundation\Response, string returned
-
-/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/src/Controller/Api.php:151
-/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Controller/ApiTest.php:159</error>
-        </testcase>
+      <testsuite name="App\Card\TestScoreTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/TestScoreTest.php" tests="9" assertions="28" errors="0" warnings="0" failures="0" skipped="0" time="0.028322">
+        <testcase name="testIsRoyalFlush" class="App\Card\TestScoreTest" classname="App.Card.TestScoreTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/TestScoreTest.php" line="15" assertions="3" time="0.025233"/>
+        <testcase name="testIsStraightFlush" class="App\Card\TestScoreTest" classname="App.Card.TestScoreTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/TestScoreTest.php" line="47" assertions="4" time="0.000478"/>
+        <testcase name="testIsFourOfAKind" class="App\Card\TestScoreTest" classname="App.Card.TestScoreTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/TestScoreTest.php" line="87" assertions="3" time="0.000365"/>
+        <testcase name="testIsFullHouse" class="App\Card\TestScoreTest" classname="App.Card.TestScoreTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/TestScoreTest.php" line="118" assertions="3" time="0.000366"/>
+        <testcase name="testIsFlush" class="App\Card\TestScoreTest" classname="App.Card.TestScoreTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/TestScoreTest.php" line="149" assertions="3" time="0.000364"/>
+        <testcase name="testIsStraight" class="App\Card\TestScoreTest" classname="App.Card.TestScoreTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/TestScoreTest.php" line="180" assertions="3" time="0.000385"/>
+        <testcase name="testIsThreeOfAKind" class="App\Card\TestScoreTest" classname="App.Card.TestScoreTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/TestScoreTest.php" line="211" assertions="3" time="0.000391"/>
+        <testcase name="testIsTwoPair" class="App\Card\TestScoreTest" classname="App.Card.TestScoreTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/TestScoreTest.php" line="242" assertions="3" time="0.000371"/>
+        <testcase name="testIsOnePair" class="App\Card\TestScoreTest" classname="App.Card.TestScoreTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Card/TestScoreTest.php" line="273" assertions="3" time="0.000370"/>
       </testsuite>
-      <testsuite name="App\Dice\DiceTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Dice/DiceTest.php" tests="1" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.019562">
-        <testcase name="testCreateDice" class="App\Dice\DiceTest" classname="App.Dice.DiceTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Dice/DiceTest.php" line="16" assertions="2" time="0.019562"/>
+      <testsuite name="App\Controller\ApiControllerTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Controller/ApiTest.php" tests="5" assertions="16" errors="0" warnings="0" failures="0" skipped="0" time="6.273875">
+        <testcase name="testApiQuote" class="App\Controller\ApiControllerTest" classname="App.Controller.ApiControllerTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Controller/ApiTest.php" line="17" assertions="4" time="5.845453"/>
+        <testcase name="testDeck" class="App\Controller\ApiControllerTest" classname="App.Controller.ApiControllerTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Controller/ApiTest.php" line="34" assertions="2" time="0.394288"/>
+        <testcase name="testDeckShuffle" class="App\Controller\ApiControllerTest" classname="App.Controller.ApiControllerTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Controller/ApiTest.php" line="55" assertions="3" time="0.009149"/>
+        <testcase name="testDeckDraw" class="App\Controller\ApiControllerTest" classname="App.Controller.ApiControllerTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Controller/ApiTest.php" line="78" assertions="4" time="0.001405"/>
+        <testcase name="testGame" class="App\Controller\ApiControllerTest" classname="App.Controller.ApiControllerTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Controller/ApiTest.php" line="106" assertions="3" time="0.023580"/>
+      </testsuite>
+      <testsuite name="App\Dice\DiceTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Dice/DiceTest.php" tests="1" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.020181">
+        <testcase name="testCreateDice" class="App\Dice\DiceTest" classname="App.Dice.DiceTest" file="/mnt/c/cygwin64/home/hampe/dbwebb-kurser/mvc/me/report/tests/Dice/DiceTest.php" line="16" assertions="2" time="0.020181"/>
       </testsuite>
     </testsuite>
   </testsuite>
