@@ -106,10 +106,12 @@ class TestScore
         sort($values);
 
         return
-            (!(count(array_unique($values)) === 5)) ||
-            array_sum($values) === 13 ||
-            ($values[0] === -1 && $values[1] === 10) ||
-            (max($values) - min($values) === 4);
+            (count(array_unique($values)) === 5) &&
+                (
+                    array_sum($values) === 13 ||
+                    ($values[0] === -1 && $values[1] === 10) ||
+                    (max($values) - min($values) === 4)
+                );
     }
 
     /**

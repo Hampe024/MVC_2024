@@ -131,7 +131,7 @@ class BoardTest extends TestCase
     public function testGetPoints(): void
     {
         $board = new Board();
-        $card1 = new Card(1, "s", "🂢");
+        $card1 = new Card(-1, "s", "🂢");
         $card2 = new Card(2, "s", "🂢");
         $card3 = new Card(3, "s", "🂢");
         $card4 = new Card(4, "s", "🂢");
