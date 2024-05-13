@@ -16,10 +16,10 @@ class TestScore
      * @param array $cards Array of Card objects.
      * @return bool True if the cards form a Royal Flush, false otherwise.
      */
-    public static function isRoyalFlush(array $cards): bool
+    public function isRoyalFlush(array $cards): bool
     {
         $values = array_map(function ($card) {
-            return $card->getValue();
+            return $card->getValue() === -1 ? 14 : $card->getValue();
         }, $cards);
 
         $suits = array_map(function ($card) {
@@ -37,7 +37,7 @@ class TestScore
      * @param array $cards Array of Card objects.
      * @return bool True if the cards form a Straight Flush, false otherwise.
      */
-    public static function isStraightFlush(array $cards): bool
+    public function isStraightFlush(array $cards): bool
     {
         return self::isFlush($cards) && self::isStraight($cards);
     }
@@ -48,7 +48,7 @@ class TestScore
      * @param array $cards Array of Card objects.
      * @return bool True if the cards form Four of a Kind, false otherwise.
      */
-    public static function isFourOfAKind(array $cards): bool
+    public function isFourOfAKind(array $cards): bool
     {
         $values = array_map(function ($card) {
             return $card->getValue();
@@ -65,7 +65,7 @@ class TestScore
      * @param array $cards Array of Card objects.
      * @return bool True if the cards form a Full House, false otherwise.
      */
-    public static function isFullHouse(array $cards): bool
+    public function isFullHouse(array $cards): bool
     {
         $values = array_map(function ($card) {
             return $card->getValue();
@@ -82,7 +82,7 @@ class TestScore
      * @param array $cards Array of Card objects.
      * @return bool True if the cards form a Flush, false otherwise.
      */
-    public static function isFlush(array $cards): bool
+    public function isFlush(array $cards): bool
     {
         $suits = array_map(function ($card) {
             return $card->getSuite();
@@ -97,7 +97,7 @@ class TestScore
      * @param array $cards Array of Card objects.
      * @return bool True if the cards form a Straight, false otherwise.
      */
-    public static function isStraight(array $cards): bool
+    public function isStraight(array $cards): bool
     {
         $values = array_map(function ($card) {
             return $card->getValue();
@@ -105,7 +105,11 @@ class TestScore
 
         sort($values);
 
-        return max($values) - min($values) === 4 && count(array_unique($values)) === 5;
+        return 
+            (!count(array_unique($values)) === 5) ||
+            array_sum($values) === 13 ||
+            ($values[0] === -1 && $values[1] === 10) ||
+            (max($values) - min($values) === 4);
     }
 
     /**
@@ -114,7 +118,7 @@ class TestScore
      * @param array $cards Array of Card objects.
      * @return bool True if the cards form Three of a Kind, false otherwise.
      */
-    public static function isThreeOfAKind(array $cards): bool
+    public function isThreeOfAKind(array $cards): bool
     {
         $values = array_map(function ($card) {
             return $card->getValue();
@@ -131,7 +135,7 @@ class TestScore
      * @param array $cards Array of Card objects.
      * @return bool True if the cards form Two Pair, false otherwise.
      */
-    public static function isTwoPair(array $cards): bool
+    public function isTwoPair(array $cards): bool
     {
         $values = array_map(function ($card) {
             return $card->getValue();
@@ -148,7 +152,7 @@ class TestScore
      * @param array $cards Array of Card objects.
      * @return bool True if the cards form One Pair, false otherwise.
      */
-    public static function isOnePair(array $cards): bool
+    public function isOnePair(array $cards): bool
     {
         $values = array_map(function ($card) {
             return $card->getValue();
