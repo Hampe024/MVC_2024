@@ -76,4 +76,16 @@ class CardHandTest extends TestCase
         $this->assertEquals(array_sum($cardHand->getValueAsArr()), 5);
     }
 
+    public function testGetCards()
+    {
+        $cardHand = new CardHand();
+
+        $this->assertIsArray($cardHand->getCards());
+        $this->assertEquals(count($cardHand->getCards()), 0);
+
+        $cardHand->addCard(new Card(2, "s", "🂢"));
+        $cardHand->addCard(new Card(3, "s", "🂣"));
+
+        $this->assertEquals(count($cardHand->getCards()), 2);
+    }
 }

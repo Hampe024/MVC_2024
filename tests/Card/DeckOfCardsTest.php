@@ -61,4 +61,12 @@ class DeckOfCardsTest extends TestCase
         $this->assertEquals(count($deck->getDeckAsString()), 52);
         $this->assertIsString($deck->getDeckAsString()[0]);
     }
+
+    public function testGetDeck()
+    {
+        $deck = new DeckOfCards();
+
+        $this->assertIsArray($deck->getDeck());
+        $this->assertEquals(count($deck->getDeck()), 52);
+    }
 }
