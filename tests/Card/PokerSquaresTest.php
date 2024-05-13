@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
  */
 class PokerSquaresTest extends TestCase
 {
-    public function testDeckIsShuffled(): void 
+    public function testDeckIsShuffled(): void
     {
         $pokerSquares = new PokerSquares(new DeckOfCards(), new Board());
 
@@ -23,7 +23,7 @@ class PokerSquaresTest extends TestCase
         // these could theoretically be the same, but MAN is that unlikely...
     }
 
-    public function testGetBoard(): void 
+    public function testGetBoard(): void
     {
         $pokerSquares = new PokerSquares(new DeckOfCards(), new Board());
 

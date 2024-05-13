@@ -38,10 +38,9 @@ class PokerSquaresController extends AbstractController
     #[Route("/proj", name: "proj")]
     public function proj(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $highscore = $this->getHighscore($session);
-        
+
         $pokerSquares = $this->getPokerSquares($session);
         $pokerSquares->setNextCard();
 
@@ -58,8 +57,7 @@ class PokerSquaresController extends AbstractController
         SessionInterface $session,
         int $x,
         int $y
-    ): Response
-    {
+    ): Response {
         $pokerSquares = $this->getPokerSquares($session);
 
         $pokerSquares->getBoard()->setCard($pokerSquares->getNextCard(), $x, $y);
@@ -71,8 +69,7 @@ class PokerSquaresController extends AbstractController
     #[Route("/proj/reset", name: "projReset")]
     public function projReset(
         SessionInterface $session,
-    ): Response
-    {
+    ): Response {
         $session->remove("pokerSquares");
         return $this->redirectToRoute('proj');
     }
@@ -81,8 +78,7 @@ class PokerSquaresController extends AbstractController
     public function projSetHighscore(
         SessionInterface $session,
         int $score
-    ): Response
-    {
+    ): Response {
         $highscore = $this->getHighscore($session);
 
         $highscore[] = $score;
@@ -95,8 +91,7 @@ class PokerSquaresController extends AbstractController
 
     #[Route("/proj/about", name: "projAbout")]
     public function projAbout(
-    ): Response
-    {
+    ): Response {
         return $this->render('proj/about.html.twig');
     }
 }

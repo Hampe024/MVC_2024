@@ -1,6 +1,46 @@
 Search.appendIndex(
     [
                 {
+            "fqsen": "\\App\\Card\\Board",
+            "name": "Board",
+            "summary": "Class\u0020Board",
+            "url": "classes/App-Card-Board.html"
+        },                {
+            "fqsen": "\\App\\Card\\Board\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Board\u0020constructor.",
+            "url": "classes/App-Card-Board.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Card\\Board\u003A\u003AsetCard\u0028\u0029",
+            "name": "setCard",
+            "summary": "Set\u0020a\u0020card\u0020at\u0020the\u0020specified\u0020coordinates\u0020on\u0020the\u0020board.",
+            "url": "classes/App-Card-Board.html#method_setCard"
+        },                {
+            "fqsen": "\\App\\Card\\Board\u003A\u003AgetBoard\u0028\u0029",
+            "name": "getBoard",
+            "summary": "Get\u0020the\u0020current\u0020state\u0020of\u0020the\u0020game\u0020board.",
+            "url": "classes/App-Card-Board.html#method_getBoard"
+        },                {
+            "fqsen": "\\App\\Card\\Board\u003A\u003AisFull\u0028\u0029",
+            "name": "isFull",
+            "summary": "Check\u0020if\u0020the\u0020game\u0020board\u0020is\u0020full.",
+            "url": "classes/App-Card-Board.html#method_isFull"
+        },                {
+            "fqsen": "\\App\\Card\\Board\u003A\u003AgetCardsForTest\u0028\u0029",
+            "name": "getCardsForTest",
+            "summary": "Get\u0020the\u0020cards\u0020present\u0020on\u0020the\u0020specified\u0020row\u0020and\u0020column.",
+            "url": "classes/App-Card-Board.html#method_getCardsForTest"
+        },                {
+            "fqsen": "\\App\\Card\\Board\u003A\u003AgetPoints\u0028\u0029",
+            "name": "getPoints",
+            "summary": "Calculate\u0020the\u0020points\u0020for\u0020the\u0020specified\u0020row\u0020and\u0020column.",
+            "url": "classes/App-Card-Board.html#method_getPoints"
+        },                {
+            "fqsen": "\\App\\Card\\Board\u003A\u003A\u0024board",
+            "name": "board",
+            "summary": "",
+            "url": "classes/App-Card-Board.html#property_board"
+        },                {
             "fqsen": "\\App\\Card\\Card",
             "name": "Card",
             "summary": "",
@@ -180,6 +220,106 @@ Search.appendIndex(
             "name": "dealer",
             "summary": "",
             "url": "classes/App-Card-Game.html#property_dealer"
+        },                {
+            "fqsen": "\\App\\Card\\PokerSquares",
+            "name": "PokerSquares",
+            "summary": "Class\u0020PokerSquares",
+            "url": "classes/App-Card-PokerSquares.html"
+        },                {
+            "fqsen": "\\App\\Card\\PokerSquares\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "PokerSquares\u0020constructor.",
+            "url": "classes/App-Card-PokerSquares.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Card\\PokerSquares\u003A\u003AgetBoard\u0028\u0029",
+            "name": "getBoard",
+            "summary": "Get\u0020the\u0020game\u0020board.",
+            "url": "classes/App-Card-PokerSquares.html#method_getBoard"
+        },                {
+            "fqsen": "\\App\\Card\\PokerSquares\u003A\u003AsetNextCard\u0028\u0029",
+            "name": "setNextCard",
+            "summary": "Set\u0020the\u0020next\u0020card\u0020to\u0020be\u0020played.",
+            "url": "classes/App-Card-PokerSquares.html#method_setNextCard"
+        },                {
+            "fqsen": "\\App\\Card\\PokerSquares\u003A\u003AgetNextCard\u0028\u0029",
+            "name": "getNextCard",
+            "summary": "Get\u0020the\u0020next\u0020card\u0020to\u0020be\u0020played.",
+            "url": "classes/App-Card-PokerSquares.html#method_getNextCard"
+        },                {
+            "fqsen": "\\App\\Card\\PokerSquares\u003A\u003AunsetNextCard\u0028\u0029",
+            "name": "unsetNextCard",
+            "summary": "Unset\u0020the\u0020next\u0020card.",
+            "url": "classes/App-Card-PokerSquares.html#method_unsetNextCard"
+        },                {
+            "fqsen": "\\App\\Card\\PokerSquares\u003A\u003AgetDeck\u0028\u0029",
+            "name": "getDeck",
+            "summary": "Get\u0020the\u0020deck\u0020of\u0020cards.",
+            "url": "classes/App-Card-PokerSquares.html#method_getDeck"
+        },                {
+            "fqsen": "\\App\\Card\\PokerSquares\u003A\u003A\u0024deck",
+            "name": "deck",
+            "summary": "",
+            "url": "classes/App-Card-PokerSquares.html#property_deck"
+        },                {
+            "fqsen": "\\App\\Card\\PokerSquares\u003A\u003A\u0024board",
+            "name": "board",
+            "summary": "",
+            "url": "classes/App-Card-PokerSquares.html#property_board"
+        },                {
+            "fqsen": "\\App\\Card\\PokerSquares\u003A\u003A\u0024nextCard",
+            "name": "nextCard",
+            "summary": "",
+            "url": "classes/App-Card-PokerSquares.html#property_nextCard"
+        },                {
+            "fqsen": "\\App\\Card\\TestScore",
+            "name": "TestScore",
+            "summary": "Class\u0020TestScore\nProvides\u0020methods\u0020for\u0020testing\u0020score\u0020of\u0020cards.",
+            "url": "classes/App-Card-TestScore.html"
+        },                {
+            "fqsen": "\\App\\Card\\TestScore\u003A\u003AisRoyalFlush\u0028\u0029",
+            "name": "isRoyalFlush",
+            "summary": "Check\u0020if\u0020the\u0020given\u0020cards\u0020form\u0020a\u0020Royal\u0020Flush.",
+            "url": "classes/App-Card-TestScore.html#method_isRoyalFlush"
+        },                {
+            "fqsen": "\\App\\Card\\TestScore\u003A\u003AisStraightFlush\u0028\u0029",
+            "name": "isStraightFlush",
+            "summary": "Check\u0020if\u0020the\u0020given\u0020cards\u0020form\u0020a\u0020Straight\u0020Flush.",
+            "url": "classes/App-Card-TestScore.html#method_isStraightFlush"
+        },                {
+            "fqsen": "\\App\\Card\\TestScore\u003A\u003AisFourOfAKind\u0028\u0029",
+            "name": "isFourOfAKind",
+            "summary": "Check\u0020if\u0020the\u0020given\u0020cards\u0020form\u0020Four\u0020of\u0020a\u0020Kind.",
+            "url": "classes/App-Card-TestScore.html#method_isFourOfAKind"
+        },                {
+            "fqsen": "\\App\\Card\\TestScore\u003A\u003AisFullHouse\u0028\u0029",
+            "name": "isFullHouse",
+            "summary": "Check\u0020if\u0020the\u0020given\u0020cards\u0020form\u0020a\u0020Full\u0020House.",
+            "url": "classes/App-Card-TestScore.html#method_isFullHouse"
+        },                {
+            "fqsen": "\\App\\Card\\TestScore\u003A\u003AisFlush\u0028\u0029",
+            "name": "isFlush",
+            "summary": "Check\u0020if\u0020the\u0020given\u0020cards\u0020form\u0020a\u0020Flush.",
+            "url": "classes/App-Card-TestScore.html#method_isFlush"
+        },                {
+            "fqsen": "\\App\\Card\\TestScore\u003A\u003AisStraight\u0028\u0029",
+            "name": "isStraight",
+            "summary": "Check\u0020if\u0020the\u0020given\u0020cards\u0020form\u0020a\u0020Straight.",
+            "url": "classes/App-Card-TestScore.html#method_isStraight"
+        },                {
+            "fqsen": "\\App\\Card\\TestScore\u003A\u003AisThreeOfAKind\u0028\u0029",
+            "name": "isThreeOfAKind",
+            "summary": "Check\u0020if\u0020the\u0020given\u0020cards\u0020form\u0020Three\u0020of\u0020a\u0020Kind.",
+            "url": "classes/App-Card-TestScore.html#method_isThreeOfAKind"
+        },                {
+            "fqsen": "\\App\\Card\\TestScore\u003A\u003AisTwoPair\u0028\u0029",
+            "name": "isTwoPair",
+            "summary": "Check\u0020if\u0020the\u0020given\u0020cards\u0020form\u0020Two\u0020Pair.",
+            "url": "classes/App-Card-TestScore.html#method_isTwoPair"
+        },                {
+            "fqsen": "\\App\\Card\\TestScore\u003A\u003AisOnePair\u0028\u0029",
+            "name": "isOnePair",
+            "summary": "Check\u0020if\u0020the\u0020given\u0020cards\u0020form\u0020One\u0020Pair.",
+            "url": "classes/App-Card-TestScore.html#method_isOnePair"
         },                {
             "fqsen": "\\App\\Controller\\Api",
             "name": "Api",
@@ -395,6 +535,46 @@ Search.appendIndex(
             "name": "metrics",
             "summary": "",
             "url": "classes/App-Controller-MetricsController.html#method_metrics"
+        },                {
+            "fqsen": "\\App\\Controller\\PokerSquaresController",
+            "name": "PokerSquaresController",
+            "summary": "",
+            "url": "classes/App-Controller-PokerSquaresController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\PokerSquaresController\u003A\u003AgetPokerSquares\u0028\u0029",
+            "name": "getPokerSquares",
+            "summary": "",
+            "url": "classes/App-Controller-PokerSquaresController.html#method_getPokerSquares"
+        },                {
+            "fqsen": "\\App\\Controller\\PokerSquaresController\u003A\u003AgetHighscore\u0028\u0029",
+            "name": "getHighscore",
+            "summary": "",
+            "url": "classes/App-Controller-PokerSquaresController.html#method_getHighscore"
+        },                {
+            "fqsen": "\\App\\Controller\\PokerSquaresController\u003A\u003Aproj\u0028\u0029",
+            "name": "proj",
+            "summary": "",
+            "url": "classes/App-Controller-PokerSquaresController.html#method_proj"
+        },                {
+            "fqsen": "\\App\\Controller\\PokerSquaresController\u003A\u003AprojSetCard\u0028\u0029",
+            "name": "projSetCard",
+            "summary": "",
+            "url": "classes/App-Controller-PokerSquaresController.html#method_projSetCard"
+        },                {
+            "fqsen": "\\App\\Controller\\PokerSquaresController\u003A\u003AprojReset\u0028\u0029",
+            "name": "projReset",
+            "summary": "",
+            "url": "classes/App-Controller-PokerSquaresController.html#method_projReset"
+        },                {
+            "fqsen": "\\App\\Controller\\PokerSquaresController\u003A\u003AprojSetHighscore\u0028\u0029",
+            "name": "projSetHighscore",
+            "summary": "",
+            "url": "classes/App-Controller-PokerSquaresController.html#method_projSetHighscore"
+        },                {
+            "fqsen": "\\App\\Controller\\PokerSquaresController\u003A\u003AprojAbout\u0028\u0029",
+            "name": "projAbout",
+            "summary": "",
+            "url": "classes/App-Controller-PokerSquaresController.html#method_projAbout"
         },                {
             "fqsen": "\\App\\Controller\\Report",
             "name": "Report",

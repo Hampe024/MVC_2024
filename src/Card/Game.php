@@ -4,9 +4,10 @@ namespace App\Card;
 
 use App\Card\CardHand;
 use App\Card\DeckOfCards;
+
 /**
  * Class Game
- * 
+ *
  * Represents a game of cards between a player and a dealer.
  */
 class Game

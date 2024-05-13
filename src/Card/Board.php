@@ -12,9 +12,9 @@ use App\Card\TestScore;
  *
  * Represents the game board for placing cards and calculating points.
  */
-Class Board
+class Board
 {
-    /** 
+    /**
      * @var array|null[][]
      */
     private array $board;

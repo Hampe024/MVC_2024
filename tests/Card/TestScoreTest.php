@@ -12,7 +12,8 @@ use PHPUnit\Framework\TestCase;
  */
 class TestScoreTest extends TestCase
 {
-    public function testIsRoyalFlush(): void {
+    public function testIsRoyalFlush(): void
+    {
 
         $testScore = new TestScore();
 
@@ -44,7 +45,8 @@ class TestScoreTest extends TestCase
         $this->assertFalse($testScore->isRoyalFlush($testNotSameSuite));
     }
 
-    public function testIsStraightFlush(): void {
+    public function testIsStraightFlush(): void
+    {
 
         $testScore = new TestScore();
 
@@ -84,7 +86,8 @@ class TestScoreTest extends TestCase
         $this->assertFalse($testScore->isStraightFlush($testNotStraightFlush));
     }
 
-    public function testIsFourOfAKind(): void {
+    public function testIsFourOfAKind(): void
+    {
 
         $testScore = new TestScore();
 
@@ -115,7 +118,8 @@ class TestScoreTest extends TestCase
         $this->assertFalse($testScore->isFourOfAKind($testOnlyThreeOfAKind));
     }
 
-    public function testIsFullHouse(): void {
+    public function testIsFullHouse(): void
+    {
 
         $testScore = new TestScore();
 
@@ -146,7 +150,8 @@ class TestScoreTest extends TestCase
         $this->assertFalse($testScore->isFullHouse($testNotFullHouse));
     }
 
-    public function testIsFlush(): void {
+    public function testIsFlush(): void
+    {
 
         $testScore = new TestScore();
 
@@ -177,7 +182,8 @@ class TestScoreTest extends TestCase
         $this->assertFalse($testScore->isFlush($testNotFlush));
     }
 
-    public function testIsStraight(): void {
+    public function testIsStraight(): void
+    {
 
         $testScore = new TestScore();
 
@@ -208,7 +214,8 @@ class TestScoreTest extends TestCase
         $this->assertFalse($testScore->isStraight($testNotStraight));
     }
 
-    public function testIsThreeOfAKind(): void {
+    public function testIsThreeOfAKind(): void
+    {
 
         $testScore = new TestScore();
 
@@ -239,7 +246,8 @@ class TestScoreTest extends TestCase
         $this->assertFalse($testScore->isThreeOfAKind($testNotThreeOfAKind));
     }
 
-    public function testIsTwoPair(): void {
+    public function testIsTwoPair(): void
+    {
 
         $testScore = new TestScore();
 
@@ -270,7 +278,8 @@ class TestScoreTest extends TestCase
         $this->assertFalse($testScore->isTwoPair($testNotTwoPair));
     }
 
-    public function testIsOnePair(): void {
+    public function testIsOnePair(): void
+    {
 
         $testScore = new TestScore();
 
