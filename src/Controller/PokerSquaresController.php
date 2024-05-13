@@ -28,7 +28,7 @@ class PokerSquaresController extends AbstractController
     private function getHighscore(
         SessionInterface $session
     ): array {
-        $highscore = $session->has('highscore') ? $session->get('highscore') : [43];
+        $highscore = $session->has('highscore') ? $session->get('highscore') : [58];
 
         $session->set('highscore', $highscore);
 
