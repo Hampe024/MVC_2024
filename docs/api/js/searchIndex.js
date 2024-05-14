@@ -711,6 +711,51 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Entity-Library.html#property_imgURL"
         },                {
+            "fqsen": "\\App\\Entity\\Score",
+            "name": "Score",
+            "summary": "",
+            "url": "classes/App-Entity-Score.html"
+        },                {
+            "fqsen": "\\App\\Entity\\Score\u003A\u003AgetId\u0028\u0029",
+            "name": "getId",
+            "summary": "",
+            "url": "classes/App-Entity-Score.html#method_getId"
+        },                {
+            "fqsen": "\\App\\Entity\\Score\u003A\u003AgetName\u0028\u0029",
+            "name": "getName",
+            "summary": "",
+            "url": "classes/App-Entity-Score.html#method_getName"
+        },                {
+            "fqsen": "\\App\\Entity\\Score\u003A\u003AsetName\u0028\u0029",
+            "name": "setName",
+            "summary": "",
+            "url": "classes/App-Entity-Score.html#method_setName"
+        },                {
+            "fqsen": "\\App\\Entity\\Score\u003A\u003AgetScore\u0028\u0029",
+            "name": "getScore",
+            "summary": "",
+            "url": "classes/App-Entity-Score.html#method_getScore"
+        },                {
+            "fqsen": "\\App\\Entity\\Score\u003A\u003AsetScore\u0028\u0029",
+            "name": "setScore",
+            "summary": "",
+            "url": "classes/App-Entity-Score.html#method_setScore"
+        },                {
+            "fqsen": "\\App\\Entity\\Score\u003A\u003A\u0024id",
+            "name": "id",
+            "summary": "",
+            "url": "classes/App-Entity-Score.html#property_id"
+        },                {
+            "fqsen": "\\App\\Entity\\Score\u003A\u003A\u0024name",
+            "name": "name",
+            "summary": "",
+            "url": "classes/App-Entity-Score.html#property_name"
+        },                {
+            "fqsen": "\\App\\Entity\\Score\u003A\u003A\u0024score",
+            "name": "score",
+            "summary": "",
+            "url": "classes/App-Entity-Score.html#property_score"
+        },                {
             "fqsen": "\\App\\Kernel",
             "name": "Kernel",
             "summary": "",
@@ -745,6 +790,21 @@ Search.appendIndex(
             "name": "doUpdate",
             "summary": "",
             "url": "classes/App-Repository-LibraryRepository.html#method_doUpdate"
+        },                {
+            "fqsen": "\\App\\Repository\\ScoreRepository",
+            "name": "ScoreRepository",
+            "summary": "",
+            "url": "classes/App-Repository-ScoreRepository.html"
+        },                {
+            "fqsen": "\\App\\Repository\\ScoreRepository\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Repository-ScoreRepository.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Repository\\ScoreRepository\u003A\u003Aadd\u0028\u0029",
+            "name": "add",
+            "summary": "",
+            "url": "classes/App-Repository-ScoreRepository.html#method_add"
         },                {
             "fqsen": "\\",
             "name": "\\",

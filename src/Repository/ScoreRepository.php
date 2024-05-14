@@ -41,7 +41,7 @@ class ScoreRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    public function add(string $name, int $score): void 
+    public function add(string $name, int $score): void
     {
         $entityManager = $this->getEntityManager();
 
