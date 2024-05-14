@@ -40,9 +40,13 @@
         
         <div class="next-card">
             {% include 'proj/nextCard.html.twig' %}
-            <a class="fake-btn reset" href="{{ path('projReset') }}">Starta om</a>
             {% if pokerSquares.getBoard.isFull() %}
-                <a class="fake-btn save" href="{{ path('projSetHighscore', { score: totpoints }) }}">Spara poäng</a>
+                <form method="post" action="{{ path('projSetHighscore', { score: totpoints }) }}">
+                    <input type="text" name="name" placeholder="Ditt namn" required>
+                    <input type="submit" value="Spara poäng">
+                </form>
+            {% else %}
+                <a class="fake-btn reset" href="{{ path('projReset') }}">Starta om</a>
             {% endif %}
         </div>
         <div class="game-data">

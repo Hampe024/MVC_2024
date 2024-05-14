@@ -6,6 +6,7 @@ use App\Card\PokerSquares;
 use App\Card\DeckOfCards;
 use App\Card\Board;
 use App\Card\Card;
+use App\Repository\ScoreRepository;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,20 +27,19 @@ class PokerSquaresController extends AbstractController
     }
 
     private function getHighscore(
-        SessionInterface $session
+        ScoreRepository $scoreRepository,
     ): array {
-        $highscore = $session->has('highscore') ? $session->get('highscore') : [58];
-
-        $session->set('highscore', $highscore);
+        $highscore = $scoreRepository->findAll();
 
         return $highscore;
     }
 
     #[Route("/proj", name: "proj")]
     public function proj(
-        SessionInterface $session
+        SessionInterface $session,
+        ScoreRepository $scoreRepository,
     ): Response {
-        $highscore = $this->getHighscore($session);
+        $highscore = $this->getHighscore($scoreRepository);
 
         $pokerSquares = $this->getPokerSquares($session);
         $pokerSquares->setNextCard();
@@ -79,17 +79,15 @@ class PokerSquaresController extends AbstractController
 
     #[Route("/proj/setHighscore/{score}", name: "projSetHighscore")]
     public function projSetHighscore(
-        SessionInterface $session,
+        Request $request,
+        ScoreRepository $scoreRepository,
         int $score
     ): Response {
-        $highscore = $this->getHighscore($session);
-
-        $highscore[] = $score;
-        rsort($highscore);
-
-        $session->set('highscore', $highscore);
-
-        return $this->redirectToRoute('proj');
+        $scoreRepository->add(
+            $request->request->get("name"),
+            $score
+        );
+        return $this->redirectToRoute('projReset');
     }
 
     #[Route("/proj/about", name: "projAbout")]
