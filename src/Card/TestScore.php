@@ -39,7 +39,7 @@ class TestScore
      */
     public function isStraightFlush(array $cards): bool
     {
-        return self::isFlush($cards) && self::isStraight($cards);
+        return $this->isFlush($cards) && $this->isStraight($cards);
     }
 
     /**

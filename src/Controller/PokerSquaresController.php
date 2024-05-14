@@ -60,8 +60,11 @@ class PokerSquaresController extends AbstractController
     ): Response {
         $pokerSquares = $this->getPokerSquares($session);
 
-        $pokerSquares->getBoard()->setCard($pokerSquares->getNextCard(), $x, $y);
-        $pokerSquares->unsetNextCard();
+        $nextCard = $pokerSquares->getNextCard();
+        if (!is_null($nextCard)) {
+            $pokerSquares->getBoard()->setCard($nextCard, $x, $y);
+            $pokerSquares->unsetNextCard();
+        }
 
         return $this->redirectToRoute('proj');
     }
