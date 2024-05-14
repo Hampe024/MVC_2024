@@ -130,8 +130,43 @@
                 </p>
             </li>
             <li>
-                <h2 id="kmom07">Kmom07</h2>
-                <p>Redovisningstext...</p>
+                <h2 id="kmom07">Kmom07/10</h2>
+                <p>
+                    Jag har implementerad krav 1-3. Jag ville forsätta använda klasser från tidigare moment då jag gillade det flödet, men jag ville göra något svårare än säg blackjack. Jag valde därför att göra spelet PokerSquares. Till detta har jag gjort några nya klasser (<code class="snippet">PokerSquares()</code>, <code class="snippet">Board()</code> och <code class="snippet">TestScore()</code>) men även återanvänt några från tidigare kursmoment (<code class="snippet">Card()</code> och <code class="snippet">DeckOfCards()</code>). Jag jobbade också aktivt med clean code och har också gjort tester för samtliga klasser.
+                </p>
+
+                <p>
+                    Det var relativt enkelt att sätta upp grund koden för projektet, det var egentligen två saker jag hade lite större problem med. Första var hur jag skulle visa upp brädet och poängen grafiskt, mer specifikt hur jag skulle visa upp poängen under/brevid varje rad. Till slut kom jag fram till att göra ett 6*6 grid där 5*5 av dom är korten och den sista "raden" är dedikerad för poängen, detta gav också poängen kordinater som jag kunde sen använda för att räkna ut poängen. Så om en poäng-ruta har kordinaterna (2,5) Ska korten (2, 0) - (2, 4) Skickas till min <code class="snippet">TestScore</code>.
+                    <br><br>
+                    Jag hade också lite problem med att fixa en "bug", jag har i tidigare kursmoment satt ässets värde till -1 och så ska användaren välja dess värde när den dyker upp i kortleken. Men här behöver det verkligen kunna vara både 1 och 14 samtidigt. Jag behövde därför uppdatera mina TestScore metoder, efter lite tänkande kom jag fram till att endast <code class="snippet">isRoyalFlush()</code> och <code class="snippet">isStraight()</code> behövde uppdateras. Detta är för att detta är de ända testerna där kortens specifika värden är relevanta (<code class="snippet">isStraightFlush()</code> också men den kallar endast <code class="snippet">isStraight()</code> och <code class="snippet">isFlush()</code> så den fixas därmed automatiskt här). <code class="snippet">isRoyalFlush()</code> var enkelt att fixa då ässen behöver få värdet 14 för att den ska stämma endå. Men <code class="snippet">isStraight()</code> var lite svårare, och det reflekterar dens return: 
+                    <code class="block">
+return
+    (count(array_unique($values)) === 5) &&
+        (
+            array_sum($values) === 13 ||
+            ($values[0] === -1 && $values[1] === 10) ||
+            (max($values) - min($values) === 4)
+        );
+                    </code>
+                    Omskriven i pseudokod blir det såhär:
+                    <code class="block">
+return
+    (all values are unique) &&
+        (
+            (values are [-1, 2, 3, 4, 5]) ||
+            (values are [-1, 10, 11, 12, 13]) ||
+            (all values are consecutive)
+        );
+                    </code>
+                </p>
+
+                <p>
+                    Jag har tyckt denna kursen har varit väldigt rolig, super roligt att jobba objektorienterat och att få testa på Symfony. Jag tyckte också kmom06 var intressant, jag brukar i vanliga fall inte gilla så mycket teoriska delar, men dethär är endå ett viktigt ämne och egentligen första gången jag lagt någon vidare tanke på clean code som koncept. Det är något jag definitvt kommer ta med mig.
+                    <br>
+                    Jag har också tyckt att genomgångarna har varit väldigt bra, tydliga och pedagogiska. Vid vissa tilfällen kändes kursen kanske lite för lätt, men det är nog för att jag egentligen går tredje året och går denna kursen nu då jag inte hunnit de tidigare åren, så jag är nog mer bekväm med programmering än genomsnittlig kursdeltagare.
+                    <br>
+                    För att sammanfatta tyckte jag kursen var väldigt bra och lärorik, jag skulle definitivt rekommendera den till någon annan. Jag ger kursen 9/10 då den kanske var lite för enkel stundvis. 
+                </p>
             </li>
         <ul>
     </div>
