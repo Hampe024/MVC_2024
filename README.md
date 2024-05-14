@@ -1,9 +1,12 @@
-![Header img](./public/img/symfony.png)
+![Header img](./public/img/readmeHeader.png)
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Hampe024/MVC_2024/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/Hampe024/MVC_2024/?branch=main)
 [![Code Coverage](https://scrutinizer-ci.com/g/Hampe024/MVC_2024/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/Hampe024/MVC_2024/?branch=main)
 [![Build Status](https://scrutinizer-ci.com/g/Hampe024/MVC_2024/badges/build.png?b=main)](https://scrutinizer-ci.com/g/Hampe024/MVC_2024/build-status/main)
 [![Code Intelligence Status](https://scrutinizer-ci.com/g/Hampe024/MVC_2024/badges/code-intelligence.svg?b=main)](https://scrutinizer-ci.com/code-intelligence)
+
+## About
+This is a repo for course MVC at BTH, its a Symfony project working with OOP
 
 ## Installation
 Download the repository locally
@@ -19,3 +22,4 @@ the simpelest way is using the npm script for a php server
 ```bash
 npm run server
 ```
+Server is now live at http://localhost:8888/
